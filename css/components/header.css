@@ -1,0 +1,298 @@
+/* ==========================================================================
+   Header — commun à toutes les pages (injecté par js/header.js)
+
+   Layout : mobile-first. Par défaut (0 → 1024px) on affiche la marque
+   + le burger ; la nav complète vit dans l'overlay plein écran. À partir
+   de 1025px, la nav desktop apparaît et le burger/overlay disparaissent.
+
+   CAS PARTICULIER — contrairement au reste du site, le header n'utilise
+   PAS l'échelle fluide (rem liés au font-size de <html>). Tailles de
+   police, espacements internes et dimensions des pastilles restent
+   FIGÉS en px, identiques à ce qui est défini dans le Dev Mode, quelle
+   que soit la largeur d'écran. Seule la marge extérieure horizontale
+   (80px desktop / 20px mobile) reste fluide, en rem — c'est la SEULE
+   exception. Ne pas convertir les valeurs ci-dessous en rem sans
+   revalider avec le designer.
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: var(--color-black);
+  padding-top: 20px; /* figé */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+  /* Header transparent : la bande laisse passer les clics vers le contenu
+     dessous. Seuls les liens, le burger et le menu mobile restent cliquables. */
+  pointer-events: none;
+}
+
+.site-header a,
+.site-header button,
+.site-header__overlay {
+  pointer-events: auto;
+}
+
+/* Le header est fixe (toujours visible au scroll) : on compense sa hauteur
+   réelle — mesurée en JS par header.js, car elle diffère entre mobile et
+   desktop — pour que <main> ne démarre pas caché dessous. */
+main {
+  padding-top: var(--header-height, 0px);
+}
+
+/* Empêche le scroll de la page derrière l'overlay mobile ouvert */
+body.has-open-menu {
+  overflow: hidden;
+}
+
+/* ---- Marque (nom + fonction) ----
+   z-index au-dessus de l'overlay : reste visible quand le menu est ouvert
+   (conforme à la maquette, où le nom et le burger restent au premier plan). */
+.site-header__brand {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.site-header__name {
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.site-header__tagline {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Nav + liens desktop : masqués en mobile, remplacés par l'overlay */
+.site-header__nav,
+.site-header__links {
+  display: none;
+}
+
+/* ---- Burger (mobile uniquement) ----
+   z-index au-dessus de l'overlay : reste cliquable pour refermer le menu. */
+.site-header__burger {
+  position: relative;
+  z-index: 20;
+  width: 24px; /* fermé */
+  height: 12px;
+  flex-shrink: 0;
+  transition: width 0.3s ease;
+}
+
+.site-header__burger-bar {
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background-color: currentColor;
+  transition: left 0.3s ease;
+}
+
+.site-header__burger-bar--top {
+  top: 0;
+}
+
+.site-header__burger-bar--mid {
+  top: 5px;
+}
+
+.site-header__burger-bar--bottom {
+  top: 10px;
+}
+
+/* Ouvert : la barre du haut et celle du bas se décalent de 4px, la
+   barre du milieu ne bouge pas (donne l'effet "décalage vers la gauche"
+   du milieu par rapport aux deux autres) — géométrie exacte du Dev Mode. */
+.site-header__burger[aria-expanded='true'] {
+  width: 28px; /* ouvert */
+}
+
+.site-header__burger[aria-expanded='true'] .site-header__burger-bar--top,
+.site-header__burger[aria-expanded='true'] .site-header__burger-bar--bottom {
+  left: 4px;
+}
+
+/* Menu ouvert : le nom et le burger passent en blanc pour rester visibles
+   sur le fond noir de l'overlay (sinon texte noir sur fond noir). */
+body.has-open-menu .site-header__brand,
+body.has-open-menu .site-header__burger {
+  color: var(--color-white);
+}
+
+/* ---- Overlay plein écran (menu mobile ouvert) ---- */
+.site-header__overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8%);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+  z-index: 10;
+}
+
+.site-header__overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear;
+}
+
+.site-header__overlay-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  width: 163px;
+}
+
+.site-header__overlay-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding-inline: 24px;
+  border-radius: 20px;
+  border: 1.5px solid transparent; /* réservé pour l'état actif */
+  transition: border-color 0.6s ease-out; /* doit rester égale à FADE_MS dans js/page-transition.js */
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.site-header__overlay-pill.is-active {
+  border-color: currentColor;
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   La marge extérieure fluide (20px @375) plafonne vers 27px sur cette plage :
+   trop juste. On la fixe à 40px minimum, comme les autres pages.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .site-header {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .site-header {
+    align-items: center;
+    padding-top: 24px; /* figé */
+    padding-inline: 5rem; /* fluide — 80px @1920 */
+  }
+
+  .site-header__brand {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .site-header__name {
+    font-size: 14px;
+    width: 125px;
+  }
+
+  .site-header__tagline {
+    font-size: 12px;
+    white-space: normal;
+  }
+
+  /* Centrée indépendamment de la largeur des blocs gauche/droite, qui
+     eux restent calés sur les bords via justify-content: space-between
+     sur .site-header. top figé pour rester aligné avec padding-top. */
+  .site-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: absolute;
+    left: 50%;
+    top: 24px;
+    transform: translateX(-50%);
+  }
+
+  .site-header__links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .site-header__pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding-inline: 12px;
+    border-radius: 20px;
+    border: 1px solid transparent; /* réservé pour l'état actif/hover */
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    transition: border-color 0.6s ease-out; /* doit rester égale à FADE_MS dans js/page-transition.js */
+  }
+
+  .site-header__pill.is-active,
+  .site-header__pill:hover,
+  .site-header__pill:focus-visible {
+    border-color: currentColor;
+  }
+
+  .site-header__link {
+    position: relative;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* Hover / focus clavier : trait sous le texte, animé depuis le centre, de 0 à 100% de largeur (à la place du
+     soulignement natif). */
+  .site-header__link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -2px;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--color-black);
+    transition: width 0.3s ease;
+  }
+
+  .site-header__link:hover::after,
+  .site-header__link:focus-visible::after {
+    width: 100%;
+  }
+
+  /* Le burger et l'overlay n'existent qu'en mobile */
+  .site-header__burger,
+  .site-header__overlay {
+    display: none;
+  }
+}

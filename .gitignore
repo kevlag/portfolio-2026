@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Sources lourdes (exports Figma en PNG, vidéos brutes) : gardées en local,
+# jamais versionnées ni déployées. Le site n'utilise que images/<projet>/*.webp
+# et videos/<projet>/*.mp4, générés depuis ces sources.
+images/_sources/
+
+# Réglages d'outils locaux
+.claude/
+
+# Polices non utilisées par le site : css/base/fonts.css ne charge que les
+# .woff2 / .woff de Haffer XH (Medium et Regular).
+fonts/*.ttf
+fonts/HafferSQXH-*

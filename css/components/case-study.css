@@ -1,0 +1,244 @@
+/* ==========================================================================
+   Pages case study — éléments communs à tous les projets (Prev/Next, titre,
+   photo du hero, date + texte de présentation, crédits).
+
+   Chaque page l'utilise avec les classes .case__* ; son propre fichier
+   (css/pages/<projet>.css) ne contient que ses blocs d'images/vidéos et les
+   écarts qui lui sont propres. Le <body> de la page porte la classe .case.
+
+   Comme le reste du site, suit l'ÉCHELLE FLUIDE : toutes les tailles sont en
+   rem (1rem = 16px sur la maquette 1920px en desktop, sur la maquette 375px en
+   mobile).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, crédits) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   desktop (≥1025px).
+   ========================================================================== */
+
+/* ---- PREV / NEXT ----
+   Composant invariant : fixes, collés en bas de l'écran en mobile, centrés
+   verticalement sur le côté en desktop. Placés en dehors de <main> (un
+   descendant de <main> hérite de son fondu de page). Révélés par
+   js/page-transition.js (classe .is-visible). */
+.case__controls {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 1.25rem; /* 20px, comme .site-footer__top (Back to top) */
+  z-index: 25;
+  padding-inline: 1.25rem; /* 20px */
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: var(--color-black);
+  opacity: 0;
+  transition: opacity 600ms ease-out;
+}
+
+.case__controls.is-visible {
+  opacity: 1;
+}
+
+.case__controls-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ---- Titre ----
+   Les mots s'enchaînent en inline et reviennent à la ligne naturellement si
+   la largeur manque — pas de saut forcé en mobile/tablette. En desktop, le
+   modificateur .case__title--stacked conserve les lignes de la maquette. */
+.case__title {
+  margin-top: calc(7.5rem - var(--header-height, 0px)); /* 120px de la maquette */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+  font-weight: 500;
+  font-size: 2.5rem; /* 40px */
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.case__title-line {
+  display: inline;
+}
+
+/* ---- Photo ---- */
+.case__hero-image {
+  display: block;
+  width: calc(100% - 2.5rem);
+  margin-inline: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+  height: auto;
+  margin-top: 2rem; /* 32px */
+}
+
+/* ---- Contenu : date + texte de présentation, puis crédits ---- */
+.case__content {
+  margin-top: 1.25rem; /* 20px */
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem; /* 40px */
+  color: var(--color-black);
+}
+
+.case__intro {
+  padding-inline: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 16px */
+}
+
+.case__date {
+  font-weight: 500;
+  font-size: 14px; /* figé, comme le header/footer */
+  text-transform: uppercase;
+}
+
+.case__date-line {
+  display: inline;
+}
+
+.case__paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+  font-weight: 400;
+  font-size: 12px; /* figé, comme le header/footer */
+  line-height: 1.6;
+}
+
+/* Alinéa de la maquette : white-space préserve les espaces, comme dans le
+   Dev Mode Figma. */
+.case__paragraph--pre {
+  white-space: pre-wrap;
+}
+
+/* ---- Crédits : liste verticale (mobile comme desktop) ---- */
+.case__credits {
+  padding-inline: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* 24px */
+}
+
+.case__job {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* figé, comme le texte */
+}
+
+.case__job-title {
+  font-weight: 400;
+  font-size: 12px; /* figé, comme le header/footer */
+}
+
+.case__job-name {
+  font-weight: 500;
+  font-size: 16px; /* figé, comme le header/footer */
+  text-transform: uppercase;
+}
+
+/* ---- "Work with me ?" : bloc commun (voir components/work-cta.css), seule la
+   marge du haut change sur ces pages. ---- */
+.case .work-cta {
+  margin-top: 5rem; /* 80px */
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop : la marge de
+   page fluide (20px @375) devient trop juste à ces largeurs — on la fixe à
+   40px minimum.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .case__title {
+    padding-inline: 40px;
+  }
+
+  .case__hero-image {
+    width: calc(100% - 80px);
+    margin-inline: 40px;
+  }
+
+  .case__intro,
+  .case__credits {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .case__controls {
+    padding-inline: 1.5rem; /* 24px */
+    font-size: 14px;
+    line-height: normal;
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .case__title {
+    margin-top: calc(10rem - var(--header-height, 0px)); /* 160px */
+    padding-inline: 5rem; /* fluide — 80px @1920 */
+    font-size: 10rem; /* 160px */
+  }
+
+  .case__title--stacked .case__title-line {
+    display: block;
+  }
+
+  .case__hero-image {
+    width: calc(100% - 10rem);
+    margin-inline: 5rem; /* fluide — 80px @1920 */
+    margin-top: 4rem; /* 64px */
+  }
+
+  .case__content {
+    margin-top: 4rem; /* 64px */
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 3rem; /* 48px minimum entre le texte et les crédits */
+    max-width: 110rem; /* 1760px, même largeur que la photo juste au-dessus */
+    margin-inline: auto;
+  }
+
+  .case__intro {
+    padding-inline: 0;
+    flex-direction: row;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .case__date {
+    width: 17.0625rem; /* 273px */
+    flex: none;
+  }
+
+  .case__date-line {
+    display: block;
+  }
+
+  .case__paragraph {
+    width: 35.6875rem; /* 571px */
+    flex: none;
+    gap: 1rem; /* 16px */
+    font-size: 16px; /* figé — voir la règle mobile plus haut */
+  }
+
+  .case__credits {
+    padding-inline: 0;
+    width: 17.0625rem; /* 273px, comme la date */
+    flex: none;
+  }
+
+  .case .work-cta {
+    margin-top: 10rem; /* 160px */
+  }
+}

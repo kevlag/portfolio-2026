@@ -1,0 +1,610 @@
+/* ==========================================================================
+   Studio Boam — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe de présentation,
+   intitulés/noms des crédits) gardent une taille de police FIGÉE en px,
+   comme le header et le footer — seuls les espacements autour restent
+   fluides. Ne pas convertir ces font-size en rem.
+
+   Construit à partir de la 1re partie du Dev Mode Figma (Hero + Bloc-1 +
+   Bloc-2 + Bloc-3) : la suite (Bloc-4/5/6…, bloc « Work with me ? ») arrivera
+   dans un prochain Dev Mode.
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+/* ---- Crédits ----
+   Mobile : une seule rangée qui se fait glisser (souris / doigt / clavier),
+   via js/drag-row.js (moteur js/marquee.js en loop:false) — bornée au
+   début, mais SANS marge/masque à droite : elle déborde volontairement de
+   l'écran, seulement coupée par la fenêtre du navigateur.
+   Desktop : redevient une grille de colonnes (voir media query plus bas). */
+.studioboam__credits-slider {
+  margin-top: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.studioboam__credits-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.studioboam__credits-slider.is-active {
+  overflow: hidden;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .studioboam__credits-slider.can-drag {
+    cursor: grab;
+  }
+
+  .studioboam__credits-slider.is-dragging {
+    cursor: grabbing;
+  }
+}
+
+.studioboam__credits {
+  display: flex;
+  gap: 1.25rem; /* 20px */
+  width: max-content;
+  padding-left: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+  will-change: transform;
+}
+
+.studioboam__job {
+  flex: none;
+}
+
+.studioboam__job-title {
+  white-space: nowrap;
+}
+
+.studioboam__job-title-line {
+  display: block;
+}
+
+.studioboam__job-name {
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Bloc-1 — bande vidéo (placeholder) + 2 cartes (duo d'images / bouteille +
+   accent). Empilées en mobile dans l'ordre 1, 3, 2 (voir le HTML) ; en
+   desktop, "2" passe à gauche et "3" à droite (voir media query plus bas).
+   ========================================================================== */
+.studioboam__bloc1 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+/* "1" : aplats de couleur dans la maquette (pas d'image) — contrairement aux
+   cartes juste en dessous, un vrai padding CSS est donc légitime ici. */
+.studioboam__bloc1-video {
+  background: #ece2d8;
+  padding: 2rem; /* 32px */
+}
+
+.studioboam__bloc1-video-el {
+  display: block;
+  width: 100%;
+  /* height:auto impératif : sans ça, l'attribut HTML height="1080" (indice
+     de taille intrinsèque pour le navigateur) prend le dessus sur l'aspect-
+     ratio ci-dessous et casse le calcul de hauteur. */
+  height: auto;
+  aspect-ratio: 1920 / 1080; /* format natif de la vidéo, jamais recadré */
+  background: #5a5a5a;
+  object-fit: contain; /* jamais de recadrage ni de déformation de la vidéo */
+}
+
+.studioboam__bloc1-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px, même rythme que .studioboam__bloc1 */
+}
+
+/* "3" : image déjà composée par l'utilisateur (bouteille + spread fusionnés
+   en un seul export) — jamais de padding/fond ajoutés en CSS par-dessus. */
+.studioboam__bloc1-media--bg {
+  display: block;
+  overflow: hidden;
+}
+
+.studioboam__bloc1-media--bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.studioboam__bloc1-card--3 .studioboam__bloc1-media--bg {
+  aspect-ratio: 670 / 670;
+}
+
+/* "2" : image déjà composée par l'utilisateur, comme "3". */
+.studioboam__bloc1-card--2 .studioboam__bloc1-media--bg {
+  aspect-ratio: 670 / 740;
+}
+
+/* ==========================================================================
+   Bloc-2 — rangée d'aperçus des autres projets du studio, qui se fait
+   glisser horizontalement à TOUTES les largeurs d'écran (contrairement aux
+   crédits du Hero, qui redeviennent une grille fixe en desktop).
+   ========================================================================== */
+.studioboam__bloc2-slider {
+  margin-top: 5rem; /* 80px */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.studioboam__bloc2-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.studioboam__bloc2-slider.is-active {
+  overflow: hidden;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .studioboam__bloc2-slider.can-drag {
+    cursor: grab;
+  }
+
+  .studioboam__bloc2-slider.is-dragging {
+    cursor: grabbing;
+  }
+}
+
+.studioboam__bloc2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 8px */
+  width: max-content;
+  /* Marge à droite = marge à gauche : en fin de glisser, la dernière image
+     s'aligne sur les marges du reste de la page. */
+  padding-inline: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+  will-change: transform;
+}
+
+.studioboam__bloc2-media {
+  flex: none;
+  display: block;
+  width: 15.5625rem; /* 249px */
+  aspect-ratio: 249 / 140;
+  overflow: hidden;
+}
+
+.studioboam__bloc2-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Bloc-3 — carte du haut ("1") + carte bouteille/accent ("3") empilées à
+   gauche, carte longue ("2") à droite. Même ordre en mobile et en desktop
+   (1, 3, 2) : seule la mise en page (empilée / 2 colonnes) change.
+   ========================================================================== */
+.studioboam__bloc3 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.studioboam__bloc3-column {
+  display: contents;
+}
+
+.studioboam__bloc3-media--1 img,
+.studioboam__bloc3-media--2 img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* "1", "2", "3" : images déjà composées par l'utilisateur (fond #ece2d8 et
+   marge inclus dans les pixels) — jamais de padding/fond ajoutés en CSS
+   par-dessus, quelle que soit la carte sur cette page. */
+.studioboam__bloc3-media--1 {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 670 / 740;
+}
+
+.studioboam__bloc3-media--bg {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 670 / 670;
+}
+
+.studioboam__bloc3-media--bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.studioboam__bloc3-media--2 {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 670 / 968;
+}
+
+/* ==========================================================================
+   Bloc-4 — photo plein cadre, sans marge (contrairement au reste de la
+   page) : casse volontairement le rythme, même principe
+   que les autres photos pleine largeur. Image déjà composée par l'utilisateur.
+   ========================================================================== */
+.studioboam__bloc4 {
+  margin-top: 5rem; /* 80px */
+}
+
+.studioboam__bloc4-media {
+  display: block;
+  aspect-ratio: 375 / 435;
+  overflow: hidden;
+}
+
+.studioboam__bloc4-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Bloc-5 — 2 colonnes de cartes en desktop (3 à gauche, 2 à droite),
+   empilées 1,2,3,4,5 en mobile. Toutes les images sont déjà composées par
+   l'utilisateur (jamais de padding/fond ajoutés).
+   ========================================================================== */
+.studioboam__bloc5 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.studioboam__bloc5-column {
+  display: contents;
+}
+
+.studioboam__bloc5-media--1 img,
+.studioboam__bloc5-media--2 img,
+.studioboam__bloc5-media--3 img,
+.studioboam__bloc5-media--4 img,
+.studioboam__bloc5-media--5 img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.studioboam__bloc5-media--1 {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 335 / 280;
+}
+
+.studioboam__bloc5-media--2 {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 670 / 740;
+}
+
+.studioboam__bloc5-media--3 {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 335 / 217;
+}
+
+.studioboam__bloc5-media--4 {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 335 / 392;
+}
+
+.studioboam__bloc5-media--5 {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 335 / 528;
+}
+
+/* ==========================================================================
+   Bloc-6 — 2 cartes côte à côte en desktop, empilées en mobile. Images déjà
+   composées par l'utilisateur, aucun padding/fond ajoutés.
+   ========================================================================== */
+.studioboam__bloc6 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.studioboam__bloc6-media--1 img,
+.studioboam__bloc6-media--2 img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.studioboam__bloc6-media--1,
+.studioboam__bloc6-media--2 {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 335 / 549;
+}
+
+/* ==========================================================================
+   Bloc-7 — photo plein cadre, sans marge.
+   ========================================================================== */
+.studioboam__bloc7 {
+  margin-top: 5rem; /* 80px */
+  display: block;
+  aspect-ratio: 375 / 375; /* fichier mobile carré (750×750) */
+  overflow: hidden;
+}
+
+.studioboam__bloc7 img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs
+   (elle plafonne vers 27px) — on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .studioboam__credits {
+    padding-left: 40px;
+  }
+
+  .studioboam__bloc1,
+  .studioboam__bloc3,
+  .studioboam__bloc5,
+  .studioboam__bloc6 {
+    padding-inline: 40px;
+  }
+
+  .studioboam__bloc2 {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : le <picture> de chaque image
+   bascule sur le fichier desktop, dont le ratio diffère légèrement de son
+   équivalent mobile — on recale ici le ratio forcé par aspect-ratio sur
+   celui de ce fichier desktop, pour ne jamais recadrer l'image avec
+   object-fit: cover au-delà de ce qu'elle contient déjà.
+   ========================================================================== */
+@media (min-width: 440px) {
+  .studioboam__bloc1-card--3 .studioboam__bloc1-media--bg {
+    aspect-ratio: 1438 / 2218;
+  }
+
+  .studioboam__bloc1-card--2 .studioboam__bloc1-media--bg {
+    aspect-ratio: 2034 / 2218;
+  }
+
+  .studioboam__bloc3-media--1 {
+    aspect-ratio: 1438 / 1584;
+  }
+
+  .studioboam__bloc3-media--bg {
+    aspect-ratio: 1438 / 1340;
+  }
+
+  .studioboam__bloc3-media--2 {
+    aspect-ratio: 2032 / 2972; /* 4px recadrés au bord gauche : voir studioboam-desktop-13.webp */
+  }
+
+  .studioboam__bloc4-media {
+    aspect-ratio: 1920 / 1616;
+  }
+
+  .studioboam__bloc5-media--1 {
+    aspect-ratio: 868 / 723;
+  }
+
+  .studioboam__bloc5-media--2 {
+    aspect-ratio: 1736 / 1916;
+  }
+
+  .studioboam__bloc5-media--3 {
+    aspect-ratio: 868 / 559;
+  }
+
+  .studioboam__bloc5-media--4 {
+    aspect-ratio: 868 / 1017;
+  }
+
+  .studioboam__bloc5-media--5 {
+    aspect-ratio: 868 / 1372;
+  }
+
+  .studioboam__bloc6-media--1,
+  .studioboam__bloc6-media--2 {
+    aspect-ratio: 868 / 1410;
+  }
+
+  .studioboam__bloc7 {
+    aspect-ratio: 3840 / 2160;
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .studioboam__credits-slider {
+    display: contents;
+  }
+
+  .studioboam__credits {
+    display: flex;
+    flex-direction: column; /* empilés, contrairement à la rangée mobile */
+    gap: 24px;
+    width: auto;
+    padding-left: 0;
+  }
+
+  .studioboam__job {
+    width: 17.0625rem; /* 273px, comme .studioboam__date juste au-dessus */
+  }
+
+  .studioboam__job-title {
+    white-space: normal;
+  }
+
+  .studioboam__job-name {
+    white-space: normal;
+  }
+
+  .studioboam__job-title-line {
+    display: inline;
+  }
+
+  /* ---- Bloc-1 : "1" pleine largeur, puis "2" à gauche / "3" à droite ---- */
+  .studioboam__bloc1 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    gap: 1.5rem; /* 24px */
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .studioboam__bloc1-video {
+    padding: 5rem; /* 80px */
+  }
+
+  .studioboam__bloc1-row {
+    flex-direction: row;
+    /* "2" et "3" n'ont pas exactement la même hauteur : sans ça,
+       align-items: stretch (par défaut) étire la plus courte pour égaler
+       l'autre, cassant son ratio d'image (voir les blocs 3 et 5). */
+    align-items: flex-start;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .studioboam__bloc1-card--3 {
+    flex: 719;
+    min-width: 0;
+    order: 2;
+  }
+
+  .studioboam__bloc1-card--2 {
+    flex: 1017;
+    min-width: 0;
+    order: 1;
+  }
+
+  /* ---- Bloc-2 ---- */
+  .studioboam__bloc2 {
+    gap: 1.5rem; /* 24px */
+    padding-inline: 5rem; /* 80px */
+  }
+
+  .studioboam__bloc2-media {
+    width: 54.25rem; /* 868px */
+  }
+
+  /* ---- Bloc-3 : colonne "1"+"3" à gauche, "2" à droite ---- */
+  .studioboam__bloc3 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem; /* 24px */
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .studioboam__bloc3-column {
+    display: flex;
+    flex-direction: column;
+    flex: 719;
+    min-width: 0;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .studioboam__bloc3-media--2 {
+    flex: 1017;
+    min-width: 0;
+  }
+
+  /* ---- Bloc-4 ---- */
+  .studioboam__bloc4 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  /* ---- Bloc-5 : 2 colonnes égales ---- */
+  .studioboam__bloc5 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    flex-direction: row;
+    /* Les 2 colonnes n'ont pas la même hauteur totale (3 cartes vs 2) : sans
+       ça, align-items: stretch (par défaut) étirerait la plus courte. */
+    align-items: flex-start;
+    gap: 1.5rem; /* 24px */
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .studioboam__bloc5-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 1.5rem; /* 24px */
+  }
+
+  /* ---- Bloc-6 : 2 cartes côte à côte ---- */
+  .studioboam__bloc6 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem; /* 24px */
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .studioboam__bloc6-media--1,
+  .studioboam__bloc6-media--2 {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* ---- Bloc-7 ---- */
+  .studioboam__bloc7 {
+    margin-top: 10rem; /* 160px */
+  }
+
+}

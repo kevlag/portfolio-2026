@@ -1,0 +1,305 @@
+/* ==========================================================================
+   About — bloc Hero, présentation, parcours et listes de compétences
+
+   Comme le Hero et les Projets de la Home, ce bloc suit l'ÉCHELLE FLUIDE du
+   site : toutes les tailles sont en rem (1rem = 16px sur la maquette 1920px
+   en desktop, sur la maquette 375px en mobile).
+
+   EXCEPTION : seul le gros titre du Hero (.about__hero-title) suit cette
+   échelle fluide. Tout le reste du texte de cette page (paragraphe, libellés,
+   lignes Experience/Awards, puces Expertise/Tools/Industries) garde une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Structure :
+   - .about__hero    : photo + accroche, en haut de page
+   - .about__content : .about__left (texte + parcours + récompenses) et
+                        .about__right (expertise, outils, secteurs), sur deux
+                        colonnes en desktop, empilés en mobile
+   - .work-cta        : bloc de fin, identique à celui de la Home
+                        (voir css/pages/home.css) — seule sa marge du haut
+                        change ici (page/contenu différents), en la
+                        surchargeant plus bas dans ce fichier.
+   ========================================================================== */
+
+/* ---- Hero ---- */
+.about__hero {
+  /* 120px de la maquette mobile - le header fixe occupe déjà --header-height
+     grâce au padding-top de <main> : on ne compte que l'écart en plus. */
+  margin-top: calc(7.5rem - var(--header-height, 0px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* 24px */
+}
+
+.about__hero-image {
+  display: block;
+  width: 13.875rem; /* 222px */
+  height: 18.0625rem; /* 289px */
+  object-fit: cover;
+}
+
+.about__hero-title {
+  padding-inline: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+  font-weight: 500;
+  font-size: 1rem; /* 16px */
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* En mobile, le texte s'enchaîne et retourne à la ligne naturellement selon
+   la largeur disponible. En desktop, la maquette impose un retour après
+   "startups" (le reste s'enchaîne, et se réenroule tout seul ensuite). */
+.about__hero-break {
+  display: none;
+}
+
+/* ---- Contenu : deux colonnes en desktop, empilées en mobile ---- */
+.about__content {
+  margin-top: 5rem; /* 80px */
+  display: flex;
+  flex-direction: column;
+  gap: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+}
+
+.about__left,
+.about__right {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem; /* 40px */
+}
+
+/* ---- Paragraphe de présentation ---- */
+.about__paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+  font-weight: 400;
+  font-size: 12px; /* figé, comme le header/footer */
+  line-height: 1.6;
+}
+
+/* Alinéa de la maquette (espaces en début de 1re phrase) : white-space le
+   préserve, comme dans le Dev Mode Figma. */
+.about__paragraph p:first-child {
+  white-space: pre-wrap;
+}
+
+/* ---- Groupe étiqueté (Experience / Awards / Expertise / Tools / Industries) ---- */
+.about__label {
+  font-weight: 400;
+  font-size: 12px; /* figé, comme le header/footer */
+}
+
+/* ---- Experience / Awards & Recognition : lignes nom + valeur ---- */
+.about__rows {
+  margin-top: 1rem; /* 16px */
+  display: flex;
+  flex-direction: column;
+  gap: 0.8125rem; /* 13px */
+}
+
+.about__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem; /* 16px */
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.about__row-name {
+  font-size: 16px; /* figé, comme le header/footer */
+}
+
+.about__row-value {
+  font-size: 12px; /* figé, comme le header/footer */
+  text-align: right;
+}
+
+/* Certaines valeurs (Awards) passent sur 2 lignes en mobile, 1 seule en
+   desktop : <br> visible uniquement ici (voir la règle desktop plus bas). */
+.about__row-value br {
+  display: inline;
+}
+
+.about__rows-rule {
+  margin-top: 0.8125rem; /* 13px, même écart que les lignes entre elles */
+  height: 1px;
+  background-color: var(--color-black);
+}
+
+/* ---- Expertise / Tools / Industries : listes à puce ---- */
+.about__list {
+  margin-top: 0.625rem; /* 10px */
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem; /* 6px */
+}
+
+.about__bullet {
+  position: relative;
+  padding-left: 0.5rem; /* 8px */
+  font-weight: 500;
+  font-size: 14px; /* figé, comme le header/footer */
+  text-transform: uppercase;
+}
+
+.about__bullet::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.625rem; /* 10px */
+  width: 2px;
+  height: 2px;
+  background-color: var(--color-black);
+}
+
+/* ---- "Work with me ?" : bloc identique à la Home (voir home.css), seule la
+   marge du haut change ici (contenu différent au-dessus). Ciblé par
+   data-page plutôt qu'une classe : pas de wrapper dédié sur cette page. ---- */
+body[data-page='about'] .work-cta {
+  margin-top: 5rem; /* 80px */
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   La marge extérieure fluide (20px @375) plafonne vers 27px sur cette plage :
+   trop juste. On la fixe à 40px minimum, comme les autres pages.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .about__hero-title {
+    padding-inline: 40px;
+  }
+
+  .about__content {
+    padding-inline: 40px;
+  }
+
+  /* Plus de place qu'en mobile : si la valeur (Awards) tient sur une seule
+     ligne, elle y reste — le <br> ne force plus le retour à la ligne, le
+     texte s'enroule tout seul si jamais ça ne rentre pas. */
+  .about__row-value br {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* Zone commune au Hero et au Contenu : centrée, largeur maximale de la
+     maquette (1462px @1920). */
+  .about__hero,
+  .about__content {
+    max-width: 91.375rem; /* 1462px */
+    margin-inline: auto;
+  }
+
+  .about__hero {
+    margin-top: calc(10rem - var(--header-height, 0px)); /* 160px */
+    gap: 3rem; /* 48px */
+  }
+
+  .about__hero-image {
+    width: 26.5rem; /* 424px */
+    height: 34.5rem; /* 552px */
+  }
+
+  .about__hero-title {
+    padding-inline: 0;
+    font-size: 3.5rem; /* 56px */
+  }
+
+  .about__hero-break {
+    display: block;
+  }
+
+  .about__content {
+    margin-top: 10rem; /* 160px */
+    display: grid;
+    grid-template-columns: 35.6875rem 26.375rem; /* colonne texte 571px | colonne listes 422px */
+    column-gap: 20.0625rem; /* 321px */
+    /* La colonne de droite est calée sur le même bord que la photo du Hero ;
+       la colonne de texte est décalée d'autant vers l'intérieur (148px). */
+    padding-left: 9.25rem; /* 148px */
+    padding-right: 0;
+  }
+
+  .about__left,
+  .about__right {
+    gap: 5rem; /* 80px */
+  }
+
+  .about__paragraph {
+    gap: 1.25rem; /* 20px */
+    font-size: 20px; /* figé — voir la règle mobile plus haut */
+  }
+
+  .about__label {
+    font-size: 14px; /* figé — Experience / Awards & Recognition */
+  }
+
+  .about__right .about__label {
+    font-size: 12px; /* figé — Expertise / Tools / Industries */
+  }
+
+  .about__rows {
+    margin-top: 1.25rem; /* 20px */
+    gap: 1rem; /* 16px */
+  }
+
+  .about__row-name {
+    font-size: 24px; /* figé — voir la règle mobile plus haut */
+  }
+
+  .about__row-value {
+    font-size: 16px; /* figé — voir la règle mobile plus haut */
+  }
+
+  /* En desktop, les valeurs des récompenses restent sur une seule ligne. */
+  .about__row-value br {
+    display: none;
+  }
+
+  .about__rows-rule {
+    margin-top: 1rem; /* 16px */
+  }
+
+  .about__list {
+    margin-top: 0.75rem; /* 12px */
+    gap: 0.5rem; /* 8px */
+  }
+
+  .about__bullet {
+    padding-left: 0.75rem; /* 12px */
+    font-size: 16px; /* figé — voir la règle mobile plus haut */
+  }
+
+  .about__bullet::before {
+    top: 0.8125rem; /* 13px */
+  }
+
+  body[data-page='about'] .work-cta {
+    margin-top: 10rem; /* 160px */
+  }
+}
+
+/* Desktop étroit (1025px → 1440px) : on retire le décalage vers l'intérieur
+   de .about__content (148px @1920, fluide) et on donne cette largeur en plus
+   à .about__left — plus de place pour le paragraphe (texte à taille figée),
+   sans changer où finit .about__right (toujours calé sur le bord de la photo
+   du Hero, juste au-dessus). */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .about__content {
+    grid-template-columns: 44.9375rem 26.375rem; /* 35.6875rem + 9.25rem récupérés */
+    padding-left: 0;
+  }
+
+  .about__paragraph {
+    font-size: 16px; /* plus confortable que les 20px de la maquette large, sur cette plage plus étroite */
+  }
+}

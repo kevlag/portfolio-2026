@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - TAG Heuer Connected</title>
+  <meta name="description" content="Case study TAG Heuer Connected — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/tagheuer.css" />
+</head>
+<body data-page="tagheuer" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : passent au projet précédent / suivant (desktop uniquement,
+       absent de la maquette mobile pour ce haut de page).
+       En dehors de <main> comme le header/footer : un descendant de <main>
+       hérite de son fondu de page même sans règle d'opacité à lui. -->
+  <nav class="case__controls tagheuer__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="theoriginalsstore.html">Prev</a>
+      <a class="case__control case__control--next" href="studioboam.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="tagheuer__hero">
+      <h1 class="case__title">
+        <span class="case__title-line">Tag heuer</span>
+        <span class="case__title-line">Connected</span>
+      </h1>
+
+      <!-- En dessous de 440px : photo verticale (mobile-01). Au-delà (tablette
+           comprise, jusqu'au desktop) : photo horizontale (desktop-01), plus
+           adaptée à ces largeurs. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-01.webp" />
+        <img class="case__hero-image tagheuer__hero-image" src="images/tagheuer/tagheuer-desktop-01.webp" alt="TAG Heuer Connected Calibre E5 — cadran tourbillon prune, bracelet acier" width="1760" height="990" decoding="async" />
+      </picture>
+
+      <div class="case__content tagheuer__content">
+        <div class="case__intro tagheuer__intro">
+          <p class="case__date"><span class="case__date-line">From 2024</span> <span class="case__date-line">to 2026</span></p>
+          <div class="case__paragraph tagheuer__paragraph">
+            <p class="case__paragraph--pre">          For several years, I have had the chance and honor to work closely with Clement Bretin in his team for TAG Heuer Connected.</p>
+            <p>The years 2024-2025 were notably marked by the creation of the new OS design for the Calibre E5 watch. I had the opportunity to work within the product team and contribute my expertise across various UI design and motion design topics.</p>
+            <p class="case__paragraph--pre">I am deeply grateful to have taken part in this exceptional project, which taught me so much and allowed me to grow both personally and professionally.  A huge thank you to Jorge Sarquis, Clément Tabaries, Willy Pillard, Anthony Stephan Guilloteau and Julien Jouan for everything we built together.</p>
+            <p>And a very special mention to Clement Bretin without him, this journey would never have happened. He has been a true mentor to me.</p>
+            <p class="case__paragraph--pre">All visuals and mockups presented in this video are the result of a collaborative effort within the TAG Heuer product team.  While I contributed across all of these topics, this project is first and foremost the outcome of multiple iterations, discussions, and collective refinements.</p>
+          </div>
+        </div>
+
+        <!-- Mobile : rangée qui se fait glisser (js/drag-row.js), déborde
+             volontairement de l'écran à droite, sans marge ni masque.
+             Desktop : redevient une simple grille 2 colonnes (voir tagheuer.css). -->
+        <div class="tagheuer__credits-slider" data-drag-row role="region" aria-label="Crédits du projet" tabindex="0">
+          <ul class="tagheuer__credits" data-drag-track role="list">
+            <li class="case__job tagheuer__job">
+              <p class="case__job-title tagheuer__job-title"><span class="tagheuer__job-title-line">Lead Product</span> <span class="tagheuer__job-title-line">Design &amp; Art Director</span></p>
+              <p class="case__job-name tagheuer__job-name">Clément Bretin</p>
+            </li>
+            <li class="case__job tagheuer__job">
+              <p class="case__job-title tagheuer__job-title"><span class="tagheuer__job-title-line">Senior</span> <span class="tagheuer__job-title-line">Product Manager</span></p>
+              <p class="case__job-name tagheuer__job-name">Jorge Sarquis</p>
+            </li>
+            <li class="case__job tagheuer__job">
+              <p class="case__job-title tagheuer__job-title"><span class="tagheuer__job-title-line">Senior</span> <span class="tagheuer__job-title-line">Product Designer</span></p>
+              <p class="case__job-name tagheuer__job-name">Clément Tabaries</p>
+            </li>
+            <li class="case__job tagheuer__job">
+              <p class="case__job-title tagheuer__job-title"><span class="tagheuer__job-title-line">Senior</span> <span class="tagheuer__job-title-line">Product Designer</span></p>
+              <p class="case__job-name tagheuer__job-name">Willy Pillard</p>
+            </li>
+            <li class="case__job tagheuer__job">
+              <p class="case__job-title tagheuer__job-title"><span class="tagheuer__job-title-line">Lead</span> <span class="tagheuer__job-title-line">UX Designer</span></p>
+              <p class="case__job-name tagheuer__job-name">Julien Jouan</p>
+            </li>
+            <li class="case__job tagheuer__job">
+              <p class="case__job-title tagheuer__job-title"><span class="tagheuer__job-title-line">Senior Android</span> <span class="tagheuer__job-title-line">Developer &amp; Tech Ref</span></p>
+              <p class="case__job-name tagheuer__job-name">Anthony Stephan</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galerie des coloris du Calibre E5 : 3 blocs de mise en page différente
+         (voir tagheuer.css, .tagheuer__gallery--quad/--tall/--spotlight).
+         Numérotation des images (02 à 14) reprise du Dev Mode Figma, identique
+         en desktop et mobile. Suite de la page à venir. -->
+    <section class="tagheuer__gallery tagheuer__gallery--quad" aria-label="4 coloris du cadran Calibre E5">
+      <picture class="tagheuer__gallery-item">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-02.webp" />
+        <img src="images/tagheuer/tagheuer-desktop-02.webp" alt="Cadran Calibre E5 bleu" width="844" height="844" loading="lazy" decoding="async" />
+      </picture>
+      <picture class="tagheuer__gallery-item">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-03.webp" />
+        <img src="images/tagheuer/tagheuer-desktop-03.webp" alt="Cadran Calibre E5 vert" width="844" height="844" loading="lazy" decoding="async" />
+      </picture>
+      <picture class="tagheuer__gallery-item">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-04.webp" />
+        <img src="images/tagheuer/tagheuer-desktop-04.webp" alt="Cadran Calibre E5 noir et or" width="844" height="844" loading="lazy" decoding="async" />
+      </picture>
+      <picture class="tagheuer__gallery-item">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-05.webp" />
+        <img src="images/tagheuer/tagheuer-desktop-05.webp" alt="Cadran Calibre E5 violet" width="844" height="844" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="tagheuer__gallery tagheuer__gallery--tall" aria-label="Gros plan doré et cadran chronographe argenté">
+      <picture class="tagheuer__gallery-item tagheuer__gallery-item--tall">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-06.webp" />
+        <img src="images/tagheuer/tagheuer-desktop-06.webp" alt="Gros plan sur la lunette dorée du cadran Calibre E5" width="1736" height="2628" loading="lazy" decoding="async" />
+      </picture>
+      <picture class="tagheuer__gallery-item tagheuer__gallery-item--square">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-07.webp" />
+        <img src="images/tagheuer/tagheuer-desktop-07.webp" alt="Cadran chronographe Calibre E5 argenté" width="1736" height="1736" loading="lazy" decoding="async" />
+      </picture>
+      <div class="tagheuer__gallery-pair">
+        <picture class="tagheuer__gallery-item">
+          <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-08.webp" />
+          <img src="images/tagheuer/tagheuer-desktop-08.webp" alt="Cadran Calibre E5 prune, avec date" width="844" height="844" loading="lazy" decoding="async" />
+        </picture>
+        <picture class="tagheuer__gallery-item">
+          <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-09.webp" />
+          <img src="images/tagheuer/tagheuer-desktop-09.webp" alt="Cadran Calibre E5 bleu, avec date" width="844" height="844" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="tagheuer__gallery tagheuer__gallery--spotlight" aria-label="Montre Calibre E5 verte et 4 coloris de cadran">
+      <picture class="tagheuer__gallery-item tagheuer__gallery-item--p1">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-10.webp" />
+        <img src="images/tagheuer/tagheuer-desktop-10.webp" alt="Cadran Calibre E5 gris anthracite, avec date" width="844" height="844" loading="lazy" decoding="async" />
+      </picture>
+      <picture class="tagheuer__gallery-item tagheuer__gallery-item--p2">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-11.webp" />
+        <img src="images/tagheuer/tagheuer-desktop-11.webp" alt="Cadran Calibre E5 bleu nuit, avec date" width="844" height="844" loading="lazy" decoding="async" />
+      </picture>
+      <picture class="tagheuer__gallery-item tagheuer__gallery-item--big">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-12.webp" />
+        <img src="images/tagheuer/tagheuer-desktop-12.webp" alt="Montre connectée TAG Heuer Calibre E5 verte, sur bracelet noir" width="1736" height="1736" loading="lazy" decoding="async" />
+      </picture>
+      <picture class="tagheuer__gallery-item tagheuer__gallery-item--p4">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-13.webp" />
+        <img src="images/tagheuer/tagheuer-desktop-13.webp" alt="Cadran Calibre E5 rouge, avec date" width="844" height="844" loading="lazy" decoding="async" />
+      </picture>
+      <picture class="tagheuer__gallery-item tagheuer__gallery-item--p5">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-14.webp" />
+        <img src="images/tagheuer/tagheuer-desktop-14.webp" alt="Cadran Calibre E5 noir et or, avec date" width="844" height="844" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <!-- Vidéo de présentation, sur fond noir plein cadre (déborde des marges
+         habituelles de la page), la vidéo elle-même gardant la marge standard
+         (voir tagheuer.css, .tagheuer__video-block). Format d'origine
+         conservé (pas de recadrage) : width/height donnent juste le ratio
+         réel pour éviter un saut de mise en page pendant le chargement.
+         Lecture automatique, muette et en boucle, avec les contrôles natifs
+         (pause, volume, plein écran) sur toutes les vidéos du site. -->
+    <section class="tagheuer__video-block" aria-label="Vidéo de présentation Calibre E5">
+      <video class="tagheuer__video" width="1760" height="1100" poster="images/tagheuer/tagheuer-video-poster-desktop.webp" autoplay muted loop playsinline controls controlslist="nodownload">
+        <source media="(max-width: 439.98px)" src="videos/tagheuer/tagheuer-mobile-video.mp4" type="video/mp4" />
+        <source src="videos/tagheuer/tagheuer-desktop-video.mp4" type="video/mp4" />
+      </video>
+    </section>
+
+    <section class="tagheuer__gallery tagheuer__gallery--rows" aria-label="Coloris Calibre E5, sélection 2">
+        <div class="tagheuer__gallery-row">
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1140/1140; --ar-d:1140/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-16.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-16.webp" alt="Cadran Calibre E5" width="1140" height="1140" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1140/1140; --ar-d:1140/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-17.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-17.webp" alt="Cadran Calibre E5" width="1140" height="1140" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1142/1140; --ar-d:1142/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-18.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-18.webp" alt="Cadran Calibre E5" width="1142" height="1140" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="tagheuer__gallery-row">
+          <picture class="tagheuer__gallery-item" style="--grow-m:422; --grow-d:422; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-19.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-19.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:422; --grow-d:422; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-20.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-20.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:422; --grow-d:422; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-21.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-21.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:422; --grow-d:422; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-22.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-22.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+    </section>
+
+    <section class="tagheuer__gallery tagheuer__gallery--rows" aria-label="Coloris Calibre E5, sélection 3">
+        <div class="tagheuer__gallery-row">
+          <picture class="tagheuer__gallery-item" style="--grow-m:868; --grow-d:868; --ar-m:1736/1736; --ar-d:1736/1736;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-23.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-23.webp" alt="Cadran Calibre E5" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:868; --grow-d:868; --ar-m:1736/1736; --ar-d:1736/1736;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-24.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-24.webp" alt="Cadran Calibre E5" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="tagheuer__gallery-row">
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1140/1140; --ar-d:1140/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-25.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-25.webp" alt="Cadran Calibre E5" width="1140" height="1140" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1140/1140; --ar-d:1140/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-26.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-26.webp" alt="Cadran Calibre E5" width="1140" height="1140" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1142/1140; --ar-d:1142/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-27.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-27.webp" alt="Cadran Calibre E5" width="1142" height="1140" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="tagheuer__gallery-row">
+          <picture class="tagheuer__gallery-item" style="--grow-m:868; --grow-d:868; --ar-m:1736/1736; --ar-d:1736/1736;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-28.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-28.webp" alt="Cadran Calibre E5" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:868; --grow-d:868; --ar-m:1736/1736; --ar-d:1736/1736;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-29.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-29.webp" alt="Cadran Calibre E5" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+    </section>
+
+    <section class="tagheuer__gallery" aria-label="Coloris Calibre E5, sélection 4">
+      <div class="tagheuer__gallery-duo">
+        <div class="tagheuer__gallery-duo-stack">
+          <div class="tagheuer__gallery-pair">
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-30.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-30.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-31.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-31.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          </div>
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:1736/1736; --ar-d:1736/1736;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-32.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-32.webp" alt="Cadran Calibre E5" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+          <picture class="tagheuer__gallery-item tagheuer__gallery-item--tall" style="--grow-m:1; --grow-d:1; --ar-m:1736/2628; --ar-d:1736/2628;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-33.webp" width="670" height="1015" />
+            <img src="images/tagheuer/tagheuer-desktop-33.webp" alt="Gros plan sur le cadran Calibre E5" width="1736" height="2628" loading="lazy" decoding="async" />
+          </picture>
+      </div>
+      <div class="tagheuer__gallery-duo">
+          <picture class="tagheuer__gallery-item tagheuer__gallery-item--tall" style="--grow-m:1; --grow-d:1; --ar-m:1736/2628; --ar-d:1736/2628;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-34.webp" width="670" height="1015" />
+            <img src="images/tagheuer/tagheuer-desktop-34.webp" alt="Gros plan sur le cadran Calibre E5" width="1736" height="2628" loading="lazy" decoding="async" />
+          </picture>
+        <div class="tagheuer__gallery-duo-stack">
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:1736/1736; --ar-d:1736/1736;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-35.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-35.webp" alt="Cadran Calibre E5" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+          <div class="tagheuer__gallery-pair">
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-36.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-36.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-37.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-37.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tagheuer__gallery tagheuer__gallery--collage" aria-label="Écrans de complications de la montre">
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:3840/2160; --ar-d:3840/2160;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-38.webp" width="750" height="420" />
+            <img src="images/tagheuer/tagheuer-desktop-38.webp" alt="Écrans de complications : boussole, météo, phase de lune, notifications" width="3840" height="2160" loading="lazy" decoding="async" />
+          </picture>
+    </section>
+
+    <section class="tagheuer__gallery tagheuer__gallery--rows tagheuer__gallery--gap-lg" aria-label="Vue d'ensemble et coloris Calibre E5">
+      <picture class="tagheuer__gallery-item tagheuer__gallery-item--banner" style="--grow-m:1; --grow-d:1; --ar-m:670/872; --ar-d:3520/1980;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-39.webp" width="670" height="872" />
+            <img src="images/tagheuer/tagheuer-desktop-39.webp" alt="Montre connectée TAG Heuer Calibre E5, vue d'ensemble" width="3520" height="1980" loading="lazy" decoding="async" />
+          </picture>
+        <div class="tagheuer__gallery-row">
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1140/1140; --ar-d:1140/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-40.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-40.webp" alt="Cadran Calibre E5" width="1140" height="1140" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1140/1140; --ar-d:1140/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-41.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-41.webp" alt="Cadran Calibre E5" width="1140" height="1140" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1142/1140; --ar-d:1142/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-42.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-42.webp" alt="Cadran Calibre E5" width="1142" height="1140" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="tagheuer__gallery-row">
+          <picture class="tagheuer__gallery-item" style="--grow-m:422; --grow-d:422; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-43.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-43.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:422; --grow-d:422; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-44.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-44.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:422; --grow-d:422; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-45.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-45.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:422; --grow-d:422; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-46.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-46.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+    </section>
+
+    <section class="tagheuer__gallery" aria-label="Coloris Calibre E5, sélection 5">
+      <div class="tagheuer__gallery--rows">
+        <div class="tagheuer__gallery-row">
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1140/1140; --ar-d:1140/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-47.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-47.webp" alt="Cadran Calibre E5" width="1140" height="1140" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1140/1140; --ar-d:1140/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-48.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-48.webp" alt="Cadran Calibre E5" width="1140" height="1140" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1142/1140; --ar-d:1142/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-49.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-49.webp" alt="Cadran Calibre E5" width="1142" height="1140" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+      <div class="tagheuer__gallery-watch-grid">
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:1736/1736; --ar-d:1736/1736;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-50.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-50.webp" alt="Montre connectée TAG Heuer Calibre E5" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+        <div class="tagheuer__gallery-watch-grid-cells">
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-51.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-51.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-52.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-52.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-53.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-53.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:844/844; --ar-d:844/844;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-54.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-54.webp" alt="Cadran Calibre E5" width="844" height="844" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="tagheuer__gallery tagheuer__gallery--quad" aria-label="Coloris Calibre E5, sélection 6">
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:1736/1736; --ar-d:1736/1736;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-55.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-55.webp" alt="Cadran Calibre E5" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:1736/1736; --ar-d:1736/1736;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-56.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-56.webp" alt="Cadran Calibre E5" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:1736/1736; --ar-d:1736/1736;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-57.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-57.webp" alt="Cadran Calibre E5" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:1736/1736; --ar-d:1736/1736;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-58.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-58.webp" alt="Cadran Calibre E5" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+    </section>
+
+    <section class="tagheuer__gallery" aria-label="Vue d'ensemble et coloris Calibre E5, sélection 7">
+      <div class="tagheuer__gallery-watch-span">
+          <picture class="tagheuer__gallery-item" style="--grow-m:1165; --grow-d:1165; --ar-m:2330/2330; --ar-d:2330/2330;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-59.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-59.webp" alt="Montre connectée TAG Heuer Calibre E5, vue d'ensemble" width="2330" height="2330" loading="lazy" decoding="async" />
+          </picture>
+        <div class="tagheuer__gallery-duo-stack" style="--grow-m:571; --grow-d:571;">
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:1142/1140; --ar-d:1142/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-60.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-60.webp" alt="Cadran Calibre E5" width="1142" height="1140" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:1142/1140; --ar-d:1142/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-61.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-61.webp" alt="Cadran Calibre E5" width="1142" height="1140" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+      <div class="tagheuer__gallery--rows">
+        <div class="tagheuer__gallery-row">
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1140/1140; --ar-d:1140/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-62.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-62.webp" alt="Cadran Calibre E5" width="1140" height="1140" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1142/1140; --ar-d:1142/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-63.webp" width="327" height="327" />
+            <img src="images/tagheuer/tagheuer-desktop-63.webp" alt="Cadran Calibre E5" width="1142" height="1140" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--grow-m:570; --grow-d:570; --ar-m:1142/1140; --ar-d:1142/1140;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-64.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-64.webp" alt="Cadran Calibre E5" width="1142" height="1140" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="tagheuer__gallery tagheuer__gallery--collage" aria-label="Écrans de l'application montre">
+      <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:750/750; --ar-d:3840/2160;">
+        <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-65.webp" width="750" height="750" />
+        <img src="images/tagheuer/tagheuer-desktop-65.webp" alt="Écrans de l'application : notifications, contacts, collection Carrera" width="3840" height="2160" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="tagheuer__gallery tagheuer__gallery--masonry" aria-label="Écrans et fonctionnalités de la montre">
+      <div class="tagheuer__gallery-masonry-col" style="--grow-d:1142; order:1;">
+        <picture class="tagheuer__gallery-item" style="--ar-m:1142/1724; --ar-d:1142/1724; order:1;">
+          <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-66.webp" width="327" height="492" />
+          <img src="images/tagheuer/tagheuer-desktop-66.webp" alt="Écran montre : temps actif, pas, calories, météo, fréquence cardiaque" width="1142" height="1724" loading="lazy" decoding="async" />
+        </picture>
+        <picture class="tagheuer__gallery-item" style="--ar-m:1142/1380; --ar-d:1142/1380; order:4;">
+          <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-69.webp" width="327" height="492" />
+          <img src="images/tagheuer/tagheuer-desktop-69.webp" alt="Écran montre : météo à Annecy" width="1142" height="1380" loading="lazy" decoding="async" />
+        </picture>
+        <picture class="tagheuer__gallery-item" style="--ar-m:1142/854; --ar-d:1142/854; order:7;">
+          <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-72.webp" width="670" height="500" />
+          <img src="images/tagheuer/tagheuer-desktop-72.webp" alt="Écrans montre : notifications (réseau social, alerte paiement)" width="1142" height="854" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="tagheuer__gallery-masonry-group" style="--grow-d:2326; order:2;">
+        <div class="tagheuer__gallery-masonry-row">
+          <div class="tagheuer__gallery-masonry-col" style="--grow-d:1438;">
+            <picture class="tagheuer__gallery-item" style="--ar-m:1438/1082; --ar-d:1438/1082; order:2;">
+              <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-67.webp" width="670" height="504" />
+              <img src="images/tagheuer/tagheuer-desktop-67.webp" alt="Montre connectée TAG Heuer Calibre E5, vue de profil" width="1438" height="1082" loading="lazy" decoding="async" />
+            </picture>
+            <picture class="tagheuer__gallery-item" style="--ar-m:1438/1438; --ar-d:1438/1438; order:5;">
+              <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-70.webp" width="670" height="670" />
+              <img src="images/tagheuer/tagheuer-desktop-70.webp" alt="Écrans montre : appels et contacts" width="1438" height="1438" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <div class="tagheuer__gallery-masonry-col" style="--grow-d:844;">
+            <picture class="tagheuer__gallery-item" style="--ar-m:844/1676; --ar-d:844/1676; order:3;">
+              <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-68.webp" width="327" height="492" />
+              <img src="images/tagheuer/tagheuer-desktop-68.webp" alt="Écran montre : agenda du jour" width="844" height="1676" loading="lazy" decoding="async" />
+            </picture>
+            <picture class="tagheuer__gallery-item" style="--ar-m:844/844; --ar-d:844/844; order:6;">
+              <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-71.webp" width="670" height="670" />
+              <img src="images/tagheuer/tagheuer-desktop-71.webp" alt="Écran montre : menu radial des fonctions" width="844" height="844" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+        <div class="tagheuer__gallery-masonry-row">
+          <picture class="tagheuer__gallery-item" style="--ar-m:844/1444; --ar-d:844/1444; --grow-d:844; order:8;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-73.webp" width="327" height="492" />
+            <img src="images/tagheuer/tagheuer-desktop-73.webp" alt="Écran montre : réglages du son" width="844" height="1444" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="tagheuer__gallery-item" style="--ar-m:1438/1438; --ar-d:1438/1438; --grow-d:1438; order:9;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-74.webp" width="670" height="670" />
+            <img src="images/tagheuer/tagheuer-desktop-74.webp" alt="Écran montre : collections de cadrans Formula 1 et Carrera" width="1438" height="1438" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="tagheuer__gallery tagheuer__gallery--collage" aria-label="Écrans de l'application téléphone">
+          <picture class="tagheuer__gallery-item" style="--grow-m:1; --grow-d:1; --ar-m:750/750; --ar-d:3840/2160;">
+            <source media="(max-width: 439.98px)" srcset="images/tagheuer/tagheuer-mobile-75.webp" width="750" height="750" />
+            <img src="images/tagheuer/tagheuer-desktop-75.webp" alt="Écrans de l'application téléphone : configuration et personnalisation de la montre" width="3840" height="2160" loading="lazy" decoding="async" />
+          </picture>
+    </section>
+
+    <!-- Appel à l'action de fin de page : identique à la Home/About. -->
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/marquee.js" defer></script>
+  <script src="js/drag-row.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

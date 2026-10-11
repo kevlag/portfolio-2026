@@ -1,0 +1,595 @@
+/* ==========================================================================
+   TAG Heuer Connected — case study (page longue, construite bloc par bloc).
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe de présentation,
+   intitulés/noms des crédits) gardent une taille de police FIGÉE en px,
+   comme le header et le footer — seuls les espacements autour restent
+   fluides. Ne pas convertir ces font-size en rem.
+
+   Structure de ce premier bloc :
+   - .tagheuer__controls : PREV / NEXT, fixes à l'écran
+   - .tagheuer__hero      : titre, photo, puis .tagheuer__content
+     (texte de présentation + crédits)
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+/* ---- Crédits ----
+   Mobile : une seule rangée qui se fait glisser (souris / doigt / clavier),
+   via js/drag-row.js (moteur js/marquee.js en loop:false) — bornée au début,
+   mais SANS marge/masque à droite : elle déborde volontairement de l'écran,
+   seulement coupée par la fenêtre du navigateur.
+   Desktop : redevient une grille de 2 colonnes de 3 (voir media query plus
+   bas) — .tagheuer__credits-slider s'efface alors de la mise en page
+   (display: contents), le HTML garde le même ordre dans les deux cas. */
+.tagheuer__credits-slider {
+  margin-top: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.tagheuer__credits-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.tagheuer__credits-slider.is-active {
+  overflow: hidden;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tagheuer__credits-slider.can-drag {
+    cursor: grab;
+  }
+
+  .tagheuer__credits-slider.is-dragging {
+    cursor: grabbing;
+  }
+}
+
+.tagheuer__credits {
+  display: flex;
+  gap: 1.25rem; /* 20px */
+  width: max-content;
+  /* La 1re carte démarre à la marge de la page ; aucune marge à droite : la
+     dernière peut déborder de l'écran (voir commentaire plus haut). */
+  padding-left: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+  will-change: transform;
+}
+
+.tagheuer__job {
+  flex: none;
+}
+
+.tagheuer__job-title {
+  white-space: nowrap;
+}
+
+.tagheuer__job-title-line {
+  display: block;
+}
+
+.tagheuer__job-name {
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, la photo passe au format desktop (voir le <picture> dans
+   le HTML) : la marge de page fluide (20px @375) devient trop juste à ces
+   largeurs (elle plafonne vers 27px) — on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .tagheuer__credits {
+    padding-left: 40px;
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .tagheuer__hero-image {
+    /* Même logique que .tagheuer__gallery (padding-inline:5rem, pas de
+       max-width) : sur les très grands écrans, la photo doit s'élargir
+       avec les blocs de galerie en dessous plutôt que de plafonner. */
+    margin-top: 3.5rem; /* 56px */
+  }
+
+  /* Le wrapper qui glissait en mobile n'a plus de rôle en desktop : la
+     grille de crédits redevient un enfant flex normal de .tagheuer__content
+     (2e élément, calé à droite par le justify-content: space-between). */
+  .tagheuer__credits-slider {
+    display: contents;
+  }
+
+  /* Écarts figés en px (comme le texte des crédits juste en dessous) : en
+     rem, ils rétrécissaient plus vite que le texte (qui, lui, reste à taille
+     fixe) sur les petits écrans desktop.
+     Une seule colonne par défaut : avec .tagheuer__paragraph juste à côté,
+     les 2 colonnes (571px figés) ne rentrent plus à partir de 1025px environ
+     — elles ne repassent à 2 colonnes qu'à partir de 1300px (voir plus bas). */
+  .tagheuer__credits {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: auto;
+    padding-left: 0;
+  }
+
+  .tagheuer__job-title-line {
+    display: inline;
+  }
+}
+
+/* Tant que les crédits restent sur une seule colonne (voir juste au-dessus),
+   il y a plus de place : le paragraphe en profite pour s'élargir un peu
+   au-delà des 571px de la maquette, au lieu de laisser cet espace vide.
+   Revient à sa largeur figée à partir de 1300px (2 colonnes de crédits). */
+@media (min-width: 1025px) and (max-width: 1299px) {
+  .tagheuer__content {
+    /* Le paragraphe s'élargit maintenant pour remplir l'espace libre : sans
+       ça, il finit par toucher les crédits. Minimum garanti, figé (au lieu
+       du 3rem fluide de la règle générale, qui descend sous 40px ici). */
+    gap: 40px;
+  }
+
+  .tagheuer__intro {
+    flex: 1 1 auto;
+  }
+
+  .tagheuer__paragraph {
+    width: auto;
+    flex: 1 1 auto;
+  }
+}
+
+/* Assez de place pour les 2 colonnes de crédits (571px figés) à côté du
+   paragraphe (voir le calcul en commentaire ci-dessus) : le seuil réel est
+   ≈1263px, on prend une marge de sécurité à 1300px. */
+@media (min-width: 1300px) {
+  .tagheuer__credits {
+    display: grid;
+    grid-template-columns: 274px 273px;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    column-gap: 24px;
+    row-gap: 24px;
+  }
+}
+
+/* ==========================================================================
+   Galerie des coloris du Calibre E5 — plusieurs blocs de mise en page
+   différente (grille de 4, gros plan + cadrans, cadrans + montre en vedette),
+   chacun construit en CSS Grid avec des `fr` pour que les images
+   grandissent/rétrécissent avec l'espace disponible (comme demandé pour les
+   mini-projets de la Home) — jamais de taille figée en px, jamais de scroll
+   horizontal. La hauteur suit la largeur via aspect-ratio.
+
+   .tagheuer__gallery-item est le composant de base (image + cadre).
+   ========================================================================== */
+.tagheuer__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px — entre les groupes directs (duo, rows, watch-grid...)
+                  quand une section en contient plusieurs */
+  margin-top: 5rem; /* 80px, même rythme que le reste de la page */
+  padding-inline: 1.25rem; /* fluide — 20px @375, même marge que le reste */
+}
+
+.tagheuer__gallery-item {
+  display: block;
+  overflow: hidden;
+}
+
+/* :where() = spécificité nulle exprès : ce ratio par défaut ne doit JAMAIS
+   l'emporter sur une classe modificateur (--tall, --square...) qui fixe son
+   propre aspect-ratio, quel que soit l'ordre des règles dans le fichier.
+   Fallback à 1 (carré) pour les images du 1er bloc qui n'ont pas de --ar-m
+   inline. Les blocs suivants posent --ar-m/--ar-d en style inline. */
+:where(.tagheuer__gallery-item) {
+  aspect-ratio: var(--ar-m, 1);
+}
+
+.tagheuer__gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Bloc "4 coloris" : grille 2×2 en mobile, 1 rangée de 4 en desktop ---- */
+.tagheuer__gallery--quad {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem; /* 8px */
+}
+
+/* ---- Bloc "gros plan + cadran argenté" : empilé en mobile (grand ×2 puis
+   la paire de petits cadrans), 2 colonnes en desktop (le gros plan à gauche
+   sur toute la hauteur, à droite le cadran argenté puis la paire). ---- */
+.tagheuer__gallery--tall {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 'tall' 'square' 'pair';
+  gap: 0.5rem; /* 8px */
+}
+
+.tagheuer__gallery-item--tall {
+  grid-area: tall;
+  aspect-ratio: 868 / 1314;
+}
+
+.tagheuer__gallery-item--square {
+  grid-area: square;
+}
+
+.tagheuer__gallery-pair {
+  grid-area: pair;
+  display: flex;
+  gap: 0.5rem; /* 8px */
+}
+
+.tagheuer__gallery-pair .tagheuer__gallery-item {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* ---- Bloc "montre en vedette" : 2 petits cadrans puis la montre en pleine
+   largeur puis 2 autres petits cadrans, en mobile ; en desktop, 2 colonnes
+   de cadrans empilés de part et d'autre de la montre. ---- */
+.tagheuer__gallery--spotlight {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 'p1 p2' 'big big' 'p4 p5';
+  gap: 0.5rem; /* 8px */
+}
+
+.tagheuer__gallery-item--p1 { grid-area: p1; }
+.tagheuer__gallery-item--p2 { grid-area: p2; }
+.tagheuer__gallery-item--p4 { grid-area: p4; }
+.tagheuer__gallery-item--p5 { grid-area: p5; }
+.tagheuer__gallery-item--big { grid-area: big; }
+
+/* ---- Rangée simple ----
+   Primitive réutilisée par plusieurs blocs : une rangée d'images de poids
+   égal (ex. 3 moyennes, ou 4 petites) ; --rows empile plusieurs rangées avec
+   le même écart que celui, à l'intérieur d'une rangée, entre les images. */
+.tagheuer__gallery--rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.tagheuer__gallery-row {
+  display: flex;
+  gap: 0.5rem; /* 8px */
+}
+
+.tagheuer__gallery-row .tagheuer__gallery-item {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* ---- Image pleine largeur (façon Hero) ----
+   Réutilisée telle quelle (Bloc-9), directement dans une .tagheuer__gallery-
+   -rows : mêmes proportions que la photo du Hero en haut de page
+   (1760×990 @1920). */
+.tagheuer__gallery-item--banner {
+  flex: none;
+  width: 100%;
+  /* Pas de ratio figé : le crop mobile (portrait) n'est pas juste le crop
+     desktop (1760/990) redimensionné — voir --ar-m/--ar-d en style inline. */
+  aspect-ratio: var(--ar-m, 1760 / 990);
+}
+
+/* ---- Mosaïque de captures d'écran ----
+   9 images de proportions très différentes. Le regroupement suit la
+   maquette : colonne A (66/69/72) à part ; puis un groupe B+C (67/70 à
+   gauche, 68/71 à droite) avec en dessous une rangée 73/74. Une seule grille
+   CSS avec toutes les images sur 3 lignes partagées ne marche PAS ici : les
+   lignes sont alors forcées à la même hauteur pour toutes les colonnes (la
+   plus grande image de chaque ligne dicte la hauteur), ce qui décale
+   l'espacement dans les colonnes plus courtes. D'où l'imbrication de
+   flex-column indépendants, chacun avec son propre rythme vertical.
+   En mobile, tous les wrappers passent en display:contents : la mise en
+   page se réduit à un simple empilement plein-largeur, et order (posé sur
+   chaque <picture>) restaure l'ordre de lecture 66→74 malgré le
+   regroupement DOM. */
+.tagheuer__gallery--masonry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.tagheuer__gallery--masonry .tagheuer__gallery-item {
+  width: 100%;
+}
+
+.tagheuer__gallery-masonry-col,
+.tagheuer__gallery-masonry-group,
+.tagheuer__gallery-masonry-row {
+  display: contents;
+}
+
+/* ---- Collage plein cadre ----
+   Une seule image, qui déborde des marges habituelles de la page (comme le
+   bloc vidéo) : pas de padding-inline hérité de .tagheuer__gallery, juste
+   l'image en display:block sur toute la largeur de l'écran. */
+.tagheuer__gallery--collage {
+  padding-inline: 0;
+}
+
+.tagheuer__gallery--collage .tagheuer__gallery-item {
+  flex: none;
+  width: 100%;
+}
+
+/* ---- Duo "image haute" + "carré empilé" ----
+   Composant réutilisé pour les blocs où une grande image verticale (--tall)
+   fait face à 2 éléments empilés (un carré, puis une paire ou une rangée) :
+   les deux moitiés se partagent la largeur à parts égales (l'ordre du HTML
+   fait l'ordre visuel, pas besoin de variante « inversée »). */
+.tagheuer__gallery-duo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.tagheuer__gallery-duo > * {
+  /* flex:1 1 0 casserait la hauteur (aspect-ratio) en colonne mobile : le
+     flex-basis:0 sur l'axe principal vertical écrase la hauteur calculée.
+     En colonne, chaque moitié garde juste sa largeur pleine, aspect-ratio
+     fixe la hauteur. Le partage 1 1 0 ne s'applique qu'en ligne (desktop). */
+  flex: none;
+  width: 100%;
+  min-width: 0;
+}
+
+.tagheuer__gallery-duo .tagheuer__gallery-item--tall {
+  aspect-ratio: 868 / 1314;
+}
+
+.tagheuer__gallery-duo-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+/* ---- Montre en carré + grille 2×2 de petits cadrans ---- */
+.tagheuer__gallery-watch-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.tagheuer__gallery-watch-grid > * {
+  /* Même raison que .tagheuer__gallery-duo > * ci-dessus : pas de
+     flex-basis:0 en colonne mobile, sinon la hauteur (aspect-ratio) tombe
+     à 0. */
+  flex: none;
+  width: 100%;
+  min-width: 0;
+}
+
+.tagheuer__gallery-watch-grid-cells {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem; /* 8px */
+}
+
+/* ---- Montre en vedette (span 2 rangées) + 2 images empilées ----
+   Contrairement à --watch-grid (partage 50/50), les 2 moitiés n'ont pas la
+   même largeur dans la maquette (1165px / 571px) : chaque enfant direct
+   porte son propre --grow-m/--grow-d (même mécanisme que
+   .tagheuer__gallery-item) plutôt qu'un flex:1 1 0 fixe. */
+.tagheuer__gallery-watch-span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.tagheuer__gallery-watch-span > * {
+  /* Le partage pondéré (--grow-m/--grow-d) ne s'applique qu'en ligne
+     (desktop) : en colonne mobile, flex-basis:0 écraserait la hauteur
+     calculée par aspect-ratio (même souci que --duo et --watch-grid). */
+  flex: none;
+  width: 100%;
+  min-width: 0;
+}
+
+/* ---- Vidéo de présentation ----
+   Fond noir PLEIN CADRE (déborde des marges de page habituelles) : contraire
+   aux autres sections, ce bloc n'a pas de padding-inline dédié à un wrapper
+   interne — la couleur de fond va jusqu'au bord de l'écran, et c'est le
+   padding du bloc lui-même (identique à la marge de page) qui pousse la
+   vidéo vers l'intérieur, des 4 côtés. */
+.tagheuer__video-block {
+  margin-top: 5rem; /* 80px */
+  padding: 1.25rem; /* fluide — 20px @375, marge de page des 4 côtés */
+  /* Exception voulue : noir pur, pas --color-black (#1C1C1C) comme partout
+     ailleurs sur le site. */
+  background-color: #000;
+}
+
+/* Pas d'aspect-ratio forcé ni d'object-fit:cover : contrairement aux images,
+   la vidéo garde son format d'origine tel quel, sans recadrage — seule sa
+   largeur s'adapte à l'espace disponible, la hauteur suit proportionnellement. */
+.tagheuer__video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .tagheuer__gallery {
+    padding-inline: 40px;
+  }
+
+  .tagheuer__gallery--collage {
+    padding-inline: 0;
+  }
+
+  .tagheuer__video-block {
+    padding: 40px;
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .tagheuer__gallery {
+    gap: 1.5rem; /* 24px */
+    margin-top: 10rem; /* 160px */
+    padding-inline: 5rem; /* fluide — 80px @1920 */
+  }
+
+  :where(.tagheuer__gallery-item) {
+    aspect-ratio: var(--ar-d, 1);
+  }
+
+  .tagheuer__gallery-item--banner {
+    aspect-ratio: var(--ar-d, 1760 / 990);
+  }
+
+  .tagheuer__video-block {
+    margin-top: 10rem; /* 160px */
+    padding: 5rem; /* fluide — 80px @1920, marge de page des 4 côtés */
+  }
+
+  .tagheuer__gallery--quad {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem; /* 24px */
+  }
+
+  .tagheuer__gallery--tall {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'tall square' 'tall pair';
+    gap: 1.5rem; /* 24px */
+  }
+
+  .tagheuer__gallery-pair {
+    gap: 1.5rem; /* 24px */
+  }
+
+  /* La paire de petits cadrans est dans l'autre sens qu'en mobile (maquette) :
+     on inverse juste leur ordre visuel, sans dupliquer le HTML. */
+  .tagheuer__gallery-pair > :first-child {
+    order: 2;
+  }
+
+  .tagheuer__gallery-pair > :last-child {
+    order: 1;
+  }
+
+  .tagheuer__gallery--spotlight {
+    grid-template-columns: 422fr 868fr 422fr; /* proportions exactes de la maquette (422px / 868px / 422px @1920) */
+    grid-template-areas: 'p1 big p4' 'p2 big p5';
+    gap: 1.5rem; /* 24px */
+  }
+
+  /* Écart avant le Bloc-9 (banner) : plus grand que le rythme standard dans
+     la maquette desktop (280px au lieu de 160px) — pas d'équivalent en
+     mobile, où le rythme y reste standard. */
+  .tagheuer__gallery--gap-lg {
+    margin-top: 17.5rem; /* 280px */
+  }
+
+  .tagheuer__gallery--rows {
+    gap: 1.5rem; /* 24px */
+  }
+
+  .tagheuer__gallery-row {
+    gap: 1.5rem; /* 24px */
+  }
+
+  .tagheuer__gallery--collage {
+    padding-inline: 0;
+  }
+
+  .tagheuer__gallery-duo {
+    flex-direction: row;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .tagheuer__gallery-duo > * {
+    flex: 1 1 0;
+    width: auto;
+  }
+
+  .tagheuer__gallery-duo-stack {
+    gap: 1.5rem; /* 24px */
+  }
+
+  .tagheuer__gallery-watch-grid {
+    flex-direction: row;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .tagheuer__gallery-watch-grid > * {
+    flex: 1 1 0;
+    width: auto;
+  }
+
+  .tagheuer__gallery-watch-grid-cells {
+    gap: 1.5rem; /* 24px */
+  }
+
+  .tagheuer__gallery-watch-span {
+    flex-direction: row;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .tagheuer__gallery-watch-span > * {
+    flex: var(--grow-d) 1 0;
+    width: auto;
+  }
+
+  .tagheuer__gallery--masonry {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .tagheuer__gallery--masonry .tagheuer__gallery-item {
+    width: auto;
+  }
+
+  .tagheuer__gallery-masonry-col,
+  .tagheuer__gallery-masonry-group,
+  .tagheuer__gallery-masonry-row {
+    display: flex;
+    gap: 1.5rem; /* 24px */
+    min-width: 0;
+  }
+
+  .tagheuer__gallery-masonry-col,
+  .tagheuer__gallery-masonry-group {
+    flex-direction: column;
+    /* Poids proportionnels aux largeurs réelles d'export Figma. */
+    flex: var(--grow-d) 1 0;
+  }
+
+  .tagheuer__gallery-masonry-row {
+    flex-direction: row;
+  }
+
+  .tagheuer__gallery-masonry-row > * {
+    flex: var(--grow-d) 1 0;
+    min-width: 0;
+  }
+
+}

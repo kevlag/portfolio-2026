@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - Renault The Originals Store</title>
+  <meta name="description" content="Case study Renault The Originals Store — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/theoriginalsstore.css" />
+</head>
+<body data-page="theoriginalsstore" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : en dehors de <main> comme le header/footer (un descendant
+       de <main> hérite de son fondu de page). -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="#">Prev</a>
+      <a class="case__control case__control--next" href="tagheuer.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="theoriginalsstore__hero">
+      <h1 class="case__title case__title--stacked">
+        <span class="case__title-line">Renault</span>
+        <span class="case__title-line">The Originals Store</span>
+      </h1>
+
+      <!-- Même visuel en dessous de 440px et au-delà : juste un recadrage
+           différent (voir le <picture>), pas une image différente. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-01.webp" width="670" height="872" />
+        <img class="case__hero-image theoriginalsstore__hero-image" src="images/theoriginalsstore/theoriginalsstore-desktop-01.webp" alt="Visuel de campagne The Originals Store : deux personnages devant une voiture Renault, sous les néons d’une rue de nuit" width="3520" height="1972" decoding="async" />
+      </picture>
+
+      <div class="case__content">
+        <div class="case__intro">
+          <p class="case__date"><span class="case__date-line">January</span> <span class="case__date-line">2026</span></p>
+          <div class="case__paragraph">
+            <p class="case__paragraph--pre">          The Originals Store is Renault’s official e-commerce platform for branded merchandise, from clothing and accessories to toys and model cars.</p>
+            <p>I worked with the Paris-based web studio 60 FPS on the design direction for a redesign tender. In collaboration with Creative Director Matthieu Kobler, we worked to modernize the e-commerce experience around three key goals: strengthen the brand’s presence in pop culture, improve conversion throughout the customer journey, and turn inspiration into purchase.</p>
+            <p>We started by auditing the existing platform and benchmarking other e-commerce experiences to simplify the structure, improve navigation, and establish the foundations of a flexible design system. I then designed the main interfaces, from the homepage to category, listing, and product pages, with a particular focus on filtering, search, reassurance elements, and the purchasing journey.</p>
+            <p>The project also explored several conversion-focused features, including quick buy, sticky add-to-cart, product recommendations, badges, free-shipping progress indicators, and a simplified checkout. The goal was to create a clearer, smoother, and more engaging shopping experience while staying true to Renault’s brand universe.</p>
+          </div>
+        </div>
+
+        <ul class="case__credits" role="list">
+          <li class="case__job">
+            <p class="case__job-title">Creative Director</p>
+            <p class="case__job-name">Matthieu Kobler</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Agency</p>
+            <p class="case__job-name">60 FPS</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bloc-1 : fond dégradé + cadre = simples aplats dans la maquette (pas
+         d'image), donc un vrai padding CSS. La vidéo (1440×800, 9:5) garde son
+         format réel : elle remplit la largeur du cadre (80px de marge de chaque
+         côté en desktop) et le cadre s'ajuste en hauteur. Lancée à l'écran
+         (js/video-autoplay.js), muette au départ, avec les contrôles natifs :
+         la piste audio est réelle, le visiteur l'active avec le bouton volume. -->
+    <section class="theoriginalsstore__bloc1">
+      <div class="theoriginalsstore__video-card">
+        <video class="theoriginalsstore__video" width="1440" height="800" poster="images/theoriginalsstore/theoriginalsstore-video-poster-01.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/theoriginalsstore/theoriginalsstore-desktop-video-01.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Numérotation : les fichiers mobile 10/11 et 13/14 sont inversés par rapport aux fichiers desktop
+         (mobile-10 = desktop-11, mobile-11 = desktop-10, mobile-13 = desktop-14, mobile-14 = desktop-13) ; chaque
+         <picture> charge donc le fichier mobile de MÊME contenu, et l'ordre empilé de la maquette mobile est
+         rétabli en CSS (order).
+         Les images sont déjà composées (fond + marges dans l'export) : aucune
+         décoration CSS, chaque conteneur prend le ratio de son fichier. -->
+    <section class="theoriginalsstore__bloc2">
+      <div class="theoriginalsstore__media theoriginalsstore__media--02">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-02.webp" width="670" height="1234" />
+          <img src="images/theoriginalsstore/theoriginalsstore-desktop-02.webp" alt="Page d’accueil de The Originals Store : bannière « The Originals Store, découvrez les produits dérivés Renault » et catégories de produits" width="1736" height="3232" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="theoriginalsstore__media theoriginalsstore__media--03">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-03.webp" width="670" height="930" />
+          <img src="images/theoriginalsstore/theoriginalsstore-desktop-03.webp" alt="Panier, page de la collection RNLT et listing de produits sur fond dégradé" width="1736" height="2390" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="theoriginalsstore__media theoriginalsstore__media--04">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-04.webp" width="670" height="558" />
+          <img src="images/theoriginalsstore/theoriginalsstore-desktop-04.webp" alt="Page de collection RNLT : filtres, visuel éditorial et grille de produits" width="1736" height="1442" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="theoriginalsstore__bloc3">
+      <div class="theoriginalsstore__media theoriginalsstore__media--05">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-05.webp" width="670" height="430" />
+          <img src="images/theoriginalsstore/theoriginalsstore-desktop-05.webp" alt="Fiche produit du blouson bomber RNLT bleu avec sélecteur de taille et bouton d’ajout au panier" width="3520" height="2096" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="theoriginalsstore__media theoriginalsstore__media--06">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-06.webp" width="670" height="430" />
+          <img src="images/theoriginalsstore/theoriginalsstore-desktop-06.webp" alt="Zoom sur l’écusson du blouson bomber RNLT bleu avec barre d’ajout au panier" width="1736" height="1106" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="theoriginalsstore__media theoriginalsstore__media--07">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-07.webp" width="670" height="430" />
+          <img src="images/theoriginalsstore/theoriginalsstore-desktop-07.webp" alt="Fiche produit avec fenêtre « Comment ça marche ? » : guide des tailles du sweat à capuche" width="1736" height="1106" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="theoriginalsstore__bloc4">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-08.webp" width="750" height="1330" />
+        <img src="images/theoriginalsstore/theoriginalsstore-desktop-08.webp" alt="Bandeau de la collection RNLT : quatre visuels éditoriaux sur fond dégradé" width="3840" height="2160" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="theoriginalsstore__bloc5">
+      <div class="theoriginalsstore__media theoriginalsstore__media--09">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-09.webp" width="670" height="430" />
+          <img src="images/theoriginalsstore/theoriginalsstore-desktop-09.webp" alt="Listing de produits avec fiche produit « Veste Bomber RNLT Bleu » et sélecteur de taille" width="2628" height="1602" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="theoriginalsstore__media theoriginalsstore__media--10">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-11.webp" width="670" height="430" />
+          <img src="images/theoriginalsstore/theoriginalsstore-desktop-10.webp" alt="Page « collection RNLT » : catégories de vêtements et grille de produits" width="2628" height="1602" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="theoriginalsstore__media theoriginalsstore__media--11">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-10.webp" width="670" height="1056" />
+          <img src="images/theoriginalsstore/theoriginalsstore-desktop-11.webp" alt="Écrans mobiles de la boutique : page d’accueil et listing de produits" width="844" height="3252" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="theoriginalsstore__bloc6">
+      <div class="theoriginalsstore__bloc6-row theoriginalsstore__bloc6-row--a">
+        <div class="theoriginalsstore__media theoriginalsstore__media--12">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-12.webp" width="670" height="482" />
+            <img src="images/theoriginalsstore/theoriginalsstore-desktop-12.webp" alt="Tunnel de commande : adresse de livraison et récapitulatif du panier" width="1736" height="1248" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="theoriginalsstore__media theoriginalsstore__media--13">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-14.webp" width="670" height="482" />
+            <img src="images/theoriginalsstore/theoriginalsstore-desktop-13.webp" alt="Résultats de recherche : miniatures, jouets et accessoires" width="1736" height="1248" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+      <div class="theoriginalsstore__bloc6-row theoriginalsstore__bloc6-row--b">
+        <div class="theoriginalsstore__media theoriginalsstore__media--14">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-13.webp" width="670" height="1656" />
+            <img src="images/theoriginalsstore/theoriginalsstore-desktop-14.webp" alt="Fiche produit « Veste Bomber RNLT Bleu » en version mobile" width="1438" height="3474" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="theoriginalsstore__media theoriginalsstore__media--15">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-15.webp" width="670" height="708" />
+            <img src="images/theoriginalsstore/theoriginalsstore-desktop-15.webp" alt="Pied de page, newsletter et univers The Originals avec logo Renault" width="2034" height="2154" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="theoriginalsstore__media theoriginalsstore__media--16">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/theoriginalsstore/theoriginalsstore-mobile-16.webp" width="670" height="430" />
+            <img src="images/theoriginalsstore/theoriginalsstore-desktop-16.webp" alt="Menu de navigation « vêtements » avec catégories de produits" width="2034" height="1272" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/video-autoplay.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

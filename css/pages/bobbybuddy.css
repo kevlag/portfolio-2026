@@ -1,0 +1,293 @@
+/* ==========================================================================
+   Bobby Buddy — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   RÈGLE IMAGES : chaque image exportée contient déjà son fond et ses marges.
+   Aucun padding / fond / calque ajouté en CSS par-dessus : chaque conteneur
+   prend simplement le ratio natif de son fichier (mobile, puis desktop dès
+   440px).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, crédits) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Ordre de la page : Hero, Bloc-1 (vidéo) à Bloc-10, puis « Work with me ? ».
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   ratios des fichiers desktop (≥440px) → desktop (≥1025px).
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+/* ==========================================================================
+   Blocs — chaque image est déjà composée (fond + marges dans le fichier) :
+   le conteneur prend le ratio natif du fichier, sans recadrage.
+   Mobile : tout est empilé, 8px entre images d'un même bloc, 80px entre blocs.
+   ========================================================================== */
+.bobbybuddy__bloc1,
+.bobbybuddy__bloc2,
+.bobbybuddy__bloc3,
+.bobbybuddy__bloc4,
+.bobbybuddy__bloc5,
+.bobbybuddy__bloc6,
+.bobbybuddy__bloc7,
+.bobbybuddy__bloc8,
+.bobbybuddy__bloc9,
+.bobbybuddy__bloc10 {
+  margin-top: 5rem; /* 80px */
+}
+
+/* Pleine largeur (Bloc-4, Bloc-7, Bloc-10) : pas de marge latérale. */
+.bobbybuddy__bloc1,
+.bobbybuddy__bloc2,
+.bobbybuddy__bloc3,
+.bobbybuddy__bloc5,
+.bobbybuddy__bloc6,
+.bobbybuddy__bloc8,
+.bobbybuddy__bloc9 {
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.bobbybuddy__bloc2,
+.bobbybuddy__bloc3,
+.bobbybuddy__bloc8 {
+  display: grid;
+  gap: 0.5rem; /* 8px */
+  align-items: start;
+}
+
+.bobbybuddy__bloc2 img,
+.bobbybuddy__bloc3 img,
+.bobbybuddy__bloc5 img,
+.bobbybuddy__bloc6 img,
+.bobbybuddy__bloc8 img,
+.bobbybuddy__bloc10 img,
+.bobbybuddy__bloc4-bg,
+.bobbybuddy__bloc4-overlay img,
+.bobbybuddy__bloc7-bg {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+}
+
+.bobbybuddy__bloc2-media--1 img { aspect-ratio: 670 / 752; }
+.bobbybuddy__bloc2-media--2 img { aspect-ratio: 670 / 838; }
+.bobbybuddy__bloc3-media--1 img { aspect-ratio: 670 / 846; }
+.bobbybuddy__bloc3-media--2 img { aspect-ratio: 670 / 752; }
+.bobbybuddy__bloc3-media--3 img { aspect-ratio: 670 / 876; }
+.bobbybuddy__bloc5 img { aspect-ratio: 670 / 378; }
+.bobbybuddy__bloc8-media--1 img { aspect-ratio: 670 / 432; }
+.bobbybuddy__bloc8-media--2 img { aspect-ratio: 670 / 664; }
+.bobbybuddy__bloc8-media--3 img { aspect-ratio: 670 / 1392; }
+.bobbybuddy__bloc10 img { aspect-ratio: 750 / 750; }
+
+/* ---- Vidéos : cadre coloré (aplat, pas d'image : vrai padding CSS) autour
+   d'une vidéo au format natif 1920×1080 (Bloc-1 et Bloc-9). ---- */
+.bobbybuddy__video-card {
+  background: #e1dcd2;
+  padding: 2rem; /* 32px */
+}
+
+.bobbybuddy__video {
+  display: block;
+  width: 100%;
+  /* height:auto impératif : sans ça, l'attribut HTML height="1080" prend le
+     dessus sur l'aspect-ratio ci-dessous (voir studioboam.css). */
+  height: auto;
+  aspect-ratio: 1920 / 1080;
+  background: #5a5a5a;
+  object-fit: contain; /* jamais de recadrage ni de déformation de la vidéo */
+}
+
+/* ---- Bloc-4 et Bloc-7 : photo pleine largeur + élément centré par-dessus
+   (logotype PNG transparent / vidéo), dans une cellule de grille unique. ---- */
+.bobbybuddy__bloc4,
+.bobbybuddy__bloc7 {
+  display: grid;
+}
+
+.bobbybuddy__bloc4 > picture,
+.bobbybuddy__bloc7 > picture {
+  display: block;
+  grid-area: 1 / 1;
+}
+
+.bobbybuddy__bloc4-bg { aspect-ratio: 750 / 420; }
+.bobbybuddy__bloc7-bg { aspect-ratio: 750 / 536; }
+
+.bobbybuddy__bloc4-overlay,
+.bobbybuddy__bloc7-video {
+  grid-area: 1 / 1;
+  align-self: center;
+  justify-self: center;
+  width: calc(335 / 375 * 100%); /* 20px de marge de chaque côté @375 */
+}
+
+.bobbybuddy__bloc4-overlay img { aspect-ratio: 670 / 140; }
+
+/* ---- Bloc-6 : mobile = 1 image fusionnée ; dès 440px = 4 images en 2 × 2. ---- */
+.bobbybuddy__bloc6-merged {
+  aspect-ratio: 670 / 440;
+}
+
+.bobbybuddy__bloc6-grid {
+  display: none;
+}
+
+.bobbybuddy__bloc6-media img {
+  aspect-ratio: 1736 / 1116;
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs —
+   on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .bobbybuddy__bloc1,
+  .bobbybuddy__bloc2,
+  .bobbybuddy__bloc3,
+  .bobbybuddy__bloc5,
+  .bobbybuddy__bloc6,
+  .bobbybuddy__bloc8,
+  .bobbybuddy__bloc9 {
+    padding-inline: 40px;
+  }
+
+  .bobbybuddy__bloc4-overlay,
+  .bobbybuddy__bloc7-video {
+    width: calc(100% - 80px); /* même marge de 40px que le reste */
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : chaque <picture> bascule sur le
+   fichier desktop. On recale le ratio de chaque conteneur sur celui de ce
+   fichier, pour ne jamais recadrer l'image avec object-fit: cover.
+   ========================================================================== */
+@media (min-width: 440px) {
+  .bobbybuddy__bloc2-media--1 img,
+  .bobbybuddy__bloc2-media--2 img { aspect-ratio: 1736 / 1960; }
+  .bobbybuddy__bloc3-media--1 img { aspect-ratio: 2330 / 2958; }
+  .bobbybuddy__bloc3-media--2 img { aspect-ratio: 1142 / 1292; }
+  .bobbybuddy__bloc3-media--3 img { aspect-ratio: 1142 / 1618; }
+  .bobbybuddy__bloc4-bg { aspect-ratio: 3840 / 2160; }
+  .bobbybuddy__bloc4-overlay img { aspect-ratio: 3520 / 730; }
+  .bobbybuddy__bloc5 img { aspect-ratio: 3520 / 1982; }
+  .bobbybuddy__bloc7-bg { aspect-ratio: 3840 / 2780; }
+  .bobbybuddy__bloc8-media--1 img { aspect-ratio: 3520 / 2120; }
+  .bobbybuddy__bloc8-media--2 img { aspect-ratio: 2330 / 2312; }
+  .bobbybuddy__bloc8-media--3 img { aspect-ratio: 1142 / 2312; }
+  .bobbybuddy__bloc10 img { aspect-ratio: 3840 / 2160; }
+
+  /* Bloc-6 : on échange l'image fusionnée contre les 4 images desktop
+     (sélecteur plus précis que « .bobbybuddy__bloc6 img { display: block } »). */
+  .bobbybuddy__bloc6 .bobbybuddy__bloc6-merged {
+    display: none;
+  }
+
+  .bobbybuddy__bloc6-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem; /* 8px */
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* ---- Blocs : 160px entre blocs, colonne centrée de 1760px ---- */
+  .bobbybuddy__bloc1,
+  .bobbybuddy__bloc2,
+  .bobbybuddy__bloc3,
+  .bobbybuddy__bloc4,
+  .bobbybuddy__bloc5,
+  .bobbybuddy__bloc6,
+  .bobbybuddy__bloc7,
+  .bobbybuddy__bloc8,
+  .bobbybuddy__bloc9,
+  .bobbybuddy__bloc10 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  .bobbybuddy__bloc1,
+  .bobbybuddy__bloc2,
+  .bobbybuddy__bloc3,
+  .bobbybuddy__bloc5,
+  .bobbybuddy__bloc6,
+  .bobbybuddy__bloc8,
+  .bobbybuddy__bloc9 {
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .bobbybuddy__video-card {
+    background: #d2d2c8; /* couleur du cadre en desktop (différente du mobile dans la maquette) */
+    padding: 5rem; /* 80px */
+  }
+
+  /* Bloc-2 : 2 images côte à côte. */
+  .bobbybuddy__bloc2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem; /* 24px */
+  }
+
+  /* Bloc-3 : grande image à gauche (1165px), 2 images empilées à droite (571px). */
+  .bobbybuddy__bloc3 {
+    grid-template-columns: 72.8125rem 35.6875rem;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .bobbybuddy__bloc3-media--1 {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .bobbybuddy__bloc3-media--2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .bobbybuddy__bloc3-media--3 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* Bloc-4 / Bloc-7 : l'élément centré fait 1760px sur 1920. */
+  .bobbybuddy__bloc4-overlay,
+  .bobbybuddy__bloc7-video {
+    width: calc(1760 / 1920 * 100%);
+  }
+
+  .bobbybuddy__bloc6-grid {
+    gap: 1.5rem; /* 24px */
+  }
+
+  /* Bloc-8 : 13 en pleine largeur, puis 14 (571px) à gauche et 15 (1165px) à droite. */
+  .bobbybuddy__bloc8 {
+    grid-template-columns: 35.6875rem 72.8125rem;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .bobbybuddy__bloc8-media--1 {
+    grid-column: 1 / -1;
+  }
+
+  .bobbybuddy__bloc8-media--3 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .bobbybuddy__bloc8-media--2 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+}

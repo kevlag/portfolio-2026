@@ -1,0 +1,687 @@
+/* ==========================================================================
+   The story of the king of pop (Michael Jackson) — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, source) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   RÈGLE IMAGES : chaque image exportée contient déjà son fond et ses marges.
+   Aucun padding / fond / calque ajouté en CSS par-dessus : chaque conteneur
+   prend simplement le ratio natif de son fichier (mobile, puis desktop dès
+   440px).
+
+   Ordre de la page : Hero, Bloc-1 (vidéo), Bloc-2, Bloc-3, Bloc-4 (composition
+   libre), Bloc-5 (photo + vidéo), Bloc-6, Bloc-7, Bloc-8 (image + vidéo),
+   Bloc-9 (2 rangées qui défilent), Bloc-10, Bloc-11, puis « Work with me ? ».
+
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   ratios des fichiers desktop (≥440px) → desktop (≥1025px).
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+.michaeljackson__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem; /* 24px entre le texte et le bouton */
+}
+
+.michaeljackson__paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+  font-weight: 400;
+  font-size: 12px; /* figé, comme le header/footer */
+  line-height: 1.6;
+}
+
+.michaeljackson__link {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+/* ---- Source ---- */
+.michaeljackson__credits {
+  gap: 4px; /* figé, comme le texte */
+}
+
+/* ==========================================================================
+   Bloc-1 — bande vidéo. Fond noir + cadre = simples aplats dans la maquette
+   (pas d'image) : un vrai padding CSS est donc légitime ici. La vidéo garde
+   son format natif 1920×1080, jamais recadrée.
+   ========================================================================== */
+.michaeljackson__bloc1 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.michaeljackson__bloc1-video {
+  background: #000;
+  padding: 2rem; /* 32px */
+}
+
+.michaeljackson__video {
+  display: block;
+  width: 100%;
+  /* height:auto impératif : sans ça, l'attribut HTML height="1080" prend le
+     dessus sur l'aspect-ratio ci-dessous (voir studioboam.css). */
+  height: auto;
+  aspect-ratio: 1920 / 1080;
+  background: #5a5a5a;
+  object-fit: contain; /* jamais de recadrage ni de déformation de la vidéo */
+}
+
+/* ==========================================================================
+   Bloc-2 — 4 images. Mobile : 1 et 2 pleine largeur, puis 3 et 4 côte à côte.
+   Desktop : grille 6 colonnes (voir media query plus bas).
+   ========================================================================== */
+.michaeljackson__bloc2 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem; /* 8px */
+  /* Hauteurs différentes : sans ça, align-items:stretch étire les cartes. */
+  align-items: start;
+}
+
+.michaeljackson__bloc2-media {
+  display: block;
+  overflow: hidden;
+}
+
+.michaeljackson__bloc2-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.michaeljackson__bloc2-media--1 {
+  grid-column: 1 / -1;
+  aspect-ratio: 670 / 1042;
+}
+
+.michaeljackson__bloc2-media--2 {
+  grid-column: 1 / -1;
+  aspect-ratio: 670 / 780;
+}
+
+.michaeljackson__bloc2-media--3 {
+  aspect-ratio: 327 / 712;
+}
+
+.michaeljackson__bloc2-media--4 {
+  aspect-ratio: 327 / 1148;
+}
+
+/* ==========================================================================
+   Bloc-3 — image pleine largeur (mosaïque de pages sur fond noir).
+   ========================================================================== */
+.michaeljackson__bloc3 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.michaeljackson__bloc3 img {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+  aspect-ratio: 670 / 1110;
+}
+
+/* ==========================================================================
+   Bloc-4 — composition libre de 4 images décalées. La "scène" a le ratio de
+   la maquette ; chaque image est placée en % de cette scène (gauche/largeur
+   en % de la largeur, haut en % de la hauteur), donc la composition suit la
+   largeur à tous les formats. Hauteur de chaque image = ratio natif du
+   fichier, jamais recadré.
+   ========================================================================== */
+.michaeljackson__bloc4 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.michaeljackson__bloc4-stage {
+  position: relative;
+  aspect-ratio: 335 / 404;
+}
+
+.michaeljackson__bloc4-media {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+}
+
+.michaeljackson__bloc4-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.michaeljackson__bloc4-media--1 {
+  left: 0;
+  top: calc(102 / 404 * 100%);
+  width: calc(221 / 335 * 100%);
+  aspect-ratio: 442 / 250;
+}
+
+.michaeljackson__bloc4-media--2 {
+  left: calc(257 / 335 * 100%);
+  top: 0;
+  width: calc(78 / 335 * 100%);
+  aspect-ratio: 156 / 408;
+}
+
+.michaeljackson__bloc4-media--3 {
+  left: calc(29 / 335 * 100%);
+  top: calc(235 / 404 * 100%);
+  width: calc(77 / 335 * 100%);
+  aspect-ratio: 154 / 338;
+}
+
+.michaeljackson__bloc4-media--4 {
+  left: calc(114 / 335 * 100%);
+  top: calc(235 / 404 * 100%);
+  width: calc(221 / 335 * 100%);
+  aspect-ratio: 442 / 250;
+}
+
+/* ==========================================================================
+   Bloc-5 — photo pleine largeur (fond déjà composé) + vidéo centrée dessus.
+   ========================================================================== */
+.michaeljackson__bloc5 {
+  margin-top: 5rem; /* 80px */
+  display: grid;
+}
+
+.michaeljackson__bloc5 > picture {
+  display: block;
+  grid-area: 1 / 1;
+}
+
+.michaeljackson__bloc5-bg {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+  aspect-ratio: 750 / 634;
+}
+
+.michaeljackson__bloc5-video {
+  grid-area: 1 / 1;
+  align-self: center;
+  justify-self: center;
+  width: calc(335 / 375 * 100%); /* 20px de marge de chaque côté @375 */
+}
+
+/* ==========================================================================
+   Bloc-6 / Bloc-7 / Bloc-8 — images déjà composées, ratio natif.
+   ========================================================================== */
+.michaeljackson__bloc6 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.michaeljackson__bloc6 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 670 / 1316;
+}
+
+.michaeljackson__bloc7 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem; /* 8px */
+  align-items: start;
+}
+
+.michaeljackson__bloc7-media {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 327 / 380;
+}
+
+.michaeljackson__bloc7-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.michaeljackson__bloc8 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.michaeljackson__bloc8 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 670 / 1146;
+}
+
+/* L'image 14 porte déjà sa marge noire du haut : le cadre ne rajoute que les
+   côtés et le bas, la vidéo touche donc le bas de l'image (comme la maquette). */
+.michaeljackson__bloc8-video {
+  background: #000;
+  padding: 0 2rem 2rem; /* 32px */
+}
+
+/* ==========================================================================
+   Bloc-9 — 2 rangées de 3 images, centrées et PLUS LARGES que l'écran : les
+   deux extrémités sont coupées par la fenêtre (.michaeljackson__bloc9-row),
+   comme dans la maquette. js/michaeljackson.js fait défiler chaque rangée en
+   boucle (moteur js/marquee.js) : la 1re vers la droite, la 2e vers la gauche.
+   Sans JS, les rangées restent immobiles et centrées (état de la maquette).
+   ========================================================================== */
+.michaeljackson__bloc9 {
+  margin-top: 5rem; /* 80px */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+  --slider-speed: 1.4rem; /* ≈ 22px par seconde @375, comme les projets de la Home */
+}
+
+.michaeljackson__bloc9-row {
+  display: flex;
+  justify-content: center; /* centré : déborde à parts égales à gauche et à droite */
+  width: 100%;
+  overflow: clip;
+  /* Le glisser horizontal est géré par le moteur ; le scroll vertical de la
+     page reste possible au doigt. */
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Une fois le script actif, il positionne lui-même la rangée. */
+.michaeljackson__bloc9-row.is-active {
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .michaeljackson__bloc9-row.is-active {
+    cursor: grab;
+  }
+
+  .michaeljackson__bloc9-row.is-dragging {
+    cursor: grabbing;
+  }
+}
+
+.michaeljackson__bloc9-track {
+  position: relative;
+  display: flex;
+  flex: none;
+  width: max-content;
+  gap: 0.5rem; /* 8px */
+  will-change: transform;
+}
+
+.michaeljackson__bloc9-media {
+  flex: none;
+  display: block;
+  width: 13.8125rem; /* 221px */
+  aspect-ratio: 442 / 248;
+  overflow: hidden;
+}
+
+.michaeljackson__bloc9-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-user-drag: none;
+}
+
+/* ==========================================================================
+   Bloc-10 — photo pleine largeur (fond + moitié noire déjà dans le fichier)
+   et image "THIS" posée dessus, positionnée en % du bloc. Géométrie mobile
+   sous 440px ; dès 440px, fichiers et géométrie desktop (voir plus bas).
+   ========================================================================== */
+.michaeljackson__bloc10 {
+  margin-top: 5rem; /* 80px */
+  position: relative;
+}
+
+.michaeljackson__bloc10 > picture {
+  display: block;
+}
+
+.michaeljackson__bloc10-bg {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+  aspect-ratio: 750 / 716;
+}
+
+.michaeljackson__bloc10-media {
+  position: absolute;
+  left: calc(77 / 375 * 100%);
+  top: calc(40 / 358 * 100%);
+  width: calc(221 / 375 * 100%);
+  aspect-ratio: 442 / 556;
+  display: block;
+  overflow: hidden;
+}
+
+.michaeljackson__bloc10-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Bloc-11 — image finale « IS IT ».
+   ========================================================================== */
+.michaeljackson__bloc11 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.michaeljackson__bloc11 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 670 / 376;
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs —
+   on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .michaeljackson__bloc1,
+  .michaeljackson__bloc2,
+  .michaeljackson__bloc3,
+  .michaeljackson__bloc4,
+  .michaeljackson__bloc6,
+  .michaeljackson__bloc7,
+  .michaeljackson__bloc8,
+  .michaeljackson__bloc11 {
+    padding-inline: 40px;
+  }
+
+  .michaeljackson__bloc5-video {
+    width: calc(100% - 80px); /* même marge de 40px que le reste */
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : chaque <picture> bascule sur le
+   fichier desktop. On recale le ratio de chaque conteneur sur celui de ce
+   fichier, pour ne jamais recadrer l'image avec object-fit: cover.
+   ========================================================================== */
+@media (min-width: 440px) {
+  .michaeljackson__bloc2-media--1 {
+    aspect-ratio: 2034 / 3212;
+  }
+
+  .michaeljackson__bloc2-media--2 {
+    aspect-ratio: 1438 / 1674;
+  }
+
+  .michaeljackson__bloc2-media--3 {
+    aspect-ratio: 546 / 1182;
+  }
+
+  .michaeljackson__bloc2-media--4 {
+    aspect-ratio: 546 / 1918;
+  }
+
+  .michaeljackson__bloc3 img {
+    aspect-ratio: 3520 / 3718;
+  }
+
+  .michaeljackson__bloc4-media--1 {
+    aspect-ratio: 2034 / 1144;
+  }
+
+  .michaeljackson__bloc4-media--2 {
+    aspect-ratio: 548 / 1436;
+  }
+
+  .michaeljackson__bloc4-media--3 {
+    aspect-ratio: 546 / 1182;
+  }
+
+  .michaeljackson__bloc4-media--4 {
+    aspect-ratio: 2330 / 1310;
+  }
+
+  .michaeljackson__bloc5-bg {
+    aspect-ratio: 3840 / 2780;
+  }
+
+  .michaeljackson__bloc6 img {
+    aspect-ratio: 3520 / 3210;
+  }
+
+  .michaeljackson__bloc7-media--1 {
+    aspect-ratio: 1738 / 2020;
+  }
+
+  .michaeljackson__bloc7-media--2 {
+    aspect-ratio: 1736 / 2020;
+  }
+
+  .michaeljackson__bloc8 img {
+    aspect-ratio: 3520 / 5446;
+  }
+
+  .michaeljackson__bloc9-media {
+    aspect-ratio: 1736 / 976;
+  }
+
+  /* Bloc-10 : fichiers desktop, image "THIS" à 526px sur 1920 */
+  .michaeljackson__bloc10-bg {
+    aspect-ratio: 3840 / 2826;
+  }
+
+  .michaeljackson__bloc10-media {
+    left: calc(526 / 1920 * 100%);
+    top: calc(160 / 1413 * 100%);
+    width: calc(868 / 1920 * 100%);
+    aspect-ratio: 1736 / 2186;
+  }
+
+  .michaeljackson__bloc11 img {
+    aspect-ratio: 2924 / 1642;
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .michaeljackson__text {
+    width: 35.6875rem; /* 571px */
+    flex: none;
+    gap: 2rem; /* 32px */
+  }
+
+  .michaeljackson__paragraph {
+    gap: 1rem; /* 16px */
+    font-size: 16px; /* figé — voir la règle mobile plus haut */
+  }
+
+  /* ---- Bloc-1 ---- */
+  .michaeljackson__bloc1 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .michaeljackson__bloc1-video {
+    padding: 5rem; /* 80px */
+  }
+
+  /* ---- Bloc-2 : "1" à gauche ; "2" en haut à droite ; "3" et "4" en
+     dessous, calés à droite. Colonnes (en px @1920) : 1017 | 24 | 149 (vide) |
+     273 | 24 | 273 = 1760. ---- */
+  .michaeljackson__bloc2 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+    gap: 0;
+    grid-template-columns: 63.5625rem 1.5rem 9.3125rem 17.0625rem 1.5rem 17.0625rem;
+  }
+
+  .michaeljackson__bloc2-media--1 {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .michaeljackson__bloc2-media--2 {
+    grid-column: 3 / span 4;
+    grid-row: 1;
+  }
+
+  .michaeljackson__bloc2-media--3 {
+    grid-column: 4;
+    grid-row: 2;
+    margin-top: 2.5625rem; /* 41px entre "2" et la rangée "3" + "4", comme la maquette */
+  }
+
+  .michaeljackson__bloc2-media--4 {
+    grid-column: 6;
+    grid-row: 2;
+    margin-top: 2.5625rem; /* 41px */
+  }
+
+  /* ---- Image finale ---- */
+  .michaeljackson__bloc3 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  /* ---- Bloc-4 : scène 1760 × 1533 (px @1920) ---- */
+  .michaeljackson__bloc4 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .michaeljackson__bloc4-stage {
+    aspect-ratio: 1760 / 1533;
+  }
+
+  .michaeljackson__bloc4-media--1 {
+    left: 0;
+    top: calc(282 / 1533 * 100%);
+    width: calc(1017 / 1760 * 100%);
+  }
+
+  .michaeljackson__bloc4-media--2 {
+    left: calc(1190 / 1760 * 100%);
+    top: 0;
+    width: calc(274 / 1760 * 100%);
+  }
+
+  .michaeljackson__bloc4-media--3 {
+    left: calc(149 / 1760 * 100%);
+    top: calc(878 / 1533 * 100%);
+    width: calc(273 / 1760 * 100%);
+  }
+
+  .michaeljackson__bloc4-media--4 {
+    left: calc(446 / 1760 * 100%);
+    top: calc(878 / 1533 * 100%);
+    width: calc(1165 / 1760 * 100%);
+  }
+
+  /* ---- Bloc-5 : photo 1920 de large, vidéo 1760 (80px de marge) ---- */
+  .michaeljackson__bloc5 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  .michaeljackson__bloc5-video {
+    width: calc(1760 / 1920 * 100%);
+  }
+
+  /* ---- Bloc-6 ---- */
+  .michaeljackson__bloc6 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  /* ---- Bloc-7 : 2 images côte à côte ---- */
+  .michaeljackson__bloc7 {
+    /* 150px dans la maquette (pas 160 comme partout ailleurs). */
+    margin-top: 9.375rem;
+    padding-inline: 0;
+    gap: 1.5rem; /* 24px */
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  /* ---- Bloc-8 : image 14 puis cadre noir avec la vidéo ---- */
+  .michaeljackson__bloc8 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .michaeljackson__bloc8-video {
+    padding: 4.375rem 5rem 5rem; /* 70px 80px 80px */
+  }
+
+  /* ---- Bloc-9 : 3 × 868 + 2 × 24, centré dans l'écran ---- */
+  .michaeljackson__bloc9 {
+    margin-top: 10rem; /* 160px */
+    gap: 1.5rem; /* 24px */
+  }
+
+  .michaeljackson__bloc9 {
+    --slider-speed: 2.7rem; /* ≈ 43px par seconde @1920 */
+  }
+
+  .michaeljackson__bloc9-track {
+    gap: 1.5rem; /* 24px */
+  }
+
+  .michaeljackson__bloc9-media {
+    width: 54.25rem; /* 868px */
+  }
+
+  /* ---- Bloc-10 ---- */
+  .michaeljackson__bloc10 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  /* ---- Bloc-11 : 1462px, centré ---- */
+  .michaeljackson__bloc11 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+  }
+
+  .michaeljackson__bloc11 img {
+    width: 91.375rem; /* 1462px */
+    margin-inline: auto;
+  }
+
+}

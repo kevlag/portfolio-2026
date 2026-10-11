@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - The Way of Water</title>
+  <meta name="description" content="Case study The Way of Water — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/thewayofwater.css" />
+</head>
+<body data-page="thewayofwater" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : en dehors de <main> comme le header/footer (un descendant
+       de <main> hérite de son fondu de page). -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="mindgames.html">Prev</a>
+      <a class="case__control case__control--next" href="memoriesofageisha.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="thewayofwater__hero">
+      <h1 class="case__title">
+        <span class="case__title-line">The Way of Water</span>
+      </h1>
+
+      <!-- Même visuel en dessous de 440px et au-delà : juste un recadrage
+           différent (voir le <picture>), pas une image différente. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/thewayofwater/thewayofwater-mobile-01.webp" width="670" height="872" />
+        <img class="case__hero-image thewayofwater__hero-image" src="images/thewayofwater/thewayofwater-desktop-01.webp" alt="Visage bleu du personnage de Neytiri en gros plan, l’œil jaune et la peau parsemée de points lumineux" width="3520" height="1972" decoding="async" />
+      </picture>
+
+      <div class="case__content thewayofwater__content">
+        <div class="case__intro">
+          <p class="case__date"><span class="case__date-line">December</span> <span class="case__date-line">2022</span></p>
+          <div class="case__paragraph">
+            <p class="case__paragraph--pre">          This is a fictional web experiment created to promote the movie Avatar: The Way of Water. All content has been sourced from official promotional materials and fan websites. Images and videos were found online and may have been edited for visual consistency.</p>
+            <p>This project is not affiliated with the official Avatar franchise and was created solely for design and learning purposes.</p>
+          </div>
+        </div>
+
+        <ul class="case__credits" role="list">
+          <li class="case__job">
+            <p class="case__job-title">This is a</p>
+            <p class="case__job-name">Personal project</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bloc-1 : fond + cadre = simple aplat dans la maquette (pas d'image),
+         donc un vrai padding CSS. La vidéo est un vrai 16:9 (1920×1080) : elle
+         remplit la largeur du cadre (80px de marge de chaque côté en desktop),
+         lancée à l'écran (js/video-autoplay.js), muette au départ, avec les
+         contrôles natifs : la piste audio est réelle, le visiteur l'active avec
+         le bouton volume. -->
+    <section class="thewayofwater__bloc1">
+      <div class="thewayofwater__video-card">
+        <video class="thewayofwater__video" width="1920" height="1080" poster="images/thewayofwater/thewayofwater-video-poster-01.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/thewayofwater/thewayofwater-desktop-video-01.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Les images sont déjà composées (fond + marges dans l'export) : aucune
+         décoration CSS, chaque conteneur prend le ratio de son fichier. -->
+    <section class="thewayofwater__bloc2">
+      <div class="thewayofwater__bloc2-row thewayofwater__bloc2-row--a">
+        <div class="thewayofwater__media thewayofwater__media--02">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/thewayofwater/thewayofwater-mobile-02.webp" width="670" height="622" />
+            <img src="images/thewayofwater/thewayofwater-desktop-02.webp" alt="Pages du site The Way of Water : accueil, personnages Jake Sully et Ney’tiri, galerie d’images" width="2034" height="1856" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="thewayofwater__media thewayofwater__media--03">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/thewayofwater/thewayofwater-mobile-03.webp" width="670" height="870" />
+            <img src="images/thewayofwater/thewayofwater-desktop-03.webp" alt="Pages du site : synopsis du film, distribution et affiche" width="1438" height="1856" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+      <div class="thewayofwater__media thewayofwater__media--04">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/thewayofwater/thewayofwater-mobile-04.webp" width="670" height="432" />
+          <img src="images/thewayofwater/thewayofwater-desktop-04.webp" alt="Page d’accueil du site : titre « The Way of Water » sur le visage bleu du personnage, « Directed by James Cameron »" width="3520" height="2120" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="thewayofwater__bloc2-row thewayofwater__bloc2-row--b">
+        <div class="thewayofwater__media thewayofwater__media--05">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/thewayofwater/thewayofwater-mobile-05.webp" width="670" height="670" />
+            <img src="images/thewayofwater/thewayofwater-desktop-05.webp" alt="Pages « Casting and characters » : Jake Sully et Ney’tiri Dis’kahan" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="thewayofwater__media thewayofwater__media--06">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/thewayofwater/thewayofwater-mobile-06.webp" width="670" height="670" />
+            <img src="images/thewayofwater/thewayofwater-desktop-06.webp" alt="Page de citation « All energy is only borrowed, and one day you have to give it back » et pages du site" width="1736" height="1736" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="thewayofwater__bloc3">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/thewayofwater/thewayofwater-mobile-07.webp" width="750" height="750" />
+        <img src="images/thewayofwater/thewayofwater-desktop-07.webp" alt="Mosaïque inclinée de pages du site autour du titre « The Way of Water »" width="3840" height="2160" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/video-autoplay.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

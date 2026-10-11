@@ -1,0 +1,146 @@
+/* ==========================================================================
+   Le salon Peugeot — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   RÈGLE IMAGES : chaque image exportée contient déjà son fond et ses marges.
+   Aucun padding / fond / calque ajouté en CSS par-dessus : chaque conteneur
+   prend simplement le ratio natif de son fichier (mobile, puis desktop dès
+   440px).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, crédits) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Ordre de la page : Hero, Bloc-1 à Bloc-6 (images), puis « Work with me ? ».
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   ratios des fichiers desktop (≥440px) → desktop (≥1025px).
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+.peugeot__note-title {
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Blocs d'images — chaque image est déjà composée (fond + marges dans le
+   fichier) : le conteneur prend le ratio natif du fichier, sans recadrage.
+   Mobile : tout est empilé, 8px entre images d'un même bloc, 80px entre blocs.
+   ========================================================================== */
+.peugeot__bloc1,
+.peugeot__bloc2,
+.peugeot__bloc3,
+.peugeot__bloc5,
+.peugeot__bloc6 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.peugeot__bloc4 {
+  margin-top: 5rem; /* 80px */
+}
+
+.peugeot__bloc3,
+.peugeot__bloc6 {
+  display: grid;
+  gap: 0.5rem; /* 8px */
+  align-items: start;
+}
+
+.peugeot__bloc1 img,
+.peugeot__bloc2 img,
+.peugeot__bloc3 img,
+.peugeot__bloc4 img,
+.peugeot__bloc5 img,
+.peugeot__bloc6 img {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+}
+
+.peugeot__bloc1 img { aspect-ratio: 670 / 1272; }
+.peugeot__bloc2 img { aspect-ratio: 670 / 503; }
+.peugeot__bloc3-media--1 img { aspect-ratio: 670 / 1217; }
+.peugeot__bloc3-media--2 img { aspect-ratio: 670 / 1216; }
+.peugeot__bloc4 img { aspect-ratio: 750 / 750; }
+.peugeot__bloc5 img { aspect-ratio: 670 / 2848; }
+.peugeot__bloc6-media--1 img { aspect-ratio: 670 / 1270; }
+.peugeot__bloc6-media--2 img,
+.peugeot__bloc6-media--3 img { aspect-ratio: 670 / 696; }
+
+/* "Work with me ?" : bloc identique aux autres pages, seule la marge du haut
+   change (160px dans la maquette, mobile comme desktop). */
+body[data-page='peugeot'] .work-cta {
+  margin-top: 10rem; /* 160px */
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs —
+   on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .peugeot__bloc1,
+  .peugeot__bloc2,
+  .peugeot__bloc3,
+  .peugeot__bloc5,
+  .peugeot__bloc6 {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : chaque <picture> bascule sur le
+   fichier desktop. On recale le ratio de chaque conteneur sur celui de ce
+   fichier, pour ne jamais recadrer l'image avec object-fit: cover.
+   ========================================================================== */
+@media (min-width: 440px) {
+  .peugeot__bloc1 img { aspect-ratio: 3520 / 1980; }
+  .peugeot__bloc2 img { aspect-ratio: 3520 / 2640; }
+  .peugeot__bloc3-media--1 img,
+  .peugeot__bloc3-media--2 img { aspect-ratio: 1736 / 3172; }
+  .peugeot__bloc4 img { aspect-ratio: 3840 / 2160; }
+  .peugeot__bloc5 img { aspect-ratio: 3520 / 4024; }
+  .peugeot__bloc6-media--1 img { aspect-ratio: 3520 / 1980; }
+  .peugeot__bloc6-media--2 img,
+  .peugeot__bloc6-media--3 img { aspect-ratio: 1736 / 1802; }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* ---- Blocs : 160px entre blocs, colonne centrée de 1760px ---- */
+  .peugeot__bloc1,
+  .peugeot__bloc2,
+  .peugeot__bloc3,
+  .peugeot__bloc5,
+  .peugeot__bloc6 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .peugeot__bloc4 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  /* Bloc-3 et Bloc-6 : 2 colonnes, 24px entre images. */
+  .peugeot__bloc3,
+  .peugeot__bloc6 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem; /* 24px */
+  }
+
+  /* Bloc-6 : la 1re image occupe toute la largeur. */
+  .peugeot__bloc6-media--1 {
+    grid-column: 1 / -1;
+  }
+}

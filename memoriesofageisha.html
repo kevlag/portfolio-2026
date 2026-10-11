@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - Memories of a Geisha</title>
+  <meta name="description" content="Case study Memories of a Geisha — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/memoriesofageisha.css" />
+</head>
+<body data-page="memoriesofageisha" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : en dehors de <main> comme le header/footer (un descendant
+       de <main> hérite de son fondu de page). -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="thewayofwater.html">Prev</a>
+      <a class="case__control case__control--next" href="alexandrepichoux.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="memoriesofageisha__hero">
+      <h1 class="case__title case__title--stacked">
+        <span class="case__title-line">Memories</span>
+        <span class="case__title-line">Of A Geisha</span>
+      </h1>
+
+      <!-- Même visuel en dessous de 440px et au-delà : juste un recadrage
+           différent (voir le <picture>), pas une image différente. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/memoriesofageisha/memoriesofageisha-mobile-01.webp" width="670" height="872" />
+        <img class="case__hero-image memoriesofageisha__hero-image" src="images/memoriesofageisha/memoriesofageisha-desktop-01.webp" alt="Portrait d’une geisha de profil, le visage poudré de blanc, devant un éventail et un kimono rouge sur fond sombre" width="3520" height="1972" decoding="async" />
+      </picture>
+
+      <div class="case__content">
+        <div class="case__intro">
+          <p class="case__date"><span class="case__date-line">April</span> <span class="case__date-line">2020</span></p>
+          <div class="case__paragraph">
+            <p class="case__paragraph--pre">          This is a small personal project inspired by the beautiful photographs of <a class="memoriesofageisha__link" href="https://unsplash.com/@bynghia" target="_blank" rel="noopener noreferrer">Nghia Do Thanh</a>. I came across his work and was immediately drawn to the atmosphere and visual storytelling of his images. It inspired me to create a small landing page exploration, focusing on the layout, interactions, and loader animation.</p>
+          </div>
+        </div>
+
+        <ul class="case__credits" role="list">
+          <li class="case__job">
+            <p class="case__job-title">This is a</p>
+            <p class="case__job-name">Personal project</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bloc-1 : fond + cadre = simple aplat dans la maquette (pas d'image),
+         donc un vrai padding CSS. La vidéo est un vrai 16:10 (8:5) : le fichier
+         source était marqué en pixels non carrés (1920×1080, SAR 9:10 → 1728×1080
+         à l'affichage) ; le bouton rond du site le confirme (rond à 8:5, ovale
+         à 16:9). Elle est donc exportée en pixels carrés 1920×1200, sans
+         recadrage. Elle occupe toute la largeur du cadre (80px de marge de chaque
+         côté en desktop) et le cadre grandit en hauteur par rapport au bloc gris
+         16:9 de la maquette (même principe qu'Elium Studio). Pas de piste audio.
+         Lancée à l'écran (js/video-autoplay.js), avec les contrôles natifs. -->
+    <section class="memoriesofageisha__bloc1">
+      <div class="memoriesofageisha__video-card">
+        <video class="memoriesofageisha__video" width="1920" height="1200" poster="images/memoriesofageisha/memoriesofageisha-video-poster-01.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/memoriesofageisha/memoriesofageisha-desktop-video-01.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Les images sont déjà composées (fond + marges dans l'export) : aucune
+         décoration CSS, chaque conteneur prend le ratio de son fichier. -->
+    <section class="memoriesofageisha__bloc2">
+      <div class="memoriesofageisha__media memoriesofageisha__media--02">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/memoriesofageisha/memoriesofageisha-mobile-02.webp" width="670" height="1866" />
+          <img src="images/memoriesofageisha/memoriesofageisha-desktop-02.webp" alt="Pages du site : « Geisha of Kyoto », « In 1929, Chiyo Sakamoto » et « Chiyo begins her training at the okiya »" width="1736" height="4858" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="memoriesofageisha__bloc2-col">
+        <div class="memoriesofageisha__media memoriesofageisha__media--03">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/memoriesofageisha/memoriesofageisha-mobile-03.webp" width="670" height="448" />
+            <img src="images/memoriesofageisha/memoriesofageisha-desktop-03.webp" alt="Page rouge du site avec le chiffre « 23 »" width="1736" height="1158" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="memoriesofageisha__media memoriesofageisha__media--04">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/memoriesofageisha/memoriesofageisha-mobile-04.webp" width="670" height="1284" />
+            <img src="images/memoriesofageisha/memoriesofageisha-desktop-04.webp" alt="Écrans du site en version mobile : « Geisha of Kyoto », « Chiyo begins her training at the okiya » et le caractère rouge" width="1736" height="3332" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/video-autoplay.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+/* ==========================================================================
+   Feuille de style commune à toutes les pages — n'importe que ce qui est global
+   (variables, reset, polices, header, footer, boutons) ; aucun style ici.
+
+   Chaque page charge ensuite SA feuille avec un <link> dans son <head>
+   (css/pages/<page>.css), et les pages case study chargent en plus
+   css/components/case-study.css.
+   ========================================================================== */
+@import url('base/variables.css');
+@import url('base/reset.css');
+@import url('base/fonts.css');
+@import url('components/header.css');
+@import url('components/footer.css');
+@import url('components/cta.css');
+@import url('components/work-cta.css');

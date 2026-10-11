@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - Bobby Buddy</title>
+  <meta name="description" content="Case study Bobby Buddy — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/bobbybuddy.css" />
+</head>
+<body data-page="bobbybuddy" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : en dehors de <main> comme le header/footer (un descendant
+       de <main> hérite de son fondu de page). -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="peugeot.html">Prev</a>
+      <a class="case__control case__control--next" href="lacourte.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="bobbybuddy__hero">
+      <h1 class="case__title">
+        <span class="case__title-line">Bobby</span>
+        <span class="case__title-line">Buddy</span>
+      </h1>
+
+      <!-- Même photo en dessous de 440px et au-delà : juste un recadrage
+           différent (voir le <picture>), pas une image différente. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-01.webp" width="670" height="872" />
+        <img class="case__hero-image" src="images/bobbybuddy/bobbybuddy-desktop-01.webp" alt="Deux enfants allongés dans une lumière chaude, photographie argentique" width="3520" height="1972" decoding="async" />
+      </picture>
+
+      <div class="case__content">
+        <div class="case__intro">
+          <p class="case__date"><span class="case__date-line">April</span> <span class="case__date-line">2021</span></p>
+          <div class="case__paragraph">
+            <p class="case__paragraph--pre">          Founded in 2015, Bobby Buddy is a French photographic duo based in Paris.</p>
+            <p>Bobby Buddy's guiding principle is experimental analogue photography to retain the essence of photography and combine the aesthetics of portraiture and fashion with a more plastic photography.</p>
+          </div>
+        </div>
+
+        <ul class="case__credits" role="list">
+          <li class="case__job">
+            <p class="case__job-title">Creative Director</p>
+            <p class="case__job-name">Emmanuel Cruellas</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Project Manager</p>
+            <p class="case__job-name">Morgane Urbain</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Agency</p>
+            <p class="case__job-name">Bonhomme</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bloc-1 : fond + cadre = simples aplats dans la maquette (pas d'image),
+         donc un vrai padding CSS. Vidéo 01 au format natif 1920×1080. Les 3
+         vidéos de la page se lancent à l'écran (js/video-autoplay.js). -->
+    <section class="bobbybuddy__bloc1">
+      <div class="bobbybuddy__video-card">
+        <video class="bobbybuddy__video" width="1920" height="1080" poster="images/bobbybuddy/bobbybuddy-video-poster-01.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/bobbybuddy/bobbybuddy-desktop-video-01.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Les images sont déjà composées (fond + marges dans l'export) : aucune
+         décoration CSS, chaque conteneur prend le ratio de son fichier. -->
+    <section class="bobbybuddy__bloc2">
+      <div class="bobbybuddy__bloc2-media bobbybuddy__bloc2-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-02.webp" width="670" height="752" />
+          <img src="images/bobbybuddy/bobbybuddy-desktop-02.webp" alt="Page d’accueil du site Bobby Buddy : portrait d’un enfant tenant des papiers colorés" width="1736" height="1960" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="bobbybuddy__bloc2-media bobbybuddy__bloc2-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-03.webp" width="670" height="838" />
+          <img src="images/bobbybuddy/bobbybuddy-desktop-03.webp" alt="Pages du site Bobby Buddy : « Always creating » et planche de portraits" width="1736" height="1960" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <!-- Bloc-3 : mobile = 3 images empilées ; desktop = grande image à gauche,
+         2 images empilées à droite. -->
+    <section class="bobbybuddy__bloc3">
+      <div class="bobbybuddy__bloc3-media bobbybuddy__bloc3-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-04.webp" width="670" height="846" />
+          <img src="images/bobbybuddy/bobbybuddy-desktop-04.webp" alt="Pages du site Bobby Buddy : cercle de polaroïds autour de « Always creating »" width="2330" height="2958" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="bobbybuddy__bloc3-media bobbybuddy__bloc3-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-05.webp" width="670" height="752" />
+          <img src="images/bobbybuddy/bobbybuddy-desktop-05.webp" alt="Page du site Bobby Buddy : le chiffre 18 sur fond noir" width="1142" height="1292" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="bobbybuddy__bloc3-media bobbybuddy__bloc3-media--3">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-06.webp" width="670" height="876" />
+          <img src="images/bobbybuddy/bobbybuddy-desktop-06.webp" alt="Pages du site Bobby Buddy : liste de séries et polaroïds de portraits" width="1142" height="1618" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <!-- Bloc-4 : photo pleine largeur + logotype « Bobby Buddy » (PNG
+         transparent) centré par-dessus. -->
+    <section class="bobbybuddy__bloc4">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-bg-01.webp" width="750" height="420" />
+        <img class="bobbybuddy__bloc4-bg" src="images/bobbybuddy/bobbybuddy-desktop-bg-01.webp" alt="Fleurs séchées rose et orangé sur un ciel bleu" width="3840" height="2160" loading="lazy" decoding="async" />
+      </picture>
+      <div class="bobbybuddy__bloc4-overlay">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-07.webp" width="670" height="140" />
+          <img src="images/bobbybuddy/bobbybuddy-desktop-07.webp" alt="Logotype « Bobby Buddy » sur fond lilas, entouré de polaroïds" width="3520" height="730" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="bobbybuddy__bloc5">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-08.webp" width="670" height="378" />
+        <img src="images/bobbybuddy/bobbybuddy-desktop-08.webp" alt="Page d’accueil « Always creating » du site Bobby Buddy" width="3520" height="1982" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <!-- Bloc-6 : en mobile, UNE seule image (mobile-09, fusion des 4 images
+         desktop 09 à 12, fournie par l'utilisateur) ; dès 440px, les 4 images
+         desktop en 2 × 2. Un seul des deux groupes est affiché (voir le CSS). -->
+    <section class="bobbybuddy__bloc6">
+      <img class="bobbybuddy__bloc6-merged" src="images/bobbybuddy/bobbybuddy-mobile-09.webp" alt="Quatre pages du site Bobby Buddy : polaroïds, planches contact et portrait" width="670" height="440" loading="lazy" decoding="async" />
+      <div class="bobbybuddy__bloc6-grid">
+        <div class="bobbybuddy__bloc6-media">
+          <img src="images/bobbybuddy/bobbybuddy-desktop-09.webp" alt="Page « Always creating » du site Bobby Buddy avec des polaroïds" width="1736" height="1116" loading="lazy" decoding="async" />
+        </div>
+        <div class="bobbybuddy__bloc6-media">
+          <img src="images/bobbybuddy/bobbybuddy-desktop-10.webp" alt="Pages du site Bobby Buddy : planches contact de portraits" width="1736" height="1116" loading="lazy" decoding="async" />
+        </div>
+        <div class="bobbybuddy__bloc6-media">
+          <img src="images/bobbybuddy/bobbybuddy-desktop-11.webp" alt="Pages du site Bobby Buddy : polaroïds éparpillés sur fond clair" width="1736" height="1116" loading="lazy" decoding="async" />
+        </div>
+        <div class="bobbybuddy__bloc6-media">
+          <img src="images/bobbybuddy/bobbybuddy-desktop-12.webp" alt="Page du site Bobby Buddy : portrait d’un enfant assis, encadré" width="1736" height="1116" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloc-7 : photo pleine largeur avec la vidéo 02 centrée par-dessus. -->
+    <section class="bobbybuddy__bloc7">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-bg-02.webp" width="750" height="536" />
+        <img class="bobbybuddy__bloc7-bg" src="images/bobbybuddy/bobbybuddy-desktop-bg-02.webp" alt="Silhouette floue d’un enfant sur fond clair" width="3840" height="2780" loading="lazy" decoding="async" />
+      </picture>
+      <div class="bobbybuddy__bloc7-video">
+        <video class="bobbybuddy__video" width="1920" height="1080" poster="images/bobbybuddy/bobbybuddy-video-poster-02.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/bobbybuddy/bobbybuddy-desktop-video-02.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Bloc-8 : DOM dans l'ordre mobile (13, 15, 14) ; en desktop, 13 en
+         pleine largeur, puis 14 (étroite) à gauche et 15 à droite. Les fichiers
+         mobile n'ont pas le même numéro : mobile-10 = desktop-13, mobile-11 =
+         desktop-15, mobile-12 = desktop-14. -->
+    <section class="bobbybuddy__bloc8">
+      <div class="bobbybuddy__bloc8-media bobbybuddy__bloc8-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-10.webp" width="670" height="432" />
+          <img src="images/bobbybuddy/bobbybuddy-desktop-13.webp" alt="Page du site Bobby Buddy : portrait d’un enfant assis dans un cadre" width="3520" height="2120" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="bobbybuddy__bloc8-media bobbybuddy__bloc8-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-11.webp" width="670" height="664" />
+          <img src="images/bobbybuddy/bobbybuddy-desktop-15.webp" alt="Pages du site Bobby Buddy : planches contact et portrait d’un enfant" width="2330" height="2312" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="bobbybuddy__bloc8-media bobbybuddy__bloc8-media--3">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-12.webp" width="670" height="1392" />
+          <img src="images/bobbybuddy/bobbybuddy-desktop-14.webp" alt="Page du site Bobby Buddy : bande verticale de planches contact" width="1142" height="2312" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <!-- Bloc-9 : même cadre que le Bloc-1, avec la vidéo 03. -->
+    <section class="bobbybuddy__bloc9">
+      <div class="bobbybuddy__video-card">
+        <video class="bobbybuddy__video" width="1920" height="1080" poster="images/bobbybuddy/bobbybuddy-video-poster-03.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/bobbybuddy/bobbybuddy-desktop-video-03.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section class="bobbybuddy__bloc10">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/bobbybuddy/bobbybuddy-mobile-13.webp" width="750" height="750" />
+        <img src="images/bobbybuddy/bobbybuddy-desktop-16.webp" alt="Mosaïque de pages du site Bobby Buddy : polaroïds, planches contact et portraits" width="3840" height="2160" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/video-autoplay.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

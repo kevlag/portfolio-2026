@@ -1,0 +1,281 @@
+/* ==========================================================================
+   Elium Studio — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   RÈGLE IMAGES : chaque image exportée contient déjà son fond et ses marges.
+   Aucun padding / fond / calque ajouté en CSS par-dessus : chaque conteneur
+   prend simplement le ratio natif de son fichier (mobile, puis desktop dès
+   440px).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, crédits) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Ordre de la page : Hero, Bloc-1 (vidéo), Bloc-2 à Bloc-7 (images), puis « Work with me ? ».
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   ratios des fichiers desktop (≥440px) → desktop (≥1025px).
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+.eliumstudio__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem; /* 24px entre le texte et le bouton */
+}
+
+.eliumstudio__paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+  font-weight: 400;
+  font-size: 12px; /* figé, comme le header/footer */
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Blocs — chaque image est déjà composée (fond + marges dans le fichier) :
+   le conteneur prend le ratio natif du fichier, sans recadrage.
+   Mobile : tout est empilé, 8px entre images d'un même bloc, 80px entre blocs.
+   ========================================================================== */
+.eliumstudio__bloc1,
+.eliumstudio__bloc2,
+.eliumstudio__bloc3,
+.eliumstudio__bloc4,
+.eliumstudio__bloc5,
+.eliumstudio__bloc6,
+.eliumstudio__bloc7 {
+  margin-top: 5rem; /* 80px */
+}
+
+/* Pleine largeur (Bloc-3) : pas de marge latérale. */
+.eliumstudio__bloc1,
+.eliumstudio__bloc2,
+.eliumstudio__bloc4,
+.eliumstudio__bloc5,
+.eliumstudio__bloc6,
+.eliumstudio__bloc7 {
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.eliumstudio__bloc2,
+.eliumstudio__bloc4,
+.eliumstudio__bloc7 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.eliumstudio__bloc2 img,
+.eliumstudio__bloc3 img,
+.eliumstudio__bloc4 img,
+.eliumstudio__bloc5 img,
+.eliumstudio__bloc6 img,
+.eliumstudio__bloc7 img {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+}
+
+.eliumstudio__bloc2-media--1 img { aspect-ratio: 670 / 1080; }
+.eliumstudio__bloc2-media--2 img { aspect-ratio: 670 / 1422; }
+.eliumstudio__bloc3 img { aspect-ratio: 750 / 1872; }
+.eliumstudio__bloc4-media--1 img { aspect-ratio: 670 / 890; }
+.eliumstudio__bloc4-media--2 img { aspect-ratio: 670 / 466; }
+.eliumstudio__bloc4-media--3 img { aspect-ratio: 670 / 696; }
+.eliumstudio__bloc5 img { aspect-ratio: 670 / 466; }
+.eliumstudio__bloc6 img { aspect-ratio: 670 / 1136; }
+.eliumstudio__bloc7-media--1 img { aspect-ratio: 670 / 1284; }
+.eliumstudio__bloc7-media--2 img { aspect-ratio: 670 / 506; }
+.eliumstudio__bloc7-media--3 img { aspect-ratio: 670 / 1626; }
+.eliumstudio__bloc7-media--4 img { aspect-ratio: 670 / 988; }
+.eliumstudio__bloc7-media--5 img { aspect-ratio: 670 / 756; }
+
+/* Bloc-7 : les colonnes disparaissent en mobile (display: contents) et
+   l'ordre mobile 10, 11, 12, 13, 14 est rétabli avec order. */
+.eliumstudio__bloc7-column {
+  display: contents;
+}
+
+.eliumstudio__bloc7-media--1 { order: 1; }
+.eliumstudio__bloc7-media--2 { order: 2; }
+.eliumstudio__bloc7-media--3 { order: 3; }
+.eliumstudio__bloc7-media--4 { order: 4; }
+.eliumstudio__bloc7-media--5 { order: 5; }
+
+/* ---- Vidéo : cadre gris-bleu (aplat, pas d'image : vrai padding CSS). La
+   vidéo est en 1440×900 (16:10), pas en 16:9 comme le bloc gris de la
+   maquette : elle garde son format natif et occupe toute la largeur utile du
+   cadre (marges de 80px en desktop, 32px en mobile), le cadre grandit donc en
+   hauteur par rapport à la maquette. ---- */
+.eliumstudio__video-card {
+  background: #2d3942;
+  padding: 2rem; /* 32px */
+}
+
+.eliumstudio__video {
+  display: block;
+  width: 100%;
+  /* height:auto impératif : sans ça, l'attribut HTML height="900" prend le
+     dessus sur l'aspect-ratio ci-dessous (voir studioboam.css). */
+  height: auto;
+  aspect-ratio: 1440 / 900; /* format natif de la vidéo, jamais recadré */
+  object-fit: contain; /* jamais de recadrage ni de déformation de la vidéo */
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs —
+   on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .eliumstudio__bloc1,
+  .eliumstudio__bloc2,
+  .eliumstudio__bloc4,
+  .eliumstudio__bloc5,
+  .eliumstudio__bloc6,
+  .eliumstudio__bloc7 {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : chaque <picture> bascule sur le
+   fichier desktop. On recale le ratio de chaque conteneur sur celui de ce
+   fichier, pour ne jamais recadrer l'image avec object-fit: cover.
+   ========================================================================== */
+@media (min-width: 440px) {
+  .eliumstudio__bloc2-media--1 img { aspect-ratio: 2034 / 2990; }
+  .eliumstudio__bloc2-media--2 img { aspect-ratio: 1438 / 2990; }
+  .eliumstudio__bloc3 img { aspect-ratio: 3840 / 2400; }
+  .eliumstudio__bloc4-media--1 img { aspect-ratio: 1736 / 2312; }
+  .eliumstudio__bloc4-media--2 img { aspect-ratio: 1736 / 1206; }
+  .eliumstudio__bloc4-media--3 img { aspect-ratio: 1736 / 1802; }
+  .eliumstudio__bloc5 img { aspect-ratio: 3520 / 2316; }
+  .eliumstudio__bloc6 img { aspect-ratio: 3520 / 5578; }
+  .eliumstudio__bloc7-media--1 img { aspect-ratio: 1438 / 2684; }
+  .eliumstudio__bloc7-media--2 img { aspect-ratio: 2034 / 1492; }
+  .eliumstudio__bloc7-media--3 img { aspect-ratio: 1438 / 3410; }
+  .eliumstudio__bloc7-media--4 img { aspect-ratio: 2034 / 3148; }
+  .eliumstudio__bloc7-media--5 img { aspect-ratio: 2034 / 2296; }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .eliumstudio__text {
+    width: 35.6875rem; /* 571px */
+    flex: none;
+    gap: 2rem; /* 32px */
+  }
+
+  .eliumstudio__paragraph {
+    gap: 1rem; /* 16px */
+    font-size: 16px; /* figé — voir la règle mobile plus haut */
+  }
+
+  /* ---- Blocs : 160px entre blocs, colonne centrée de 1760px ---- */
+  .eliumstudio__bloc1,
+  .eliumstudio__bloc2,
+  .eliumstudio__bloc3,
+  .eliumstudio__bloc4,
+  .eliumstudio__bloc5,
+  .eliumstudio__bloc6,
+  .eliumstudio__bloc7 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  .eliumstudio__bloc1,
+  .eliumstudio__bloc2,
+  .eliumstudio__bloc4,
+  .eliumstudio__bloc5,
+  .eliumstudio__bloc6,
+  .eliumstudio__bloc7 {
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .eliumstudio__video-card {
+    padding: 5rem; /* 80px */
+  }
+
+  /* Bloc-2 : 2 (1017px) et 3 (719px) côte à côte. */
+  .eliumstudio__bloc2 {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .eliumstudio__bloc2-media--1 {
+    flex: none;
+    width: 63.5625rem; /* 1017px */
+  }
+
+  .eliumstudio__bloc2-media--2 {
+    flex: none;
+    width: 44.9375rem; /* 719px */
+  }
+
+  /* Bloc-4 : 5 à gauche (868px), 6 et 7 empilées à droite. */
+  .eliumstudio__bloc4 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem; /* 24px */
+    align-items: start;
+  }
+
+  .eliumstudio__bloc4-media--1 {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .eliumstudio__bloc4-media--2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .eliumstudio__bloc4-media--3 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* Bloc-7 : 2 colonnes indépendantes (719px et 1017px). */
+  .eliumstudio__bloc7 {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .eliumstudio__bloc7-column {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .eliumstudio__bloc7-column:first-child {
+    width: 44.9375rem; /* 719px */
+  }
+
+  .eliumstudio__bloc7-column:last-child {
+    width: 63.5625rem; /* 1017px */
+  }
+
+  .eliumstudio__bloc7-media--1,
+  .eliumstudio__bloc7-media--2,
+  .eliumstudio__bloc7-media--3,
+  .eliumstudio__bloc7-media--4,
+  .eliumstudio__bloc7-media--5 {
+    order: 0;
+  }
+
+}

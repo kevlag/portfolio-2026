@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Typographie — @font-face
+   Seules les graisses utilisées par le site sont déclarées (Haffer XH
+   Medium et Regular). Haffer SQXH sera ajoutée si un bloc l'utilise un jour.
+   ========================================================================== */
+@font-face {
+  font-family: 'Haffer XH';
+  src: url('../../fonts/HafferXH-Medium.woff2') format('woff2'),
+       url('../../fonts/HafferXH-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Haffer XH';
+  src: url('../../fonts/HafferXH-Regular.woff2') format('woff2'),
+       url('../../fonts/HafferXH-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

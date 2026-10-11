@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - Designer-Builder</title>
+  <meta name="description" content="Portfolio de Kevin Lagier, UI Designer freelance. Design Lab, créations IA et présentation." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/project.css" />
+  <link rel="stylesheet" href="css/pages/home.css" />
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 class="hero__title" id="hero-title">
+        <span class="hero__title-line">Designer</span>
+        <span class="hero__title-line"><span class="hero__title-word">Product</span> <span class="hero__title-word">Builder</span></span>
+      </h1>
+
+      <!-- Carrousel (animé par js/carousel.js) : pour ajouter une image, copier
+           un <li> ci-dessous, il suffit. Chaque image est un lien : vers son
+           projet (#project-XX plus bas) si elle en a un, sinon vers "And also"
+           (#mini-projects). -->
+      <div class="hero__carousel">
+        <ul class="hero__carousel-track" role="list" aria-label="Sélection de projets">
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#mini-project-03">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-01.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-01.webp" alt="Voir le projet Schlouk" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#mini-project-05">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-02.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-02.webp" alt="Voir le projet The Way of Water" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#project-07">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-03.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-03.webp" alt="Voir le projet Lacourte Raquin &amp; Associés" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#project-04">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-04.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-04.webp" alt="Voir le projet The story of the king of pop" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#project-06">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-05.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-05.webp" alt="Voir le projet Bobby Buddy" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#project-02">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-06.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-06.webp" alt="Voir le projet TAG Heuer Connected" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#project-03">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-07.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-07.webp" alt="Voir le projet Studio Boam" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#mini-projects">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-09.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-09.webp" alt="Voir plus de projets" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#mini-projects">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-10.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-10.webp" alt="Voir plus de projets" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#project-05">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-11.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-11.webp" alt="Voir le projet Le salon Peugeot" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#mini-project-07">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-12.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-12.webp" alt="Voir le projet Alexandre Pichoux" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#project-08">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-13.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-13.webp" alt="Voir le projet Renault The Originals Store" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        <li class="hero__slide">
+          <a class="hero__slide-link" href="#mini-project-06">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/hero-mobile-14.webp" />
+              <img class="hero__slide-image" src="images/home/hero-desktop-14.webp" alt="Voir le projet Memories Of a Geisha" width="384" height="384" decoding="async" />
+            </picture>
+          </a>
+        </li>
+        </ul>
+      </div>
+
+      <div class="hero__tagline">
+        <div class="hero__freelance">
+          <p class="hero__side hero__side--start">Based <span class="hero__side-line">in Annecy</span></p>
+          <p class="hero__big">Freelance</p>
+          <p class="hero__side hero__side--end">Available <span class="hero__side-line">worldwide.</span></p>
+        </div>
+
+        <p class="hero__services">
+          <span class="hero__paren" aria-hidden="true">(</span>
+          <span class="hero__services-list">Art Direction - UX/UI Design<span class="hero__dash--d"> - </span><br class="hero__br--m" />Visual Identity<span class="hero__dash--m"> - </span><br class="hero__br--d" />Motion Design<span class="hero__dash--d"> - </span><br class="hero__br--m" />AI Visual Creation - Vibe Coding</span>
+          <span class="hero__paren" aria-hidden="true">)</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Projets : pour en ajouter un, copier un bloc <section class="project"> en changeant
+         l'id (project-09...), les textes, les images et le lien "Discover".
+         Chaque <li> porte 2 classes de largeur, d'après la maquette : project__slide--m106
+         (largeur mobile en px) et project__slide--d422 (largeur desktop en px) ; elles sont
+         définies dans css/components/project.css.
+         La rangée d'images défile en boucle quand on arrive au projet (js/slider.js) ; on peut
+         aussi la faire glisser à la souris / au doigt, ou aux flèches du clavier. -->
+    <section class="project" id="project-08" aria-labelledby="project-08-title">
+      <div class="project__top">
+        <h2 class="project__title" id="project-08-title">
+          <span class="project__title-line">Renault</span>
+          <span class="project__title-line">The Originals Store</span>
+        </h2>
+        <p class="project__date"><time datetime="2026-01"><span class="project__date-line">January</span> <span class="project__date-line">2026</span></time></p>
+        <a class="cta" href="theoriginalsstore.html">
+          Discover
+          <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+      </div>
+
+      <div class="project__slider" role="region" aria-label="Images du projet Renault The Originals Store" tabindex="0">
+        <ul class="project__slides" role="list">
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/theoriginalsstore-mobile-01.webp" width="424" height="788" />
+              <img src="images/home/theoriginalsstore-desktop-01.webp" alt="Page d&#x27;accueil de la boutique The Originals Store : bannière « The Originals Store, découvrez les produits dérivés Renault » et catégories" width="1688" height="3144" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/theoriginalsstore-mobile-02.webp" width="424" height="252" />
+              <img src="images/home/theoriginalsstore-desktop-02.webp" alt="The Originals Store : fiche produit du blouson bomber RNLT bleu" width="1688" height="1004" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/theoriginalsstore-mobile-03.webp" width="424" height="584" />
+              <img src="images/home/theoriginalsstore-desktop-03.webp" alt="The Originals Store : panier, collection RNLT et pages de la boutique en version mobile" width="1688" height="2324" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/theoriginalsstore-mobile-04.webp" width="424" height="352" />
+              <img src="images/home/theoriginalsstore-desktop-04.webp" alt="The Originals Store : page de la collection RNLT avec filtres et grille de produits" width="1688" height="1404" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m50 project__slide--d274">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/theoriginalsstore-mobile-05.webp" width="200" height="484" />
+              <img src="images/home/theoriginalsstore-desktop-05.webp" alt="The Originals Store : fiche produit « Veste Bomber RNLT Bleu » en version mobile" width="1096" height="2648" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/theoriginalsstore-mobile-06.webp" width="424" height="260" />
+              <img src="images/home/theoriginalsstore-desktop-06.webp" alt="The Originals Store : grille de produits dérivés Renault (gourde, casquette, t-shirt, blouson)" width="1688" height="1028" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project" id="project-02" aria-labelledby="project-02-title">
+      <div class="project__top">
+        <h2 class="project__title" id="project-02-title">
+          <span class="project__title-line">TAG HEUER</span>
+          <span class="project__title-line">Connected</span>
+        </h2>
+        <p class="project__date"><span class="project__date-line">from 2024</span> <span class="project__date-line">to 2026</span></p>
+        <a class="cta" href="tagheuer.html">
+          Discover
+          <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+      </div>
+
+      <div class="project__slider" role="region" aria-label="Images du projet TAG Heuer Connected" tabindex="0">
+        <ul class="project__slides" role="list">
+          <li class="project__slide project__slide--m192 project__slide--d719">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/tagheuer-mobile-01.webp" width="384" height="216" />
+              <img src="images/home/tagheuer-desktop-01.webp" alt="TAG Heuer Connected : Montre connectée TAG Heuer sur fond noir" width="1438" height="810" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/tagheuer-mobile-02.webp" width="212" height="320" />
+              <img src="images/home/tagheuer-desktop-02.webp" alt="TAG Heuer Connected : Cadran de montre connectée doré" width="844" height="1278" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m50 project__slide--d274 project__slide--stack">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/tagheuer-mobile-03.webp" width="100" height="100" />
+              <img src="images/home/tagheuer-desktop-03.webp" alt="TAG Heuer Connected : Cadran de montre connectée bleu" width="548" height="548" loading="lazy" decoding="async" />
+            </picture>
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/tagheuer-mobile-04.webp" width="100" height="100" />
+              <img src="images/home/tagheuer-desktop-04.webp" alt="TAG Heuer Connected : Cadran de montre connectée vert" width="548" height="548" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m164 project__slide--d570">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/tagheuer-mobile-05.webp" width="328" height="246" />
+              <img src="images/home/tagheuer-desktop-05.webp" alt="TAG Heuer Connected : Écran de la montre : boussole, météo et complications" width="1140" height="856" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m192 project__slide--d719">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/tagheuer-mobile-06.webp" width="384" height="384" />
+              <img src="images/home/tagheuer-desktop-06.webp" alt="TAG Heuer Connected : Cadran de montre connectée bleu à motifs" width="1438" height="1438" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m49 project__slide--d274">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/tagheuer-mobile-07.webp" width="98" height="148" />
+              <img src="images/home/tagheuer-desktop-07.webp" alt="TAG Heuer Connected : Écran de la montre : activité, pas et calories" width="548" height="828" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project" id="project-03" aria-labelledby="project-03-title">
+      <div class="project__top">
+        <h2 class="project__title" id="project-03-title">
+          <span class="project__title-line">Studio</span>
+          <span class="project__title-line">Boam</span>
+        </h2>
+        <p class="project__date"><time datetime="2023-04"><span class="project__date-line">April</span> <span class="project__date-line">2023</span></time></p>
+        <a class="cta" href="studioboam.html">
+          Discover
+          <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+      </div>
+
+      <div class="project__slider" role="region" aria-label="Images du projet Studio Boam" tabindex="0">
+        <ul class="project__slides" role="list">
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/studioboam-mobile-01.webp" width="212" height="310" />
+              <img src="images/home/studioboam-desktop-01.webp" alt="Studio Boam : Page du site avec une scène conviviale autour d&#x27;un verre" width="844" height="1234" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m50 project__slide--d274">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/studioboam-mobile-02.webp" width="100" height="100" />
+              <img src="images/home/studioboam-desktop-02.webp" alt="Studio Boam : Photographie d&#x27;une main tenant une bouteille, à côté de gingembre" width="548" height="548" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/studioboam-mobile-03.webp" width="212" height="344" />
+              <img src="images/home/studioboam-desktop-03.webp" alt="Studio Boam : Page du site à l&#x27;ambiance sombre et orangée" width="844" height="1372" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/studioboam-mobile-04.webp" width="212" height="176" />
+              <img src="images/home/studioboam-desktop-04.webp" alt="Studio Boam : Page du site « Our relationship »" width="844" height="703" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m192 project__slide--d719">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/studioboam-mobile-05.webp" width="384" height="216" />
+              <img src="images/home/studioboam-desktop-05.webp" alt="Studio Boam : Page du site consacrée à un gin, sur fond noir" width="1438" height="810" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m164 project__slide--d570">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/studioboam-mobile-06.webp" width="328" height="362" />
+              <img src="images/home/studioboam-desktop-06.webp" alt="Studio Boam : Page du site avec un verre d&#x27;agrumes" width="1140" height="1256" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project" id="project-04" aria-labelledby="project-04-title">
+      <div class="project__top">
+        <h2 class="project__title" id="project-04-title">
+          <span class="project__title-line">The story of</span>
+          <span class="project__title-line">the king of pop</span>
+        </h2>
+        <p class="project__date"><time datetime="2023-12"><span class="project__date-line">December</span> <span class="project__date-line">2023</span></time></p>
+        <a class="cta" href="michaeljackson.html">
+          Discover
+          <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+      </div>
+
+      <div class="project__slider" role="region" aria-label="Images du projet The story of the king of pop" tabindex="0">
+        <ul class="project__slides" role="list">
+          <li class="project__slide project__slide--m192 project__slide--d719">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/kingofpop-mobile-01.webp" width="384" height="278" />
+              <img src="images/home/kingofpop-desktop-01.webp" alt="The story of the king of pop : Page d&#x27;accueil « Michael Jackson »" width="1438" height="1042" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/kingofpop-mobile-02.webp" width="212" height="120" />
+              <img src="images/home/kingofpop-desktop-02.webp" alt="The story of the king of pop : Page sur fond rouge avec un portrait de Michael Jackson en costume" width="844" height="474" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/kingofpop-mobile-03.webp" width="212" height="224" />
+              <img src="images/home/kingofpop-desktop-03.webp" alt="The story of the king of pop : Pages de magazine sur fond noir, en version mobile" width="844" height="892" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m50 project__slide--d274 project__slide--stack">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/kingofpop-mobile-04.webp" width="100" height="116" />
+              <img src="images/home/kingofpop-desktop-04.webp" alt="The story of the king of pop : Page « I&#x27;m tired of injustice »" width="548" height="636" loading="lazy" decoding="async" />
+            </picture>
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/kingofpop-mobile-05.webp" width="100" height="116" />
+              <img src="images/home/kingofpop-desktop-05.webp" alt="The story of the king of pop : Page « Michael Jackson died on June 25 at the age of 50 »" width="548" height="638" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422 project__slide--stack">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/kingofpop-mobile-06.webp" width="212" height="120" />
+              <img src="images/home/kingofpop-desktop-06.webp" alt="The story of the king of pop : Page « Thriller (album) »" width="844" height="474" loading="lazy" decoding="async" />
+            </picture>
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/kingofpop-mobile-07.webp" width="212" height="120" />
+              <img src="images/home/kingofpop-desktop-07.webp" alt="The story of the king of pop : Page « Bad »" width="844" height="474" loading="lazy" decoding="async" />
+            </picture>
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/kingofpop-mobile-08.webp" width="212" height="120" />
+              <img src="images/home/kingofpop-desktop-08.webp" alt="The story of the king of pop : Page « Dangerous »" width="844" height="474" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/kingofpop-mobile-09.webp" width="212" height="194" />
+              <img src="images/home/kingofpop-desktop-09.webp" alt="The story of the king of pop : Page « Presley » en collage rose" width="844" height="770" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project" id="project-05" aria-labelledby="project-05-title">
+      <div class="project__top">
+        <h2 class="project__title" id="project-05-title">
+          <span class="project__title-line">LE salon</span>
+          <span class="project__title-line">Peugeot</span>
+        </h2>
+        <p class="project__date"><time datetime="2022-08"><span class="project__date-line">August</span> <span class="project__date-line">2022</span></time></p>
+        <a class="cta" href="peugeot.html">
+          Discover
+          <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+      </div>
+
+      <div class="project__slider" role="region" aria-label="Images du projet Le salon Peugeot" tabindex="0">
+        <ul class="project__slides" role="list">
+          <li class="project__slide project__slide--m50 project__slide--d274">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/peugeot-mobile-01.webp" width="100" height="216" />
+              <img src="images/home/peugeot-desktop-01.webp" alt="Le salon Peugeot : Écran bleu avec une voiture et des cercles graphiques" width="548" height="1186" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m192 project__slide--d719">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/peugeot-mobile-02.webp" width="384" height="438" />
+              <img src="images/home/peugeot-desktop-02.webp" alt="Le salon Peugeot : Pages « Technology » sur la voiture électrique" width="1438" height="1644" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m192 project__slide--d719">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/peugeot-mobile-03.webp" width="384" height="216" />
+              <img src="images/home/peugeot-desktop-03.webp" alt="Le salon Peugeot : Mosaïque d&#x27;écrans de l&#x27;application du salon" width="1438" height="808" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/peugeot-mobile-04.webp" width="212" height="388" />
+              <img src="images/home/peugeot-desktop-04.webp" alt="Le salon Peugeot : Écrans de l&#x27;application avec un homme en veste jaune" width="844" height="1542" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/peugeot-mobile-05.webp" width="212" height="460" />
+              <img src="images/home/peugeot-desktop-05.webp" alt="Le salon Peugeot : Voiture de course verte sur fond vert" width="844" height="1828" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/peugeot-mobile-06.webp" width="212" height="120" />
+              <img src="images/home/peugeot-desktop-06.webp" alt="Le salon Peugeot : Quatre écrans de l&#x27;application en tons bleus" width="844" height="474" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project" id="project-06" aria-labelledby="project-06-title">
+      <div class="project__top">
+        <h2 class="project__title" id="project-06-title">
+          <span class="project__title-line">Bobby</span>
+          <span class="project__title-line">Buddy</span>
+        </h2>
+        <p class="project__date"><time datetime="2021-04"><span class="project__date-line">April</span> <span class="project__date-line">2021</span></time></p>
+        <a class="cta" href="bobbybuddy.html">
+          Discover
+          <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+      </div>
+
+      <div class="project__slider" role="region" aria-label="Images du projet Bobby Buddy" tabindex="0">
+        <ul class="project__slides" role="list">
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/bobbybuddy-mobile-01.webp" width="212" height="240" />
+              <img src="images/home/bobbybuddy-desktop-01.webp" alt="Bobby Buddy : Page d&#x27;accueil « Always creating » avec un portrait" width="844" height="952" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m50 project__slide--d274">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/bobbybuddy-mobile-02.webp" width="100" height="56" />
+              <img src="images/home/bobbybuddy-desktop-02.webp" alt="Bobby Buddy : Photographie de deux enfants allongés" width="548" height="308" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m50 project__slide--d274 project__slide--stack">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/bobbybuddy-mobile-03.webp" width="100" height="64" />
+              <img src="images/home/bobbybuddy-desktop-03.webp" alt="Bobby Buddy : Page « Always creating » avec des photos type polaroïd" width="548" height="352" loading="lazy" decoding="async" />
+            </picture>
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/bobbybuddy-mobile-04.webp" width="100" height="64" />
+              <img src="images/home/bobbybuddy-desktop-04.webp" alt="Bobby Buddy : Page avec de nombreuses photos éparpillées" width="548" height="352" loading="lazy" decoding="async" />
+            </picture>
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/bobbybuddy-mobile-05.webp" width="100" height="64" />
+              <img src="images/home/bobbybuddy-desktop-05.webp" alt="Bobby Buddy : Page avec le portrait encadré d&#x27;un garçon" width="548" height="352" loading="lazy" decoding="async" />
+            </picture>
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/bobbybuddy-mobile-06.webp" width="100" height="64" />
+              <img src="images/home/bobbybuddy-desktop-06.webp" alt="Bobby Buddy : Page avec une grille de portraits" width="548" height="352" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m192 project__slide--d719">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/bobbybuddy-mobile-07.webp" width="384" height="216" />
+              <img src="images/home/bobbybuddy-desktop-07.webp" alt="Bobby Buddy : Page « Always creating » avec un grand portrait" width="1438" height="810" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/bobbybuddy-mobile-08.webp" width="212" height="270" />
+              <img src="images/home/bobbybuddy-desktop-08.webp" alt="Bobby Buddy : Page avec un cercle de couleurs et des photos" width="844" height="1072" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/bobbybuddy-mobile-09.webp" width="212" height="210" />
+              <img src="images/home/bobbybuddy-desktop-09.webp" alt="Bobby Buddy : Page avec une grille de chiffres et de photos" width="844" height="838" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project" id="project-07" aria-labelledby="project-07-title">
+      <div class="project__top">
+        <h2 class="project__title" id="project-07-title">
+          <span class="project__title-line">Lacourte</span>
+          <span class="project__title-line">Raquin &amp; Associés</span>
+        </h2>
+        <p class="project__date"><time datetime="2021-07"><span class="project__date-line">July</span> <span class="project__date-line">2021</span></time></p>
+        <a class="cta" href="lacourte.html">
+          Discover
+          <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </a>
+      </div>
+
+      <div class="project__slider" role="region" aria-label="Images du projet Lacourte Raquin &amp; Associés" tabindex="0">
+        <ul class="project__slides" role="list">
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/lacourte-mobile-01.webp" width="212" height="120" />
+              <img src="images/home/lacourte-desktop-01.webp" alt="Lacourte Raquin &amp; Associés : Page « 643 » présentant le cabinet" width="844" height="474" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/lacourte-mobile-02.webp" width="212" height="294" />
+              <img src="images/home/lacourte-desktop-02.webp" alt="Lacourte Raquin &amp; Associés : Page « Un collectif engagé » avec l&#x27;équipe" width="844" height="1172" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m164 project__slide--d570">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/lacourte-mobile-03.webp" width="328" height="198" />
+              <img src="images/home/lacourte-desktop-03.webp" alt="Lacourte Raquin &amp; Associés : Page « Découvrez notre équipe »" width="1140" height="686" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m106 project__slide--d422">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/lacourte-mobile-04.webp" width="212" height="310" />
+              <img src="images/home/lacourte-desktop-04.webp" alt="Lacourte Raquin &amp; Associés : Page avec une vue aérienne et du texte" width="844" height="1232" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m50 project__slide--d274">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/lacourte-mobile-05.webp" width="100" height="284" />
+              <img src="images/home/lacourte-desktop-05.webp" alt="Lacourte Raquin &amp; Associés : Page « 1995 »" width="548" height="1552" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+          <li class="project__slide project__slide--m50 project__slide--d274">
+            <picture>
+              <source media="(max-width: 1024px)" srcset="images/home/lacourte-mobile-06.webp" width="100" height="150" />
+              <img src="images/home/lacourte-desktop-06.webp" alt="Lacourte Raquin &amp; Associés : Page « Opérations immobilières »" width="548" height="820" loading="lazy" decoding="async" />
+            </picture>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projets supplémentaires, en format réduit : 2 colonnes en desktop
+         (Power Z + Elium Studio, Schlouk + MindGames, The Way of Water + Memories
+         of a Geisha, puis Alexandre Pichoux seul), empilés en mobile. Pour en
+         ajouter un : copier un bloc .mini-project en changeant l'id
+         (mini-project-08...), les textes, les images et le lien "Discover".
+         Rangées d'images STATIQUES (pas de défilement, pas de js/slider.js),
+         mais RESPONSIVES : chaque image grandit/rétrécit avec l'espace
+         disponible (--grow-m/--grow-d, poids proportionnel à sa largeur
+         cible dans la maquette) en gardant ses proportions exactes
+         (--ar-m/--ar-d, aspect-ratio) — contrairement à .project__slider
+         (rangée pensée pour déborder/défiler), cette rangée doit toujours
+         tenir pile dans la largeur de son bloc, jamais de scroll horizontal. -->
+    <section class="project mini-projects" id="mini-projects" aria-label="Autres projets">
+      <div class="mini-project" aria-labelledby="mini-project-01-title">
+        <div class="mini-project__top">
+          <h2 class="mini-project__title" id="mini-project-01-title">Power Z</h2>
+          <p class="project__date"><time datetime="2021-01">January 2021</time></p>
+          <a class="cta" href="powerz.html">
+            Discover
+            <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+            <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          </a>
+        </div>
+        <div class="mini-project__images">
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/112; --grow-d:269; --ar-d:269/284;">
+            <source media="(max-width: 440px)" srcset="images/home/powerz-mobile-01.webp" width="212" height="224" />
+            <img src="images/home/powerz-desktop-01.webp" alt="Power Z : écrans de l'application, le personnage Pierre et son dragon" width="538" height="568" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:107; --ar-m:107/60; --grow-d:270; --ar-d:270/152;">
+            <source media="(max-width: 440px)" srcset="images/home/powerz-mobile-02.webp" width="214" height="120" />
+            <img src="images/home/powerz-desktop-02.webp" alt="Power Z : page du site « La première Pierre »" width="540" height="304" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/146; --grow-d:269; --ar-d:269/367;">
+            <source media="(max-width: 440px)" srcset="images/home/powerz-mobile-03.webp" width="212" height="292" />
+            <img src="images/home/powerz-desktop-03.webp" alt="Power Z : article de blog « Nous allons construire PowerZ avec vous »" width="538" height="734" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+
+      <div class="mini-project" aria-labelledby="mini-project-02-title">
+        <div class="mini-project__top">
+          <h2 class="mini-project__title" id="mini-project-02-title">Elium Studio</h2>
+          <p class="project__date"><time datetime="2019-02">February 2019</time></p>
+          <a class="cta" href="eliumstudio.html">
+            Discover
+            <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+            <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          </a>
+        </div>
+        <div class="mini-project__images">
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/139; --grow-d:269; --ar-d:269/352;">
+            <source media="(max-width: 440px)" srcset="images/home/eliumstudio-mobile-01.webp" width="212" height="278" />
+            <img src="images/home/eliumstudio-desktop-01.webp" alt="Elium Studio : page projet « Dio Eyes », casque de réalité virtuelle Dior" width="538" height="704" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:107; --ar-m:107/65; --grow-d:270; --ar-d:270/165;">
+            <source media="(max-width: 440px)" srcset="images/home/eliumstudio-mobile-02.webp" width="214" height="130" />
+            <img src="images/home/eliumstudio-desktop-02.webp" alt="Elium Studio : pages projets « Steel HR » et « My Lifi »" width="540" height="330" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/194; --grow-d:269; --ar-d:269/491;">
+            <source media="(max-width: 440px)" srcset="images/home/eliumstudio-mobile-03.webp" width="212" height="388" />
+            <img src="images/home/eliumstudio-desktop-03.webp" alt="Elium Studio : pages du site, montre connectée et présentation du studio" width="538" height="982" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+
+      <div class="mini-project" id="mini-project-03" aria-labelledby="mini-project-03-title">
+        <div class="mini-project__top">
+          <h2 class="mini-project__title" id="mini-project-03-title">Schlouk</h2>
+          <p class="project__date"><time datetime="2020-11">November 2020</time></p>
+          <a class="cta" href="schlouk.html">
+            Discover
+            <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+            <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          </a>
+        </div>
+        <div class="mini-project__images">
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/59; --grow-d:270; --ar-d:270/151;">
+            <source media="(max-width: 440px)" srcset="images/home/schlouk-mobile-01.webp" width="212" height="118" />
+            <img src="images/home/schlouk-desktop-01.webp" alt="Schlouk : écrans de l'application Schlouk Map" width="540" height="302" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:107; --ar-m:107/143; --grow-d:269; --ar-d:269/358;">
+            <source media="(max-width: 440px)" srcset="images/home/schlouk-mobile-02.webp" width="214" height="286" />
+            <img src="images/home/schlouk-desktop-02.webp" alt="Schlouk : écrans d'inscription et de préférences de l'application" width="538" height="716" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/105; --grow-d:269; --ar-d:269/266;">
+            <source media="(max-width: 440px)" srcset="images/home/schlouk-mobile-03.webp" width="212" height="210" />
+            <img src="images/home/schlouk-desktop-03.webp" alt="Schlouk : écrans de profil et de fiche bar de l'application" width="538" height="532" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+
+      <div class="mini-project" aria-labelledby="mini-project-04-title">
+        <div class="mini-project__top">
+          <h2 class="mini-project__title" id="mini-project-04-title">MindGames</h2>
+          <p class="project__date"><time datetime="2018-02">February 2018</time></p>
+          <a class="cta" href="mindgames.html">
+            Discover
+            <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+            <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          </a>
+        </div>
+        <!-- Composition différente des 3 autres : 2 colonnes de vignettes
+             empilées, puis 1 grande image large. Les vignettes d'une même
+             colonne (--stacked) ne partagent pas d'espace horizontal entre
+             elles : seule la colonne grandit/rétrécit (--grow-m/--grow-d),
+             elles remplissent juste sa largeur. -->
+        <div class="mini-project__images mini-project__images--stacked">
+          <div class="mini-project__image-col" style="--grow-m:78; --grow-d:198;">
+            <picture class="mini-project__image--stacked" style="--ar-m:78/50; --ar-d:198/127;">
+              <source media="(max-width: 440px)" srcset="images/home/mindgames-mobile-01.webp" width="156" height="100" />
+              <img src="images/home/mindgames-desktop-01.webp" alt="MindGames : illustration de personnage, guerrier dans une forêt" width="396" height="254" loading="lazy" decoding="async" />
+            </picture>
+            <picture class="mini-project__image--stacked" style="--ar-m:78/50; --ar-d:198/127;">
+              <source media="(max-width: 440px)" srcset="images/home/mindgames-mobile-02.webp" width="156" height="100" />
+              <img src="images/home/mindgames-desktop-02.webp" alt="MindGames : illustration de personnage" width="396" height="254" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <div class="mini-project__image-col" style="--grow-m:78; --grow-d:198;">
+            <picture class="mini-project__image--stacked" style="--ar-m:78/50; --ar-d:198/127;">
+              <source media="(max-width: 440px)" srcset="images/home/mindgames-mobile-03.webp" width="156" height="100" />
+              <img src="images/home/mindgames-desktop-03.webp" alt="MindGames : illustration de personnage" width="396" height="254" loading="lazy" decoding="async" />
+            </picture>
+            <picture class="mini-project__image--stacked" style="--ar-m:78/50; --ar-d:198/127;">
+              <source media="(max-width: 440px)" srcset="images/home/mindgames-mobile-04.webp" width="156" height="100" />
+              <img src="images/home/mindgames-desktop-04.webp" alt="MindGames : illustration de personnage" width="396" height="254" loading="lazy" decoding="async" />
+            </picture>
+            <picture class="mini-project__image--stacked" style="--ar-m:78/50; --ar-d:198/127;">
+              <source media="(max-width: 440px)" srcset="images/home/mindgames-mobile-05.webp" width="156" height="100" />
+              <img src="images/home/mindgames-desktop-05.webp" alt="MindGames : illustration de personnage" width="396" height="254" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+          <picture class="mini-project__image" style="--grow-m:163; --ar-m:163/92; --grow-d:412; --ar-d:412/232;">
+            <source media="(max-width: 440px)" srcset="images/home/mindgames-mobile-06.webp" width="326" height="184" />
+            <img src="images/home/mindgames-desktop-06.webp" alt="MindGames : galerie de personnages illustrés du jeu" width="824" height="464" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+
+      <div class="mini-project" id="mini-project-05" aria-labelledby="mini-project-05-title">
+        <div class="mini-project__top">
+          <h2 class="mini-project__title" id="mini-project-05-title">The Way of Water</h2>
+          <p class="project__date"><time datetime="2022-12">December 2022</time></p>
+          <a class="cta" href="thewayofwater.html">
+            Discover
+            <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+            <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          </a>
+        </div>
+        <div class="mini-project__images">
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/106; --grow-d:269; --ar-d:269/269;">
+            <source media="(max-width: 440px)" srcset="images/home/thewayofwater-mobile-01.webp" width="212" height="212" />
+            <img src="images/home/thewayofwater-desktop-01.webp" alt="The Way of Water : pages « Jake Sully » et « Ney&#x27;tiri Dis&#x27;kahan » du site" width="538" height="538" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:107; --ar-m:107/138; --grow-d:269; --ar-d:269/347;">
+            <source media="(max-width: 440px)" srcset="images/home/thewayofwater-mobile-02.webp" width="214" height="276" />
+            <img src="images/home/thewayofwater-desktop-02.webp" alt="The Way of Water : synopsis du film, distribution et écrans du site en version mobile" width="538" height="694" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/59; --grow-d:270; --ar-d:270/150;">
+            <source media="(max-width: 440px)" srcset="images/home/thewayofwater-mobile-03.webp" width="212" height="118" />
+            <img src="images/home/thewayofwater-desktop-03.webp" alt="The Way of Water : mosaïque de pages du site autour du titre « The Way of Water »" width="540" height="300" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+
+      <div class="mini-project" id="mini-project-06" aria-labelledby="mini-project-06-title">
+        <div class="mini-project__top">
+          <h2 class="mini-project__title" id="mini-project-06-title">Memories Of a Geysha</h2>
+          <p class="project__date"><time datetime="2020-04">April 2020</time></p>
+          <a class="cta" href="memoriesofageisha.html">
+            Discover
+            <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+            <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          </a>
+        </div>
+        <div class="mini-project__images">
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/59; --grow-d:270; --ar-d:270/151;">
+            <source media="(max-width: 440px)" srcset="images/home/geisha-mobile-01.webp" width="212" height="118" />
+            <img src="images/home/geisha-desktop-01.webp" alt="Memories Of a Geisha : page d&#x27;accueil du site, une geisha de profil devant son éventail" width="540" height="302" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:107; --ar-m:107/205; --grow-d:269; --ar-d:269/516;">
+            <source media="(max-width: 440px)" srcset="images/home/geisha-mobile-02.webp" width="214" height="410" />
+            <img src="images/home/geisha-desktop-02.webp" alt="Memories Of a Geisha : pages « Geisha of Kyoto » et présentation du roman" width="538" height="1032" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/71; --grow-d:270; --ar-d:270/180;">
+            <source media="(max-width: 440px)" srcset="images/home/geisha-mobile-03.webp" width="212" height="142" />
+            <img src="images/home/geisha-desktop-03.webp" alt="Memories Of a Geisha : page rouge du site" width="540" height="360" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+
+      <div class="mini-project" id="mini-project-07" aria-labelledby="mini-project-07-title">
+        <div class="mini-project__top">
+          <h2 class="mini-project__title" id="mini-project-07-title">Alexandre Pichoux</h2>
+          <p class="project__date"><time datetime="2021-09">September 2021</time></p>
+          <a class="cta" href="alexandrepichoux.html">
+            Discover
+            <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+            <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          </a>
+        </div>
+        <div class="mini-project__images">
+          <picture class="mini-project__image" style="--grow-m:107; --ar-m:107/60; --grow-d:270; --ar-d:270/152;">
+            <source media="(max-width: 440px)" srcset="images/home/alexandrepichoux-mobile-01.webp" width="214" height="120" />
+            <img src="images/home/alexandrepichoux-desktop-01.webp" alt="Alexandre Pichoux : mosaïque inclinée de pages du site de la maison de coiffure" width="540" height="304" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/203; --grow-d:269; --ar-d:269/516;">
+            <source media="(max-width: 440px)" srcset="images/home/alexandrepichoux-mobile-02.webp" width="212" height="406" />
+            <img src="images/home/alexandrepichoux-desktop-02.webp" alt="Alexandre Pichoux : pages « Maison de coiffure dédiée au bien-être et au sur-mesure », logo et portrait" width="538" height="1032" loading="lazy" decoding="async" />
+          </picture>
+          <picture class="mini-project__image" style="--grow-m:106; --ar-m:106/139; --grow-d:269; --ar-d:269/353;">
+            <source media="(max-width: 440px)" srcset="images/home/alexandrepichoux-mobile-03.webp" width="212" height="278" />
+            <img src="images/home/alexandrepichoux-desktop-03.webp" alt="Alexandre Pichoux : page d&#x27;accueil et page de présentation du salon" width="538" height="706" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- Appel à l'action de fin de page : mène vers le même contact que le
+         header et le footer (pas de page de contact dédiée pour l'instant). -->
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/marquee.js" defer></script>
+  <script src="js/carousel.js" defer></script>
+  <script src="js/slider.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

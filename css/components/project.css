@@ -1,0 +1,401 @@
+/* ==========================================================================
+   Projet (liste des projets de la Home) — composant réutilisable
+
+   Comme le Hero, ce bloc suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la maquette
+   375px en mobile), donc il garde les mêmes proportions quelle que soit la
+   largeur d'écran. Les marges extérieures (80px desktop / 20px mobile) sont
+   les mêmes que celles du header et du footer.
+
+   EXCEPTION : la date (.project__date) et le bouton "Discover" (.cta,
+   flèche comprise) gardent des tailles FIGÉES en px, comme le header et le
+   footer : police, dimensions, bordure, rayon et marges internes ne changent
+   pas avec la largeur d'écran. Ne pas les convertir en rem.
+
+   Structure :
+   - .project__top    : titre + date + bouton "Discover"
+   - .project__slider : rangée d'images qui déborde à droite de l'écran
+                        (défile en boucle quand on arrive au projet, ou se fait glisser : js/slider.js)
+   ========================================================================== */
+
+.project {
+  /* Écart avec le bloc précédent : 80px de la maquette mobile. */
+  margin-top: 5rem; /* 80px */
+  /* Quand un lien mène à ce projet (#project-XX), on laisse la place du header fixe. */
+  scroll-margin-top: calc(var(--header-height, 0px) + 2rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+/* ---- Haut : titre, date, bouton ----
+   Mobile  : titre en haut, puis date à gauche et bouton à droite.
+   Desktop : titre | date | (espace) | bouton, alignés sur la dernière ligne. */
+.project__top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  row-gap: 1rem; /* 16px */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.project__title {
+  grid-column: 1 / -1;
+  font-weight: 500;
+  font-size: 1.5rem; /* 24px */
+  line-height: 1;
+}
+
+.project__title-line,
+.project__date-line {
+  display: block;
+}
+
+.project__date {
+  font-size: 12px; /* figé */
+  line-height: 13px; /* figé : 2 lignes = 26px, comme la maquette */
+}
+
+/* ---- Rangée d'images ---- */
+.project__slider {
+  /* Marge à gauche de la 1re image et vitesse de défilement (lues par js/slider.js). */
+  --slider-margin: 1.25rem; /* 20px */
+  --slider-speed: 1.4rem; /* ≈ 22px par seconde @375 */
+  margin-top: 1.75rem; /* 28px */
+  /* Sans JavaScript : défilement horizontal natif, sans barre visible.
+     Avec JavaScript (classe .is-active, voir plus bas) : c'est le moteur
+     js/marquee.js qui fait défiler la rangée. */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.project__slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Rangée animée : on coupe le défilement natif (donc pas de défilement
+   horizontal au trackpad ni à la molette). touch-action: pan-y laisse le scroll
+   vertical de la page possible au doigt. */
+.project__slider.is-active {
+  overflow: hidden;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.project__slider.is-active .project__slides {
+  padding-inline: 0; /* la marge de départ est gérée par le script */
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project__slider.is-active {
+    cursor: grab;
+  }
+
+  .project__slider.is-dragging {
+    cursor: grabbing;
+  }
+}
+
+.project__slides {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem; /* 8px */
+  width: max-content;
+  /* Sans JavaScript : la 1re image démarre à la marge de la page, et la
+     dernière garde la même marge à droite au bout du défilement natif. */
+  padding-inline: var(--slider-margin);
+}
+
+/* Largeur d'une image : celle de la maquette, en mobile (--w-m) ou en desktop
+   (--w-d). Chaque <li> porte deux classes de largeur, nommées d'après les px de
+   la maquette : .project__slide--m106 (mobile) et .project__slide--d422
+   (desktop), définies plus bas. La hauteur suit les proportions du fichier. */
+.project__slide {
+  flex: none;
+  width: var(--w-m);
+  --press-scale: var(--p-m);
+}
+
+.project__slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-user-drag: none;
+  /* Les images rétrécissent vers le HAUT (bord supérieur immobile) : elles
+     restent alignées en haut de la rangée. */
+  transform-origin: 50% 0;
+  /* Retour à la taille normale au relâchement : plus lent que l'appui, avec une
+     courbe très douce (démarre vite, finit en douceur). */
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* ---- Effet d'appui ----
+   Quand on clique, maintient ou fait glisser la rangée (classe .is-pressed
+   posée par js/marquee.js), les images rétrécissent légèrement : l'écart entre
+   elles augmente des 2/3 de l'écart normal (+16px en desktop), comme si on
+   appuyait dessus. Chaque image a son propre coefficient (--press-scale) car
+   leurs largeurs diffèrent : coefficient = 1 - 16px / largeur de l'image. */
+.project__slider.is-pressed .project__slide img {
+  transform: scale(var(--press-scale, 0.97));
+  transition-duration: 0.45s;
+}
+
+/* Largeurs mobile (px de la maquette 375px) et coefficients d'appui associés :
+   coefficient = 1 - 5.3px / largeur (l'écart de 8px augmente de ≈ 5.3px). */
+.project__slide--m49 { --w-m: 3.0625rem; --p-m: 0.891; }
+.project__slide--m50 { --w-m: 3.125rem; --p-m: 0.893; }
+.project__slide--m106 { --w-m: 6.625rem; --p-m: 0.95; }
+.project__slide--m164 { --w-m: 10.25rem; --p-m: 0.967; }
+.project__slide--m192 { --w-m: 12rem; --p-m: 0.972; }
+
+/* Largeurs desktop (px de la maquette 1920px) et coefficients d'appui associés :
+   coefficient = 1 - 16px / largeur (l'écart de 24px augmente de 16px). */
+.project__slide--d274 { --w-d: 17.125rem; --p-d: 0.942; }
+.project__slide--d422 { --w-d: 26.375rem; --p-d: 0.962; }
+.project__slide--d570 { --w-d: 35.625rem; --p-d: 0.972; }
+.project__slide--d719 { --w-d: 44.9375rem; --p-d: 0.978; }
+
+/* Colonne de plusieurs images l'une sur l'autre (dans un même <li>) : 8px entre
+   elles en mobile, 24px en desktop. */
+.project__slide--stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   La marge extérieure fluide (20px @375) plafonne vers 27px sur cette plage :
+   trop juste. On la fixe à 40px minimum, comme les autres pages.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .project__top {
+    padding-inline: 40px;
+  }
+
+  .project__slider {
+    --slider-margin: 40px;
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .project {
+    margin-top: 10rem; /* 160px */
+  }
+
+  .project__top {
+    grid-template-columns: 35.6875rem 7.75rem 1fr auto; /* titre 571 | date 124 | vide | bouton */
+    column-gap: 1.5rem; /* 24px */
+    row-gap: 0;
+    padding-inline: 5rem; /* fluide — 80px @1920 */
+  }
+
+  .project__title {
+    grid-column: auto;
+    font-size: 2.5rem; /* 40px */
+  }
+
+  .project__date {
+    font-size: 14px;
+    line-height: 15px; /* 2 lignes = 30px, comme la maquette */
+  }
+
+  .project__top .cta {
+    grid-column: 4; /* 4e colonne : calé à droite */
+  }
+
+  .project__slider {
+    --slider-margin: 5rem; /* 80px */
+    --slider-speed: 2.7rem; /* ≈ 43px par seconde @1920 */
+    margin-top: 3rem; /* 48px */
+  }
+
+  .project__slides {
+    gap: 1.5rem; /* 24px */
+  }
+
+  .project__slide {
+    width: var(--w-d);
+    --press-scale: var(--p-d);
+  }
+
+  .project__slide--stack {
+    gap: 1.5rem; /* 24px */
+  }
+}
+
+/* ==========================================================================
+   Projets en format réduit (Power Z, Elium Studio, Schlouk, MindGames, The Way of
+   Water, Memories of a Geisha, Alexandre Pichoux) —
+   même composant .project pour la marge extérieure (margin-top / scroll-
+   margin-top / couleur), mais en grille 2 colonnes en desktop plutôt qu'une
+   rangée pleine largeur, et sans défilement (rangées d'images statiques).
+
+   Les images ne sont PAS en taille figée (contrairement à .project__slide,
+   pensé pour une rangée qui déborde/défile) : ici la rangée doit toujours
+   tenir exactement dans la largeur disponible, sans jamais créer de scroll
+   horizontal. Chaque image grandit/rétrécit proportionnellement aux autres
+   de sa rangée (flex-grow réglé sur la largeur cible de la maquette, posée
+   en variable --grow-m/--grow-d dans le style inline du HTML) tout en
+   gardant ses proportions exactes (aspect-ratio, --ar-m/--ar-d) : la hauteur
+   suit automatiquement. */
+.mini-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* 48px */
+  padding-inline: 1.25rem; /* fluide — 20px @375, même marge que .project__top */
+}
+
+.mini-project {
+  /* Lien depuis le hero (#mini-project-XX) : on laisse la place du header fixe. */
+  scroll-margin-top: calc(var(--header-height, 0px) + 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* 20px */
+  min-width: 0; /* laisse la rangée d'images rétrécir sous sa taille de contenu */
+}
+
+/* Titre / date / bouton : grille pour pouvoir réarranger les 3 blocs entre
+   mobile (titre seul, puis date + bouton) et desktop (titre + date empilés,
+   bouton calé à droite) sans dupliquer le HTML. */
+.mini-project__top {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: 'title title' 'date cta';
+  row-gap: 0.5rem; /* 8px */
+}
+
+.mini-project__title {
+  grid-area: title;
+  font-weight: 500;
+  font-size: 20px; /* figé, comme .project__title */
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.mini-project__top .project__date {
+  grid-area: date;
+  align-self: end;
+}
+
+.mini-project__top .cta {
+  grid-area: cta;
+}
+
+.mini-project__images {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem; /* 8px */
+}
+
+/* Rangée du haut (les 3 images de Power Z/Elium Studio/Schlouk, ou les 2
+   colonnes + la grande image de MindGames) : grandit/rétrécit selon le poids
+   --grow-m, sans jamais dépasser la largeur disponible. */
+.mini-project__image {
+  flex-grow: var(--grow-m);
+  flex-shrink: 1;
+  flex-basis: 0;
+  min-width: 0;
+  display: block;
+  aspect-ratio: var(--ar-m);
+}
+
+.mini-project__image img,
+.mini-project__image--stacked img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* MindGames : 2 colonnes de vignettes empilées avant la grande image large —
+   la colonne elle-même suit le même principe (--grow-m/--grow-d), les
+   vignettes à l'intérieur remplissent juste sa largeur (empilées, pas de
+   partage horizontal entre elles). */
+.mini-project__image-col {
+  flex-grow: var(--grow-m);
+  flex-shrink: 1;
+  flex-basis: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem; /* 8px */
+}
+
+.mini-project__image--stacked {
+  flex: none;
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--ar-m);
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .mini-projects {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .mini-projects {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); /* minmax(0, …) : les colonnes doivent pouvoir rétrécir sous la taille de leur contenu, sinon la grille déborde (scroll horizontal) */
+    column-gap: 5rem; /* fluide — 80px @1920 (1760px de contenu - 2×840px de colonne) */
+    row-gap: 10rem; /* 160px, même rythme que le reste des projets */
+    padding-inline: 5rem; /* fluide — 80px @1920 */
+  }
+
+  .mini-project {
+    gap: 2.5rem; /* 40px */
+  }
+
+  .mini-project__top {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 'title cta' 'date cta';
+    column-gap: 1.5rem; /* 24px */
+  }
+
+  .mini-project__title {
+    font-size: 32px; /* figé, comme .project__title */
+  }
+
+  .mini-project__top .project__date {
+    align-self: auto;
+  }
+
+  .mini-project__top .cta {
+    align-self: end;
+    grid-row: 1 / 3;
+  }
+
+  .mini-project__images {
+    gap: 1rem; /* 16px */
+  }
+
+  .mini-project__image {
+    flex-grow: var(--grow-d);
+    aspect-ratio: var(--ar-d);
+  }
+
+  .mini-project__image-col {
+    flex-grow: var(--grow-d);
+    gap: 1rem; /* 16px */
+  }
+
+  .mini-project__image--stacked {
+    aspect-ratio: var(--ar-d);
+  }
+}

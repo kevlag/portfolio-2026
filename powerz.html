@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - Power Z</title>
+  <meta name="description" content="Case study Power Z — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/powerz.css" />
+</head>
+<body data-page="powerz" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : en dehors de <main> comme le header/footer (un descendant
+       de <main> hérite de son fondu de page). -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="lacourte.html">Prev</a>
+      <a class="case__control case__control--next" href="eliumstudio.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="powerz__hero">
+      <h1 class="case__title">
+        <span class="case__title-line">Power</span>
+        <span class="case__title-line">Z</span>
+      </h1>
+
+      <!-- Même photo en dessous de 440px et au-delà : juste un recadrage
+           différent (voir le <picture>), pas une image différente. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/powerz/powerz-mobile-01.webp" width="670" height="872" />
+        <img class="case__hero-image" src="images/powerz/powerz-desktop-01.webp" alt="Illustration d’une jeune fille aux cheveux roux et de son petit dragon doré" width="3520" height="1972" decoding="async" />
+      </picture>
+
+      <div class="case__content">
+        <div class="case__intro">
+          <p class="case__date"><span class="case__date-line">January</span> <span class="case__date-line">2021</span></p>
+          <div class="case__paragraph">
+            <p class="case__paragraph--pre">          PowerZ offers an educational experience combining video games and education so that each child can discover their passions.</p>
+            <p>Children will be able to explore a caring world giving access to knowledge, in a fun and participatory way.</p>
+            <p>They will live an immersive and personalized experience, while being supported in their progress by parents.</p>
+            <p>It's incomprehensible but this game does not yet exist. Because technology doesn't like education. And because education doesn't like technology.</p>
+            <p>Technology doesn't like education. Technology dreams of electric sheep, talking toothbrushes, going to Mars, home delivery or robots.</p>
+            <p>Education doesn't like technology because the screen is only used as a super pacifier.</p>
+            <p>A way to be quiet for a while, but one that you have to try to limit as much as possible. Because if education shies away from technology, children like it. So what if we manage to make it useful?</p>
+            <p>The game is not the end of PowerZ, it is its development.</p>
+          </div>
+        </div>
+
+        <ul class="case__credits" role="list">
+          <li class="case__job">
+            <p class="case__job-title">Co-founder &amp; CEO</p>
+            <p class="case__job-name">Emmanuel Freund</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Co-founder &amp; COO</p>
+            <p class="case__job-name">Yann Carron de la Carrière</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Co-Founder &amp; CTO</p>
+            <p class="case__job-name">Arnaud Lamy</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Community &amp; UX</p>
+            <p class="case__job-name">Lauriane Desjardins</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bloc-1 : fond + cadre = simples aplats dans la maquette (pas d'image),
+         donc un vrai padding CSS. Vidéo 01 : vrai 16:10 (8:5). Le fichier source
+         était marqué en pixels non carrés (1920×1080, SAR 9:10 → 1728×1080 à
+         l'affichage) ; les disques orange de la vidéo le confirment (ronds à 8:5,
+         ovales à 16:9). Elle est exportée en pixels carrés 1920×1200, sans
+         recadrage, et occupe toute la largeur du cadre : le cadre grandit donc en
+         hauteur par rapport au bloc gris 16:9 de la maquette (même principe
+         qu'Elium Studio). Lancée à l'écran (js/video-autoplay.js) avec les
+         contrôles natifs. -->
+    <section class="powerz__bloc1">
+      <div class="powerz__video-card">
+        <video class="powerz__video powerz__video--16x10" width="1920" height="1200" poster="images/powerz/powerz-video-poster-01.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/powerz/powerz-desktop-video-01.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Les images sont déjà composées (fond + marges dans l'export) : aucune
+         décoration CSS, chaque conteneur prend le ratio de son fichier. -->
+    <section class="powerz__bloc2">
+      <div class="powerz__bloc2-media powerz__bloc2-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/powerz/powerz-mobile-02.webp" width="670" height="466" />
+          <img src="images/powerz/powerz-desktop-02.webp" alt="Page d’accueil « La première pierre » de Power Z : l’héroïne et son dragon" width="3520" height="2316" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="powerz__bloc2-media powerz__bloc2-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/powerz/powerz-mobile-03.webp" width="670" height="1340" />
+          <img src="images/powerz/powerz-desktop-03.webp" alt="Écrans mobile et page « Évoluer l’éducation » du site Power Z" width="3520" height="3718" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="powerz__bloc3">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/powerz/powerz-mobile-04.webp" width="750" height="598" />
+        <img src="images/powerz/powerz-desktop-04.webp" alt="Page de connexion « Se connecter » sur une illustration colorée d’un dragon" width="3840" height="2258" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <!-- Bloc-4 : une image pleine largeur, puis 2 images (l'une sous l'autre en
+         mobile, côte à côte en desktop). -->
+    <section class="powerz__bloc4">
+      <div class="powerz__bloc4-media powerz__bloc4-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/powerz/powerz-mobile-05.webp" width="670" height="948" />
+          <img src="images/powerz/powerz-desktop-05.webp" alt="Écrans de l’application Power Z autour d’un personnage en cape" width="3520" height="3768" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="powerz__bloc4-media powerz__bloc4-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/powerz/powerz-mobile-06.webp" width="670" height="890" />
+          <img src="images/powerz/powerz-desktop-06.webp" alt="Page du site Power Z avec un jeune personnage blond" width="1736" height="2370" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="powerz__bloc4-media powerz__bloc4-media--3">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/powerz/powerz-mobile-07.webp" width="670" height="912" />
+          <img src="images/powerz/powerz-desktop-07.webp" alt="Page « Nous allons construire ensemble » avec un dragon sous la neige" width="1736" height="2370" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="powerz__bloc5">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/powerz/powerz-mobile-08.webp" width="750" height="750" />
+        <img src="images/powerz/powerz-desktop-08.webp" alt="Mosaïque inclinée de pages et d’écrans du site Power Z" width="3840" height="2160" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="powerz__bloc6">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/powerz/powerz-mobile-09.webp" width="670" height="1438" />
+        <img src="images/powerz/powerz-desktop-09.webp" alt="Écrans de l’application mobile Power Z autour d’un personnage" width="3520" height="3688" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <!-- Bloc-7 : 2e vidéo, présente uniquement dans la maquette desktop (absente
+         de la maquette mobile) : masquée sous 1025px. -->
+    <section class="powerz__bloc7">
+      <div class="powerz__video-card">
+        <video class="powerz__video" width="1920" height="1080" poster="images/powerz/powerz-video-poster-02.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/powerz/powerz-desktop-video-02.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/video-autoplay.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

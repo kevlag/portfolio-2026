@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - Le salon Peugeot</title>
+  <meta name="description" content="Case study Le salon Peugeot — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/peugeot.css" />
+</head>
+<body data-page="peugeot" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : en dehors de <main> comme le header/footer (un descendant
+       de <main> hérite de son fondu de page). -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="michaeljackson.html">Prev</a>
+      <a class="case__control case__control--next" href="bobbybuddy.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="peugeot__hero">
+      <h1 class="case__title">
+        <span class="case__title-line">Le salon</span>
+        <span class="case__title-line">Peugeot</span>
+      </h1>
+
+      <!-- Même photo en dessous de 440px et au-delà : juste un recadrage
+           différent (voir le <picture>), pas une image différente. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/peugeot/peugeot-mobile-01.webp" width="670" height="872" />
+        <img class="case__hero-image" src="images/peugeot/peugeot-desktop-01.webp" alt="Intérieur 3D du salon Peugeot : une voiture bleue dans une bulle de verre" width="3520" height="1980" decoding="async" />
+      </picture>
+
+      <div class="case__content">
+        <div class="case__intro">
+          <p class="case__date"><span class="case__date-line">August</span> <span class="case__date-line">2022</span></p>
+          <div class="case__paragraph">
+            <p class="case__paragraph--pre">          Discover the latest Peugeot models in several halls through a WebGL experience</p>
+            <div class="peugeot__note">
+              <p class="peugeot__note-title">*** Important to know ***</p>
+              <p>This work was a collaboration with the studio . The Artistic Direction is a common work, the work presented here is not the final rendering.</p>
+            </div>
+          </div>
+        </div>
+
+        <ul class="case__credits" role="list">
+          <li class="case__job">
+            <p class="case__job-title">Founder Cher Ami</p>
+            <p class="case__job-name">Jean-Frédéric Passot</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Producer</p>
+            <p class="case__job-name">Aurélie Chatenet</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Project Manager</p>
+            <p class="case__job-name">Pauline Tixier</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Artistic Director</p>
+            <p class="case__job-name">Mélanie Guillot</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Artistic Director</p>
+            <p class="case__job-name">Yannice Berthault</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">3D</p>
+            <p class="case__job-name">Jean-Alexandre Gas</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Agency</p>
+            <p class="case__job-name">Cher Ami</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Les images sont déjà composées (fond + marges dans l'export) : aucune
+         décoration CSS, chaque conteneur prend le ratio de son fichier. -->
+    <section class="peugeot__bloc1">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/peugeot/peugeot-mobile-02.webp" width="670" height="1272" />
+        <img src="images/peugeot/peugeot-desktop-02.webp" alt="Quatre écrans de l’expérience : accueil « Le salon », halls et vues de la voiture" width="3520" height="1980" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="peugeot__bloc2">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/peugeot/peugeot-mobile-03.webp" width="670" height="503" />
+        <img src="images/peugeot/peugeot-desktop-03.webp" alt="Mosaïque d’écrans de l’expérience du salon Peugeot" width="3520" height="2640" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <!-- Bloc-3 : 2 images, l'une sous l'autre en mobile, côte à côte en desktop. -->
+    <section class="peugeot__bloc3">
+      <div class="peugeot__bloc3-media peugeot__bloc3-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/peugeot/peugeot-mobile-04.webp" width="670" height="1217" />
+          <img src="images/peugeot/peugeot-desktop-04.webp" alt="Écrans de l’expérience : « Unexpected from all angles » et « A design unique »" width="1736" height="3172" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="peugeot__bloc3-media peugeot__bloc3-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/peugeot/peugeot-mobile-05.webp" width="670" height="1216" />
+          <img src="images/peugeot/peugeot-desktop-05.webp" alt="Écrans de l’expérience : « A feline posture » et pages sur la piste" width="1736" height="3172" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <!-- Bloc-4 : image pleine largeur. -->
+    <section class="peugeot__bloc4">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/peugeot/peugeot-mobile-06.webp" width="750" height="750" />
+        <img src="images/peugeot/peugeot-desktop-06.webp" alt="Mosaïque inclinée d’écrans de l’expérience Peugeot" width="3840" height="2160" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="peugeot__bloc5">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/peugeot/peugeot-mobile-07.webp" width="670" height="2848" />
+        <img src="images/peugeot/peugeot-desktop-07.webp" alt="Pages « Technology electric », « Bring the power of allure » et « An irresistible design »" width="3520" height="4024" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <!-- Bloc-6 : une image pleine largeur, puis 2 images (l'une sous l'autre en
+         mobile, côte à côte en desktop). -->
+    <section class="peugeot__bloc6">
+      <div class="peugeot__bloc6-media peugeot__bloc6-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/peugeot/peugeot-mobile-08.webp" width="670" height="1270" />
+          <img src="images/peugeot/peugeot-desktop-08.webp" alt="Quatre écrans de l’expérience : halls et voitures Peugeot" width="3520" height="1980" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="peugeot__bloc6-media peugeot__bloc6-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/peugeot/peugeot-mobile-09.webp" width="670" height="696" />
+          <img src="images/peugeot/peugeot-desktop-09.webp" alt="Écrans de chargement de l’expérience, en dégradé bleu" width="1736" height="1802" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="peugeot__bloc6-media peugeot__bloc6-media--3">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/peugeot/peugeot-mobile-10.webp" width="670" height="696" />
+          <img src="images/peugeot/peugeot-desktop-10.webp" alt="Page « Tone and style » : veste jaune et voiture bleue" width="1736" height="1802" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

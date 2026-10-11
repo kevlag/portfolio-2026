@@ -1,0 +1,169 @@
+/* ==========================================================================
+   Schlouk — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   RÈGLE IMAGES : chaque image exportée contient déjà son fond et ses marges.
+   Aucun padding / fond / calque ajouté en CSS par-dessus : chaque conteneur
+   prend simplement le ratio natif de son fichier (mobile, puis desktop dès
+   440px).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, crédits) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Ordre de la page : Hero, Bloc-1 à Bloc-7 (images), puis « Work with me ? ».
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   ratios des fichiers desktop (≥440px) → desktop (≥1025px).
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+/* ---- Photo ---- */
+.schlouk__hero-image {
+  aspect-ratio: 670 / 872; /* fichier mobile */
+}
+
+/* ==========================================================================
+   Blocs — chaque image est déjà composée (fond + marges dans le fichier) :
+   le conteneur prend le ratio natif du fichier, sans recadrage.
+   Mobile : tout est empilé, 8px entre images d'un même bloc, 80px entre blocs.
+   ========================================================================== */
+.schlouk__bloc1,
+.schlouk__bloc2,
+.schlouk__bloc3,
+.schlouk__bloc4,
+.schlouk__bloc5,
+.schlouk__bloc6,
+.schlouk__bloc7 {
+  margin-top: 5rem; /* 80px */
+}
+
+/* Bloc-3 et Bloc-5 sont pleine largeur : pas de marge latérale. */
+.schlouk__bloc1,
+.schlouk__bloc2,
+.schlouk__bloc4,
+.schlouk__bloc6,
+.schlouk__bloc7 {
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.schlouk__bloc3 img,
+.schlouk__bloc5 img,
+.schlouk__media img {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+}
+
+.schlouk__bloc3 img,
+.schlouk__bloc5 img { aspect-ratio: 1 / 1; }
+
+/* Ratios des fichiers mobile (<440px). */
+.schlouk__media--02 img,
+.schlouk__media--05 img,
+.schlouk__media--10 img,
+.schlouk__media--12 img,
+.schlouk__media--14 img { aspect-ratio: 670 / 1284; }
+.schlouk__media--03 img { aspect-ratio: 670 / 830; }
+.schlouk__media--04 img,
+.schlouk__media--06 img { aspect-ratio: 670 / 880; }
+.schlouk__media--08 img { aspect-ratio: 670 / 1082; }
+.schlouk__media--09 img { aspect-ratio: 670 / 1660; }
+.schlouk__media--13 img { aspect-ratio: 670 / 964; }
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs —
+   on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .schlouk__bloc1,
+  .schlouk__bloc2,
+  .schlouk__bloc4,
+  .schlouk__bloc6,
+  .schlouk__bloc7 {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : chaque <picture> bascule sur le
+   fichier desktop. On recale le ratio de chaque conteneur sur celui de ce
+   fichier, pour ne jamais recadrer l'image avec object-fit: cover.
+   ========================================================================== */
+@media (min-width: 440px) {
+  .schlouk__hero-image { aspect-ratio: 3520 / 1972; }
+
+  .schlouk__bloc3 img,
+  .schlouk__bloc5 img { aspect-ratio: 3840 / 2160; }
+
+  .schlouk__media--02 img,
+  .schlouk__media--05 img,
+  .schlouk__media--12 img,
+  .schlouk__media--14 img { aspect-ratio: 3520 / 1976; }
+  .schlouk__media--03 img,
+  .schlouk__media--04 img { aspect-ratio: 1736 / 2272; }
+  .schlouk__media--06 img { aspect-ratio: 3520 / 1400; }
+  .schlouk__media--08 img { aspect-ratio: 3520 / 1620; }
+  .schlouk__media--09 img { aspect-ratio: 1438 / 3480; }
+  .schlouk__media--10 img { aspect-ratio: 2034 / 3988; }
+  .schlouk__media--13 img { aspect-ratio: 3520 / 3486; }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* ---- Blocs : 160px entre blocs, colonne centrée de 1760px, 24px entre
+     images d'un même bloc ---- */
+  .schlouk__bloc1,
+  .schlouk__bloc2,
+  .schlouk__bloc3,
+  .schlouk__bloc4,
+  .schlouk__bloc5,
+  .schlouk__bloc6,
+  .schlouk__bloc7 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  .schlouk__bloc1,
+  .schlouk__bloc2,
+  .schlouk__bloc4,
+  .schlouk__bloc6,
+  .schlouk__bloc7 {
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+    gap: 1.5rem; /* 24px */
+  }
+
+  /* Bloc-1 : une image pleine largeur, puis deux colonnes égales. */
+  .schlouk__bloc1 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  /* Bloc-4 : une image pleine largeur, puis deux colonnes 719 / 1017
+     (largeurs des fichiers de la maquette), alignées en haut. */
+  .schlouk__bloc4 {
+    display: grid;
+    grid-template-columns: 719fr 1017fr;
+    align-items: start;
+  }
+
+  .schlouk__bloc1 .schlouk__media--02,
+  .schlouk__bloc4 .schlouk__media--08 {
+    grid-column: 1 / -1;
+  }
+
+}

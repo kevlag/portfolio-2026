@@ -1,0 +1,97 @@
+/* ==========================================================================
+   Bouton "Discover" / "See live" — pastille avec flèche animée, utilisée sur la
+   Home (projets), et sur les pages case study (Elium Studio, Lacourte,
+   Michael Jackson).
+
+   EXCEPTION : tailles FIGÉES en px (police, dimensions, bordure, rayon, marges
+   internes), comme le header et le footer — elles ne changent pas avec la
+   largeur d'écran. Ne pas les convertir en rem.
+   ========================================================================== */
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 163px;
+  height: 20px;
+  padding-inline: 12px;
+  border: 1px solid currentColor;
+  border-radius: 20px;
+  font-size: 12px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover / focus clavier : pastille inversée, comme les réseaux du footer. */
+.cta:hover,
+.cta:focus-visible {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+/* Flèche : le SVG (13.06 × 9.06) déborde un peu de sa boîte (12 × 8), comme
+   dans la maquette (le trait a 1.5px d'épaisseur).
+
+   Animation au survol : une 2e flèche identique (2e <svg> dans le HTML)
+   attend juste à gauche, hors du cadre. Au survol de .cta, les deux
+   glissent vers la droite : la 1re sort par la droite, coupée par le cadre
+   (overflow-x: hidden = le "mask"), et la 2e arrive de la gauche pour prendre
+   sa place — comme si LA flèche continuait sa course vers la droite. */
+.cta__arrow {
+  position: relative;
+  flex: none;
+  width: 10px;
+  height: 8px;
+  overflow-x: hidden;
+  overflow-y: visible; /* garde le débordement vertical volontaire du SVG */
+  --arrow-w: 11.0607px; /* largeur du SVG — voir .cta__arrow svg juste en dessous */
+  --arrow-gap: 2px; /* écart entre les deux flèches pendant l'animation */
+  --arrow-step: calc(var(--arrow-w) + var(--arrow-gap)); /* distance parcourue au survol */
+}
+
+.cta__arrow svg {
+  position: absolute;
+  top: -0.53px;
+  left: 0;
+  display: block;
+  width: var(--arrow-w);
+  max-width: none; /* le SVG dépasse volontairement de sa boîte */
+  height: 9.06066px;
+  overflow: visible;
+  transition: transform 0.45s ease;
+}
+
+/* La 2e flèche (celle qui attend à gauche, cachée par le cadre). */
+.cta__arrow svg + svg {
+  left: calc(-1 * var(--arrow-step));
+}
+
+.cta:hover .cta__arrow svg,
+.cta:focus-visible .cta__arrow svg {
+  transform: translateX(var(--arrow-step));
+}
+
+/* Deux versions de la flèche : la mobile est plus courte (10px au lieu de 12px). */
+.cta__arrow--desktop {
+  display: none;
+}
+
+/* ---- Desktop (≥1025px) : bouton plus large, flèche plus longue ---- */
+@media (min-width: 1025px) {
+  .cta {
+    width: 274px;
+    height: 24px;
+    font-size: 14px;
+  }
+
+  .cta__arrow {
+    width: 12px;
+    --arrow-w: 13.0607px;
+  }
+
+  .cta__arrow--mobile {
+    display: none;
+  }
+
+  .cta__arrow--desktop {
+    display: block;
+  }
+}

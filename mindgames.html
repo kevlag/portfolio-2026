@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - MindGames</title>
+  <meta name="description" content="Case study MindGames — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/mindgames.css" />
+</head>
+<body data-page="mindgames" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : en dehors de <main> comme le header/footer (un descendant
+       de <main> hérite de son fondu de page). -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="schlouk.html">Prev</a>
+      <a class="case__control case__control--next" href="thewayofwater.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="mindgames__hero">
+      <h1 class="case__title">
+        <span class="case__title-line">MindGames</span>
+      </h1>
+
+      <!-- Même illustration en dessous de 440px et au-delà : juste un recadrage
+           différent (voir le <picture>), pas une image différente. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-01.webp" width="670" height="872" />
+        <img class="case__hero-image" src="images/mindgames/mindgames-desktop-01.webp" alt="Illustration d’une guerrière de League of Legends aux lames bleues lumineuses" width="3520" height="1972" decoding="async" />
+      </picture>
+
+      <div class="case__content">
+        <div class="case__intro">
+          <p class="case__date"><span class="case__date-line">February</span> <span class="case__date-line">2018</span></p>
+          <div class="case__paragraph">
+            <p class="case__paragraph--pre">          Mindgames is a web experience for League of Legends which is intended to provide players tips to face the most tilting champions in the game.</p>
+            <p>The website higlights League of Legends champions and gameplay situations through a beautiful, animated and interactive fresco with mixed contents and multiple entry points of interest.</p>
+          </div>
+        </div>
+
+        <ul class="case__credits" role="list">
+          <li class="case__job">
+            <p class="case__job-title">Client</p>
+            <p class="case__job-name">Riot Games</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bloc-1 : fond + cadre = simples aplats dans la maquette (pas d'image),
+         donc un vrai padding CSS. Vidéo 01 au format natif 1920×1080 (16:9),
+         lancée à l'écran (js/video-autoplay.js) avec les contrôles natifs. -->
+    <section class="mindgames__bloc1">
+      <div class="mindgames__video-card">
+        <video class="mindgames__video" width="1920" height="1080" poster="images/mindgames/mindgames-video-poster-01.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/mindgames/mindgames-desktop-video-01.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Les images sont déjà composées (fond + marges dans l'export) : aucune
+         décoration CSS, chaque conteneur prend le ratio de son fichier. -->
+    <section class="mindgames__bloc2">
+      <div class="mindgames__bloc2-media">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-02.webp" width="670" height="432" />
+          <img src="images/mindgames/mindgames-desktop-02.webp" alt="Page « Teemo » du site MindGames" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="mindgames__bloc2-media">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-03.webp" width="670" height="432" />
+          <img src="images/mindgames/mindgames-desktop-03.webp" alt="Page « Zed » du site MindGames" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="mindgames__bloc2-media">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-04.webp" width="670" height="432" />
+          <img src="images/mindgames/mindgames-desktop-04.webp" alt="Page « Katarina » du site MindGames" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="mindgames__bloc2-media">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-05.webp" width="670" height="432" />
+          <img src="images/mindgames/mindgames-desktop-05.webp" alt="Mosaïque de pages « Zed » et « Katarina » du site MindGames" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="mindgames__bloc3">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-06.webp" width="670" height="432" />
+        <img src="images/mindgames/mindgames-desktop-06.webp" alt="Fresque illustrée des champions de League of Legends sur fond bleu nuit" width="3520" height="2120" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="mindgames__bloc4">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-07.webp" width="750" height="376" />
+        <img src="images/mindgames/mindgames-desktop-07.webp" alt="Illustration pleine largeur : champions de League of Legends au combat dans une lueur orangée" width="3840" height="1920" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="mindgames__bloc5">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-08.webp" width="670" height="432" />
+        <img src="images/mindgames/mindgames-desktop-08.webp" alt="Page de navigation en cercle autour des champions de League of Legends" width="3520" height="2120" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="mindgames__bloc6">
+      <div class="mindgames__bloc6-media">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-09.webp" width="670" height="432" />
+          <img src="images/mindgames/mindgames-desktop-09.webp" alt="Page « Discover how to fight Teemo »" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="mindgames__bloc6-media">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-10.webp" width="670" height="432" />
+          <img src="images/mindgames/mindgames-desktop-10.webp" alt="Page « Discover how to fight Zoe »" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="mindgames__bloc6-media">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-11.webp" width="670" height="432" />
+          <img src="images/mindgames/mindgames-desktop-11.webp" alt="Page « Yasuo » du site MindGames" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="mindgames__bloc6-media">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/mindgames/mindgames-mobile-12.webp" width="670" height="432" />
+          <img src="images/mindgames/mindgames-desktop-12.webp" alt="Page « Vayne » du site MindGames" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <!-- Bloc-7 : même cadre que le Bloc-1, avec la vidéo 02. Celle-ci est un vrai
+         16:10 (1440×900, pixels carrés), pas un 16:9 comme le bloc gris du Figma :
+         elle garde son format natif et occupe toute la largeur utile (80px de
+         marge de chaque côté en desktop), le cadre grandit donc en hauteur
+         (même principe qu'Elium Studio). -->
+    <section class="mindgames__bloc7">
+      <div class="mindgames__video-card">
+        <video class="mindgames__video mindgames__video--16x10" width="1440" height="900" poster="images/mindgames/mindgames-video-poster-02.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/mindgames/mindgames-desktop-video-02.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/video-autoplay.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - Lacourte Raquin &amp; Associés</title>
+  <meta name="description" content="Case study Lacourte Raquin &amp; Associés — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/lacourte.css" />
+</head>
+<body data-page="lacourte" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : en dehors de <main> comme le header/footer (un descendant
+       de <main> hérite de son fondu de page). -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="bobbybuddy.html">Prev</a>
+      <a class="case__control case__control--next" href="powerz.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="lacourte__hero">
+      <h1 class="case__title case__title--stacked">
+        <span class="case__title-line">Lacourte Raquin</span>
+        <span class="case__title-line">&amp; Associés</span>
+      </h1>
+
+      <!-- Même photo en dessous de 440px et au-delà : juste un recadrage
+           différent (voir le <picture>), pas une image différente. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-01.webp" width="670" height="872" />
+        <img class="case__hero-image" src="images/lacourte/lacourte-desktop-01.webp" alt="Détail d’une moulure dorée sculptée d’une rosace" width="3520" height="1972" decoding="async" />
+      </picture>
+
+      <div class="case__content">
+        <div class="case__intro">
+          <p class="case__date"><span class="case__date-line">July</span> <span class="case__date-line">2021</span></p>
+          <div class="lacourte__text">
+            <div class="lacourte__paragraph">
+              <p class="case__paragraph--pre">          Founded in Paris in 1993, Lacourte Raquin &amp; Associés is a law firm that covers the main areas of business law: mergers and acquisitions, real estate, taxation, financing, public business law, town planning, asset management and litigation.</p>
+              <p>Lacourte Raquin &amp; Associés brings together a team of professionals who have recognized expertise in their respective fields of specialization.</p>
+            </div>
+
+            <!-- Bouton "See live" : même composant que le "Discover" de la Home
+                 (.cta, flèche animée comprise). -->
+            <a class="cta" href="https://lacourte.com/" target="_blank" rel="noopener">
+              See live
+              <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+            </a>
+          </div>
+        </div>
+
+        <ul class="case__credits" role="list">
+          <li class="case__job">
+            <p class="case__job-title">Creative Director</p>
+            <p class="case__job-name">Emmanuel Cruellas</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Project Manager</p>
+            <p class="case__job-name">Morgane Urbain</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Development</p>
+            <p class="case__job-name">Loup-Rodolphe Thibault</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Agency</p>
+            <p class="case__job-name">Bonhomme</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bloc-1 : fond + cadre = simples aplats dans la maquette (pas d'image),
+         donc un vrai padding CSS. Vidéo au format natif 1920×1080, lancée à
+         l'écran (js/video-autoplay.js). -->
+    <section class="lacourte__bloc1">
+      <div class="lacourte__video-card">
+        <video class="lacourte__video" width="1920" height="1080" poster="images/lacourte/lacourte-video-poster-01.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/lacourte/lacourte-desktop-video-01.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Les images sont déjà composées (fond + marges dans l'export) : aucune
+         décoration CSS, chaque conteneur prend le ratio de son fichier. -->
+    <section class="lacourte__bloc2">
+      <div class="lacourte__bloc2-media lacourte__bloc2-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-02.webp" width="670" height="2052" />
+          <img src="images/lacourte/lacourte-desktop-02.webp" alt="Page « 1993 » du site Lacourte Raquin : balustrade et présentation du cabinet" width="1142" height="3238" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="lacourte__bloc2-media lacourte__bloc2-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-03.webp" width="670" height="1006" />
+          <img src="images/lacourte/lacourte-desktop-03.webp" alt="Page « Un collectif engagé » : portraits de l’équipe d’avocats" width="2330" height="3238" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="lacourte__bloc2-media lacourte__bloc2-media--3">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-04.webp" width="670" height="434" />
+          <img src="images/lacourte/lacourte-desktop-04.webp" alt="Page d’accueil « Avocats au service de votre ambition » sur fond bleu nuit" width="3520" height="2286" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <!-- Bloc-3 : mobile = 4 images empilées (5, 6, 7, 8) ; desktop = 2 colonnes
+         indépendantes (5 + 7 à gauche, 6 + 8 à droite). Les colonnes sont
+         « display: contents » en mobile et l'ordre est rétabli par order. -->
+    <section class="lacourte__bloc3">
+      <div class="lacourte__bloc3-column">
+        <div class="lacourte__bloc3-media lacourte__bloc3-media--1">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-05.webp" width="670" height="1054" />
+            <img src="images/lacourte/lacourte-desktop-05.webp" alt="Page « Références » du site Lacourte Raquin" width="1736" height="2740" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="lacourte__bloc3-media lacourte__bloc3-media--3">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-07.webp" width="670" height="1000" />
+            <img src="images/lacourte/lacourte-desktop-07.webp" alt="Page « Un réseau à notre image » : spirale d’étoiles sur fond bleu nuit" width="1736" height="1116" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+      <div class="lacourte__bloc3-column">
+        <div class="lacourte__bloc3-media lacourte__bloc3-media--2">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-06.webp" width="670" height="490" />
+            <img src="images/lacourte/lacourte-desktop-06.webp" alt="Page « Vos besoins sont nos moteurs » : couloir voûté de nuit" width="1736" height="1258" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="lacourte__bloc3-media lacourte__bloc3-media--4">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-08.webp" width="670" height="436" />
+            <img src="images/lacourte/lacourte-desktop-08.webp" alt="Page « Opérations immobilières » : détail du pôle immobilier et de son équipe" width="1736" height="2598" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="lacourte__bloc4">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-09.webp" width="750" height="464" />
+        <img src="images/lacourte/lacourte-desktop-09.webp" alt="Pages « Fusions acquisitions » et « Opérations immobilières » sur fond de marbre bleu" width="3840" height="2400" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="lacourte__bloc5">
+      <div class="lacourte__bloc5-media lacourte__bloc5-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-10.webp" width="670" height="900" />
+          <img src="images/lacourte/lacourte-desktop-10.webp" alt="Pages « Nous rejoindre » et « Nous contacter » du site Lacourte Raquin" width="2330" height="3070" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="lacourte__bloc5-media lacourte__bloc5-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-11.webp" width="670" height="1942" />
+          <img src="images/lacourte/lacourte-desktop-11.webp" alt="Page de profil de Cyrille Bailly, associé du cabinet" width="1142" height="3070" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="lacourte__bloc5-media lacourte__bloc5-media--3">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-12.webp" width="670" height="1300" />
+          <img src="images/lacourte/lacourte-desktop-12.webp" alt="Pages « 643 », « Un réseau à notre image » et « Nos autres compétences » sur fond bleu" width="3520" height="1980" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="lacourte__bloc6">
+      <div class="lacourte__bloc6-media lacourte__bloc6-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-13.webp" width="670" height="400" />
+          <img src="images/lacourte/lacourte-desktop-13.webp" alt="Page « Découvrez notre équipe » avec le portrait d’une avocate" width="3520" height="2120" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="lacourte__bloc6-media lacourte__bloc6-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-14.webp" width="670" height="976" />
+          <img src="images/lacourte/lacourte-desktop-14.webp" alt="Page de l’équipe : carte aérienne d’un port et objectif commun du cabinet" width="1736" height="2534" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="lacourte__bloc6-media lacourte__bloc6-media--3">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-15.webp" width="670" height="860" />
+          <img src="images/lacourte/lacourte-desktop-15.webp" alt="Page « 1993 » : balustrade et histoire du cabinet" width="1736" height="2232" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="lacourte__bloc7">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/lacourte/lacourte-mobile-16.webp" width="750" height="750" />
+        <img src="images/lacourte/lacourte-desktop-16.webp" alt="Mosaïque de pages du site Lacourte Raquin sur fond bleu nuit" width="3840" height="2160" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/video-autoplay.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

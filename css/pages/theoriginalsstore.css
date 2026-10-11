@@ -1,0 +1,264 @@
+/* ==========================================================================
+   Renault The Originals Store — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   RÈGLE IMAGES : chaque image exportée contient déjà son fond et ses marges.
+   Aucun padding / fond / calque ajouté en CSS par-dessus : chaque conteneur
+   prend simplement le ratio natif de son fichier (mobile, puis desktop dès
+   440px).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, crédits) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Ordre de la page : Hero, Bloc-1 (vidéo), Bloc-2 à Bloc-6 (images), puis
+   « Work with me ? ».
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   ratios des fichiers desktop (≥440px) → desktop (≥1025px).
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+/* ---- Photo ---- */
+.theoriginalsstore__hero-image {
+  aspect-ratio: 670 / 872; /* fichier mobile */
+}
+
+/* ==========================================================================
+   Blocs — chaque image est déjà composée (fond + marges dans le fichier) :
+   le conteneur prend le ratio natif du fichier, sans recadrage.
+   Mobile : tout est empilé, 8px entre images d'un même bloc, 80px entre blocs.
+   ========================================================================== */
+.theoriginalsstore__bloc1,
+.theoriginalsstore__bloc2,
+.theoriginalsstore__bloc3,
+.theoriginalsstore__bloc4,
+.theoriginalsstore__bloc5,
+.theoriginalsstore__bloc6 {
+  margin-top: 5rem; /* 80px */
+}
+
+/* Bloc-4 est pleine largeur : pas de marge latérale. */
+.theoriginalsstore__bloc1,
+.theoriginalsstore__bloc2,
+.theoriginalsstore__bloc3,
+.theoriginalsstore__bloc5,
+.theoriginalsstore__bloc6 {
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.theoriginalsstore__bloc2,
+.theoriginalsstore__bloc3,
+.theoriginalsstore__bloc5,
+.theoriginalsstore__bloc6 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+/* Bloc-6 : deux rangées en desktop (voir plus bas) ; en mobile elles
+   disparaissent et leurs images s'empilent directement dans le bloc. */
+.theoriginalsstore__bloc6-row {
+  display: contents;
+}
+
+.theoriginalsstore__bloc4 img,
+.theoriginalsstore__media img {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+}
+
+.theoriginalsstore__bloc4 img { aspect-ratio: 750 / 1330; }
+
+/* Ratios des fichiers mobile (<440px). Les fichiers mobile 10/11 et 13/14 sont
+   inversés par rapport aux desktop (voir le HTML) : chaque <picture> charge le
+   fichier mobile de même contenu, et l'ordre empilé de la maquette mobile
+   (9, 10, 11 puis 12, 13, 14, 15, 16 en numérotation mobile) est rétabli avec
+   `order`. */
+.theoriginalsstore__media--02 img { aspect-ratio: 670 / 1234; }
+.theoriginalsstore__media--03 img { aspect-ratio: 670 / 930; }
+.theoriginalsstore__media--04 img { aspect-ratio: 670 / 558; }
+.theoriginalsstore__media--05 img,
+.theoriginalsstore__media--06 img,
+.theoriginalsstore__media--07 img,
+.theoriginalsstore__media--09 img,
+.theoriginalsstore__media--10 img,
+.theoriginalsstore__media--16 img { aspect-ratio: 670 / 430; }
+.theoriginalsstore__media--11 img { aspect-ratio: 670 / 1056; }
+.theoriginalsstore__media--12 img,
+.theoriginalsstore__media--13 img { aspect-ratio: 670 / 482; }
+.theoriginalsstore__media--14 img { aspect-ratio: 670 / 1656; }
+.theoriginalsstore__media--15 img { aspect-ratio: 670 / 708; }
+
+.theoriginalsstore__media--10,
+.theoriginalsstore__media--13 { order: 1; }
+.theoriginalsstore__media--15 { order: 2; }
+.theoriginalsstore__media--16 { order: 3; }
+
+/* ---- Vidéo : cadre en dégradé (pas d'image : vrai padding CSS) autour d'une
+   vidéo qui garde son format réel, jamais recadrée ni déformée. ---- */
+.theoriginalsstore__video-card {
+  background: linear-gradient(-32.8deg, #ff7a7d 0%, #972cb8 48%, #03264e 100%);
+  padding: 2rem; /* 32px */
+}
+
+.theoriginalsstore__video {
+  display: block;
+  width: 100%;
+  /* height:auto impératif : sans ça, l'attribut HTML height prend le dessus
+     sur l'aspect-ratio ci-dessous (voir studioboam.css). */
+  height: auto;
+  aspect-ratio: 1440 / 800; /* format réel de la vidéo (9:5, pas 16:9 comme le bloc gris du Figma) */
+  background: #5a5a5a;
+  object-fit: contain; /* jamais de recadrage ni de déformation de la vidéo */
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs —
+   on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .theoriginalsstore__bloc1,
+  .theoriginalsstore__bloc2,
+  .theoriginalsstore__bloc3,
+  .theoriginalsstore__bloc5,
+  .theoriginalsstore__bloc6 {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : chaque <picture> bascule sur le
+   fichier desktop. On recale le ratio de chaque conteneur sur celui de ce
+   fichier, pour ne jamais recadrer l'image avec object-fit: cover. L'ordre
+   des fichiers desktop est celui du DOM : on annule les `order` mobile.
+   ========================================================================== */
+@media (min-width: 440px) {
+  .theoriginalsstore__hero-image { aspect-ratio: 3520 / 1972; }
+
+  .theoriginalsstore__bloc4 img { aspect-ratio: 3840 / 2160; }
+
+  .theoriginalsstore__media--02 img { aspect-ratio: 1736 / 3232; }
+  .theoriginalsstore__media--03 img { aspect-ratio: 1736 / 2390; }
+  .theoriginalsstore__media--04 img { aspect-ratio: 1736 / 1442; }
+  .theoriginalsstore__media--05 img { aspect-ratio: 3520 / 2096; }
+  .theoriginalsstore__media--06 img,
+  .theoriginalsstore__media--07 img { aspect-ratio: 1736 / 1106; }
+  .theoriginalsstore__media--09 img,
+  .theoriginalsstore__media--10 img { aspect-ratio: 2628 / 1602; }
+  .theoriginalsstore__media--11 img { aspect-ratio: 844 / 3252; }
+  .theoriginalsstore__media--12 img,
+  .theoriginalsstore__media--13 img { aspect-ratio: 1736 / 1248; }
+  .theoriginalsstore__media--14 img { aspect-ratio: 1438 / 3474; }
+  .theoriginalsstore__media--15 img { aspect-ratio: 2034 / 2154; }
+  .theoriginalsstore__media--16 img { aspect-ratio: 2034 / 1272; }
+
+  .theoriginalsstore__media--10,
+  .theoriginalsstore__media--13,
+  .theoriginalsstore__media--15,
+  .theoriginalsstore__media--16 { order: 0; }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* ---- Blocs : 160px entre blocs, colonne centrée de 1760px, 24px entre
+     images d'un même bloc ---- */
+  .theoriginalsstore__bloc1,
+  .theoriginalsstore__bloc2,
+  .theoriginalsstore__bloc3,
+  .theoriginalsstore__bloc4,
+  .theoriginalsstore__bloc5,
+  .theoriginalsstore__bloc6 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  .theoriginalsstore__bloc1,
+  .theoriginalsstore__bloc2,
+  .theoriginalsstore__bloc3,
+  .theoriginalsstore__bloc5,
+  .theoriginalsstore__bloc6 {
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .theoriginalsstore__video-card {
+    background: linear-gradient(-31.06deg, #ff7a7d 0%, #972cb8 48%, #03264e 100%);
+    padding: 5rem; /* 80px */
+  }
+
+  /* Bloc-2 : colonne de gauche (image 02) à côté d'une colonne de 2 images
+     (03 puis 04), le tout aligné en haut. */
+  .theoriginalsstore__bloc2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .theoriginalsstore__bloc2 .theoriginalsstore__media--02 {
+    grid-row: 1 / span 2;
+  }
+
+  .theoriginalsstore__bloc2 .theoriginalsstore__media--03 { grid-column: 2; }
+  .theoriginalsstore__bloc2 .theoriginalsstore__media--04 { grid-column: 2; }
+
+  /* Bloc-3 : une image pleine largeur, puis deux colonnes égales. */
+  .theoriginalsstore__bloc3 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .theoriginalsstore__bloc3 .theoriginalsstore__media--05 {
+    grid-column: 1 / -1;
+  }
+
+  /* Bloc-5 : deux images empilées (1314px) à côté d'une colonne haute (422px). */
+  .theoriginalsstore__bloc5 {
+    display: grid;
+    grid-template-columns: 1314fr 422fr;
+    align-items: start;
+  }
+
+  .theoriginalsstore__bloc5 .theoriginalsstore__media--11 {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  /* Bloc-6 : deux rangées de 2 colonnes — 868 / 868 puis 719 / 1017 (une image
+     haute à gauche, deux images empilées à droite). */
+  .theoriginalsstore__bloc6-row {
+    display: grid;
+    gap: 1.5rem; /* 24px */
+    align-items: start;
+  }
+
+  .theoriginalsstore__bloc6-row--a {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .theoriginalsstore__bloc6-row--b {
+    grid-template-columns: 719fr 1017fr;
+  }
+
+  .theoriginalsstore__bloc6-row--b .theoriginalsstore__media--14 {
+    grid-row: 1 / span 2;
+  }
+
+  .theoriginalsstore__bloc6-row--b .theoriginalsstore__media--15,
+  .theoriginalsstore__bloc6-row--b .theoriginalsstore__media--16 {
+    grid-column: 2;
+  }
+
+}

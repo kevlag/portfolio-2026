@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - Alexandre Pichoux</title>
+  <meta name="description" content="Case study Alexandre Pichoux — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/alexandrepichoux.css" />
+</head>
+<body data-page="alexandrepichoux" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : en dehors de <main> comme le header/footer (un descendant
+       de <main> hérite de son fondu de page). -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="memoriesofageisha.html">Prev</a>
+      <a class="case__control case__control--next" href="#">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="alexandrepichoux__hero">
+      <h1 class="case__title">
+        <span class="case__title-line">Alexandre Pichoux</span>
+      </h1>
+
+      <!-- Un seul fichier (portrait 4:5, 2800×3500, récupéré de Figma car absent du
+           dossier _sources) : le cadre le recadre comme dans la maquette
+           (object-fit: cover, voir le CSS) — paysage dès 440px, portrait en dessous. -->
+      <img class="case__hero-image alexandrepichoux__hero-image" src="images/alexandrepichoux/alexandrepichoux-hero.webp" alt="Portrait d’une jeune femme aux longs cheveux roux, le regard tourné vers le haut" width="2800" height="3500" fetchpriority="high" decoding="async" />
+
+      <div class="case__content">
+        <div class="case__intro">
+          <p class="case__date"><span class="case__date-line">September</span> <span class="case__date-line">2021</span></p>
+          <div class="case__paragraph">
+            <p class="case__paragraph--pre">          Trained in prestigious salons, Alexandre Pichoux used his experiences of excellence to create his own and offer the best of mixed hairstyle by combining your style with his universe.</p>
+            <p>A true hairdressing house, the Alexandre Pichoux hairdressing salon, in Paris 4th district, now welcomes you in the heart of the Marais for an exclusive moment under the sign of beauty and hair shaping.</p>
+          </div>
+        </div>
+
+        <ul class="case__credits" role="list">
+          <li class="case__job">
+            <p class="case__job-title">Creative Director</p>
+            <p class="case__job-name">Emmanuel Cruellas</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Project Manager</p>
+            <p class="case__job-name">Morgane Urbain</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Development</p>
+            <p class="case__job-name">Jonathan Mo</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Agency</p>
+            <p class="case__job-name">Bonhomme</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bloc-1 : fond + cadre = simple aplat dans la maquette (pas d'image),
+         donc un vrai padding CSS. Vidéo 1920×1080 (16:9, pixels carrés, SAR 1:1),
+         sans piste audio, au format natif ; lancée à l'écran (js/video-autoplay.js)
+         avec les contrôles natifs. -->
+    <section class="alexandrepichoux__bloc1">
+      <div class="alexandrepichoux__video-card">
+        <video class="alexandrepichoux__video" width="1920" height="1080" poster="images/alexandrepichoux/alexandrepichoux-video-poster-01.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/alexandrepichoux/alexandrepichoux-desktop-video-01.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Les images sont déjà composées (fond + marges dans l'export) : aucune
+         décoration CSS, chaque conteneur prend le ratio de son fichier. -->
+    <section class="alexandrepichoux__bloc2">
+      <div class="alexandrepichoux__media alexandrepichoux__media--01">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/alexandrepichoux/alexandrepichoux-mobile-01.webp" width="670" height="432" />
+          <img src="images/alexandrepichoux/alexandrepichoux-desktop-01.webp" alt="Page d’accueil du site : « Maison de coiffure dédiée au bien-être et au sur-mesure »" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="alexandrepichoux__media alexandrepichoux__media--02">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/alexandrepichoux/alexandrepichoux-mobile-02.webp" width="670" height="432" />
+          <img src="images/alexandrepichoux/alexandrepichoux-desktop-02.webp" alt="Page de présentation du salon : « Formé dans de prestigieux salons… » et photos de l’espace" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="alexandrepichoux__media alexandrepichoux__media--03">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/alexandrepichoux/alexandrepichoux-mobile-03.webp" width="670" height="432" />
+          <img src="images/alexandrepichoux/alexandrepichoux-desktop-03.webp" alt="Page du site avec un portrait de cheveux roux dans un cercle" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="alexandrepichoux__media alexandrepichoux__media--04">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/alexandrepichoux/alexandrepichoux-mobile-04.webp" width="670" height="432" />
+          <img src="images/alexandrepichoux/alexandrepichoux-desktop-04.webp" alt="Page « Prendre rendez-vous »" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="alexandrepichoux__bloc3">
+      <div class="alexandrepichoux__media alexandrepichoux__media--05">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/alexandrepichoux/alexandrepichoux-mobile-05.webp" width="670" height="1082" />
+          <img src="images/alexandrepichoux/alexandrepichoux-desktop-05.webp" alt="Quatre pages du site côte à côte : accueil, logo, présentation et prise de rendez-vous" width="3520" height="1622" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="alexandrepichoux__bloc4">
+      <div class="alexandrepichoux__media alexandrepichoux__media--06">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/alexandrepichoux/alexandrepichoux-mobile-06.webp" width="670" height="432" />
+          <img src="images/alexandrepichoux/alexandrepichoux-desktop-06.webp" alt="Page d’intro noire avec le logo Alexandre Pichoux, maison de coiffure" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="alexandrepichoux__media alexandrepichoux__media--07">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/alexandrepichoux/alexandrepichoux-mobile-07.webp" width="670" height="432" />
+          <img src="images/alexandrepichoux/alexandrepichoux-desktop-07.webp" alt="Page du site : photo du salon, une cloison en bois et un lustre" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="alexandrepichoux__media alexandrepichoux__media--08">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/alexandrepichoux/alexandrepichoux-mobile-08.webp" width="670" height="432" />
+          <img src="images/alexandrepichoux/alexandrepichoux-desktop-08.webp" alt="Page du site avec un portrait en gros plan, chemisier blanc et cheveux ondulés" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="alexandrepichoux__media alexandrepichoux__media--09">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/alexandrepichoux/alexandrepichoux-mobile-09.webp" width="670" height="432" />
+          <img src="images/alexandrepichoux/alexandrepichoux-desktop-09.webp" alt="Page de la liste des prestations : balayage, brushing, soin du cheveu, lissage" width="1736" height="1116" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="alexandrepichoux__bloc5">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/alexandrepichoux/alexandrepichoux-mobile-10.webp" width="750" height="750" />
+        <img src="images/alexandrepichoux/alexandrepichoux-desktop-10.webp" alt="Mosaïque inclinée de pages du site autour de « Maison de coiffure dédiée au bien-être »" width="3840" height="2160" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/video-autoplay.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

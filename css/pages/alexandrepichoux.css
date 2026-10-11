@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Alexandre Pichoux — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   RÈGLE IMAGES : chaque image exportée contient déjà son fond et ses marges.
+   Aucun padding / fond / calque ajouté en CSS par-dessus : chaque conteneur
+   prend simplement le ratio natif de son fichier (mobile, puis desktop dès
+   440px).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, crédits) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Ordre de la page : Hero, Bloc-1 (vidéo), Bloc-2 à Bloc-5 (images), puis
+   « Work with me ? ».
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   ratios des fichiers desktop (≥440px) → desktop (≥1025px).
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+/* ---- Photo ----
+   Un seul fichier portrait (4:5) recadré par le cadre, comme dans la maquette
+   (object-fit: cover). Mobile : cadre 335×436, image centrée. */
+.alexandrepichoux__hero-image {
+  aspect-ratio: 670 / 872; /* cadre mobile */
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Blocs — chaque image est déjà composée (fond + marges dans le fichier) :
+   le conteneur prend le ratio natif du fichier, sans recadrage.
+   Mobile : tout est empilé, 8px entre images d'un même bloc, 80px entre blocs.
+   ========================================================================== */
+.alexandrepichoux__bloc1,
+.alexandrepichoux__bloc2,
+.alexandrepichoux__bloc3,
+.alexandrepichoux__bloc4,
+.alexandrepichoux__bloc5 {
+  margin-top: 5rem; /* 80px */
+}
+
+/* Bloc-5 est pleine largeur : pas de marge latérale. */
+.alexandrepichoux__bloc1,
+.alexandrepichoux__bloc2,
+.alexandrepichoux__bloc3,
+.alexandrepichoux__bloc4 {
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.alexandrepichoux__bloc2,
+.alexandrepichoux__bloc4 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.alexandrepichoux__bloc5 img,
+.alexandrepichoux__media img {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+}
+
+/* Ratios des fichiers mobile (<440px). */
+.alexandrepichoux__media img { aspect-ratio: 670 / 432; }
+.alexandrepichoux__media--05 img { aspect-ratio: 670 / 1082; }
+.alexandrepichoux__bloc5 img { aspect-ratio: 1 / 1; }
+
+/* ---- Vidéo : cadre beige (aplat, pas d'image : vrai padding CSS) autour d'une
+   vidéo qui garde son format réel (16:9), jamais recadrée ni déformée. ---- */
+.alexandrepichoux__video-card {
+  background: #aa917d;
+  padding: 2rem; /* 32px */
+}
+
+.alexandrepichoux__video {
+  display: block;
+  width: 100%;
+  /* height:auto impératif : sans ça, l'attribut HTML height prend le dessus
+     sur l'aspect-ratio ci-dessous (voir studioboam.css). */
+  height: auto;
+  aspect-ratio: 1920 / 1080; /* format réel de la vidéo (16:9) */
+  background: #5a5a5a;
+  object-fit: contain; /* jamais de recadrage ni de déformation de la vidéo */
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs —
+   on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .alexandrepichoux__bloc1,
+  .alexandrepichoux__bloc2,
+  .alexandrepichoux__bloc3,
+  .alexandrepichoux__bloc4 {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : chaque <picture> bascule sur le
+   fichier desktop. On recale le ratio de chaque conteneur sur celui de ce
+   fichier, pour ne jamais recadrer l'image avec object-fit: cover. La photo du
+   hero passe au cadre paysage de la maquette (1760×986), recadré à 46,8 % de
+   la hauteur de la photo (valeur de la maquette).
+   ========================================================================== */
+@media (min-width: 440px) {
+  .alexandrepichoux__hero-image {
+    aspect-ratio: 3520 / 1972;
+    object-position: 50% 46.8%;
+  }
+
+  .alexandrepichoux__media img { aspect-ratio: 1736 / 1116; }
+  .alexandrepichoux__media--05 img { aspect-ratio: 3520 / 1622; }
+  .alexandrepichoux__bloc5 img { aspect-ratio: 3840 / 2160; }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* ---- Blocs : 160px entre blocs, colonne centrée de 1760px, 24px entre
+     images d'un même bloc ---- */
+  .alexandrepichoux__bloc1,
+  .alexandrepichoux__bloc2,
+  .alexandrepichoux__bloc3,
+  .alexandrepichoux__bloc4,
+  .alexandrepichoux__bloc5 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  .alexandrepichoux__bloc1,
+  .alexandrepichoux__bloc2,
+  .alexandrepichoux__bloc3,
+  .alexandrepichoux__bloc4 {
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .alexandrepichoux__video-card {
+    padding: 5rem; /* 80px */
+  }
+
+  /* Bloc-2 et Bloc-4 : grille 2 × 2, 24px entre images. */
+  .alexandrepichoux__bloc2,
+  .alexandrepichoux__bloc4 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem; /* 24px */
+  }
+
+}

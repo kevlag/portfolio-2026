@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Variables globales — couleurs + rayon commun aux pastilles de nav
+   ========================================================================== */
+:root {
+  --color-white: #FFFFFF;
+  --color-black: #1C1C1C;
+}
+
+/* ==========================================================================
+   Échelle fluide — un seul point de contrôle : la taille de police racine.
+   Toutes les tailles du site sont exprimées en rem, dérivées des valeurs
+   px de la maquette (divisées par 16). En faisant varier `font-size` sur
+   `html`, tout le site (textes, espacements, radius) suit la même échelle
+   proportionnelle, sans clamp() à écrire sur chaque propriété.
+   ========================================================================== */
+
+/*
+  Mobile (0 → 1024px) — ancré sur la maquette 375px (1rem = 16px).
+  Deux tronçons :
+  - 320 → 440px (téléphones) : pur ratio, 16 × largeur / 375 = 4.2667vw.
+    Tout ce qui est en rem grandit proportionnellement (≈13.65px → 18.77px).
+  - 440 → 1024px (grands téléphones, tablettes) : croissance beaucoup plus
+    douce (0.5525vw), de 18.77px à 22px, pour que les textes ne deviennent
+    pas trop gros. min() choisit automatiquement le bon tronçon.
+  Réglages : 22px = taille de 1rem à 1024px (la monter agrandit les textes
+  sur tablette) ; 440px = fin du tronçon proportionnel.
+*/
+html {
+  font-size: clamp(13.6533px, min(4.2667vw, calc(16.342px + 0.5525vw)), 22px);
+}
+
+/*
+  Desktop (≥1025px) — ancré sur la maquette 1920px (1rem = 16px). La
+  formule est un pur ratio (16 × largeur-écran / 1920 = 0.8333vw), donc
+  TOUT (polices, espacements, radius) respecte exactement les proportions
+  du Dev Mode entre 1025 et 1920px. Au-delà de 1920px, on continue
+  jusqu'à 2560px puis on plafonne pour éviter des tailles démesurées en
+  4K / ultra-wide.
+*/
+@media (min-width: 1025px) {
+  html {
+    font-size: clamp(8.542px, 0.8333vw, 21.333px);
+  }
+}

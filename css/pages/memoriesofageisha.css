@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Memories of a Geisha — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   RÈGLE IMAGES : chaque image exportée contient déjà son fond et ses marges.
+   Aucun padding / fond / calque ajouté en CSS par-dessus : chaque conteneur
+   prend simplement le ratio natif de son fichier (mobile, puis desktop dès
+   440px).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, crédits) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Ordre de la page : Hero, Bloc-1 (vidéo), Bloc-2 (images), puis « Work with me ? ».
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   ratios des fichiers desktop (≥440px) → desktop (≥1025px).
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+/* ---- Photo ---- */
+.memoriesofageisha__hero-image {
+  aspect-ratio: 670 / 872; /* fichier mobile */
+}
+
+/* Lien « Nghia Do Thanh » dans le texte : souligné, en Medium (maquette). */
+.memoriesofageisha__link {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
+  color: inherit;
+}
+
+/* ==========================================================================
+   Blocs — chaque image est déjà composée (fond + marges dans le fichier) :
+   le conteneur prend le ratio natif du fichier, sans recadrage.
+   Mobile : tout est empilé, 8px entre images d'un même bloc, 80px entre blocs.
+   ========================================================================== */
+.memoriesofageisha__bloc1,
+.memoriesofageisha__bloc2 {
+  margin-top: 5rem; /* 80px */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.memoriesofageisha__bloc2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+/* Bloc-2 : en desktop, une colonne (image 02) à côté d'une colonne de 2 images
+   (03 puis 04) ; en mobile la colonne disparaît et les 3 images s'empilent. */
+.memoriesofageisha__bloc2-col {
+  display: contents;
+}
+
+.memoriesofageisha__media img {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+}
+
+/* Ratios des fichiers mobile (<440px). */
+.memoriesofageisha__media--02 img { aspect-ratio: 670 / 1866; }
+.memoriesofageisha__media--03 img { aspect-ratio: 670 / 448; }
+.memoriesofageisha__media--04 img { aspect-ratio: 670 / 1284; }
+
+/* ---- Vidéo : cadre brun très sombre (aplat, pas d'image : vrai padding CSS)
+   autour d'une vidéo qui garde son format réel (16:10), jamais recadrée ni
+   déformée. Le cadre grandit en hauteur par rapport au bloc gris 16:9 du Figma. ---- */
+.memoriesofageisha__video-card {
+  background: #190a00;
+  padding: 2rem; /* 32px */
+}
+
+.memoriesofageisha__video {
+  display: block;
+  width: 100%;
+  /* height:auto impératif : sans ça, l'attribut HTML height prend le dessus
+     sur l'aspect-ratio ci-dessous (voir studioboam.css). */
+  height: auto;
+  aspect-ratio: 1920 / 1200; /* format réel de la vidéo (16:10) */
+  background: #5a5a5a;
+  object-fit: contain; /* jamais de recadrage ni de déformation de la vidéo */
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs —
+   on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .memoriesofageisha__bloc1,
+  .memoriesofageisha__bloc2 {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : chaque <picture> bascule sur le
+   fichier desktop. On recale le ratio de chaque conteneur sur celui de ce
+   fichier, pour ne jamais recadrer l'image avec object-fit: cover.
+   ========================================================================== */
+@media (min-width: 440px) {
+  .memoriesofageisha__hero-image { aspect-ratio: 3520 / 1972; }
+
+  .memoriesofageisha__media--02 img { aspect-ratio: 1736 / 4858; }
+  .memoriesofageisha__media--03 img { aspect-ratio: 1736 / 1158; }
+  .memoriesofageisha__media--04 img { aspect-ratio: 1736 / 3332; }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* ---- Blocs : 160px entre blocs, colonne centrée de 1760px, 24px entre
+     images d'un même bloc ---- */
+  .memoriesofageisha__bloc1,
+  .memoriesofageisha__bloc2 {
+    margin-top: 10rem; /* 160px */
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .memoriesofageisha__video-card {
+    padding: 5rem; /* 80px */
+  }
+
+  /* Bloc-2 : deux colonnes égales alignées en haut (image 02 seule à gauche ;
+     03 puis 04 empilées à droite). */
+  .memoriesofageisha__bloc2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.5rem; /* 24px */
+    align-items: start;
+  }
+
+  .memoriesofageisha__bloc2-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* 24px */
+  }
+
+}

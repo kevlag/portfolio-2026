@@ -1,0 +1,271 @@
+/* ==========================================================================
+   Lacourte Raquin & Associés — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   RÈGLE IMAGES : chaque image exportée contient déjà son fond et ses marges.
+   Aucun padding / fond / calque ajouté en CSS par-dessus : chaque conteneur
+   prend simplement le ratio natif de son fichier (mobile, puis desktop dès
+   440px).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, crédits) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Ordre de la page : Hero, Bloc-1 (vidéo), Bloc-2 à Bloc-7 (images), puis « Work with me ? ».
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   ratios des fichiers desktop (≥440px) → desktop (≥1025px).
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+.lacourte__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem; /* 24px entre le texte et le bouton */
+}
+
+.lacourte__paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+  font-weight: 400;
+  font-size: 12px; /* figé, comme le header/footer */
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Blocs — chaque image est déjà composée (fond + marges dans le fichier) :
+   le conteneur prend le ratio natif du fichier, sans recadrage.
+   Mobile : tout est empilé, 8px entre images d'un même bloc, 80px entre blocs.
+   ========================================================================== */
+.lacourte__bloc1,
+.lacourte__bloc2,
+.lacourte__bloc3,
+.lacourte__bloc4,
+.lacourte__bloc5,
+.lacourte__bloc6,
+.lacourte__bloc7 {
+  margin-top: 5rem; /* 80px */
+}
+
+/* Pleine largeur (Bloc-4 et Bloc-7) : pas de marge latérale. */
+.lacourte__bloc1,
+.lacourte__bloc2,
+.lacourte__bloc3,
+.lacourte__bloc5,
+.lacourte__bloc6 {
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.lacourte__bloc2,
+.lacourte__bloc3,
+.lacourte__bloc5,
+.lacourte__bloc6 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.lacourte__bloc2 img,
+.lacourte__bloc3 img,
+.lacourte__bloc4 img,
+.lacourte__bloc5 img,
+.lacourte__bloc6 img,
+.lacourte__bloc7 img {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+}
+
+.lacourte__bloc2-media--1 img { aspect-ratio: 670 / 2052; }
+.lacourte__bloc2-media--2 img { aspect-ratio: 670 / 1006; }
+.lacourte__bloc2-media--3 img { aspect-ratio: 670 / 434; }
+.lacourte__bloc3-media--1 img { aspect-ratio: 670 / 1054; }
+.lacourte__bloc3-media--2 img { aspect-ratio: 670 / 490; }
+.lacourte__bloc3-media--3 img { aspect-ratio: 670 / 1000; }
+.lacourte__bloc3-media--4 img { aspect-ratio: 670 / 436; }
+.lacourte__bloc4 img { aspect-ratio: 750 / 464; }
+.lacourte__bloc5-media--1 img { aspect-ratio: 670 / 900; }
+.lacourte__bloc5-media--2 img { aspect-ratio: 670 / 1942; }
+.lacourte__bloc5-media--3 img { aspect-ratio: 670 / 1300; }
+.lacourte__bloc6-media--1 img { aspect-ratio: 670 / 400; }
+.lacourte__bloc6-media--2 img { aspect-ratio: 670 / 976; }
+.lacourte__bloc6-media--3 img { aspect-ratio: 670 / 860; }
+.lacourte__bloc7 img { aspect-ratio: 750 / 750; }
+
+/* Bloc-3 : les colonnes disparaissent en mobile (display: contents) et
+   l'ordre mobile 5, 6, 7, 8 est rétabli avec order. */
+.lacourte__bloc3-column {
+  display: contents;
+}
+
+.lacourte__bloc3-media--1 { order: 1; }
+.lacourte__bloc3-media--2 { order: 2; }
+.lacourte__bloc3-media--3 { order: 3; }
+.lacourte__bloc3-media--4 { order: 4; }
+
+/* ---- Vidéo : cadre bleu nuit (aplat, pas d'image : vrai padding CSS) autour
+   d'une vidéo au format natif 1920×1080 (Bloc-1). ---- */
+.lacourte__video-card {
+  background: #081834;
+  padding: 2rem; /* 32px */
+}
+
+.lacourte__video {
+  display: block;
+  width: 100%;
+  /* height:auto impératif : sans ça, l'attribut HTML height="1080" prend le
+     dessus sur l'aspect-ratio ci-dessous (voir studioboam.css). */
+  height: auto;
+  aspect-ratio: 1920 / 1080;
+  background: #5a5a5a;
+  object-fit: contain; /* jamais de recadrage ni de déformation de la vidéo */
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs —
+   on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .lacourte__bloc1,
+  .lacourte__bloc2,
+  .lacourte__bloc3,
+  .lacourte__bloc5,
+  .lacourte__bloc6 {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : chaque <picture> bascule sur le
+   fichier desktop. On recale le ratio de chaque conteneur sur celui de ce
+   fichier, pour ne jamais recadrer l'image avec object-fit: cover.
+   ========================================================================== */
+@media (min-width: 440px) {
+  .lacourte__bloc2-media--1 img { aspect-ratio: 1142 / 3238; }
+  .lacourte__bloc2-media--2 img { aspect-ratio: 2330 / 3238; }
+  .lacourte__bloc2-media--3 img { aspect-ratio: 3520 / 2286; }
+  .lacourte__bloc3-media--1 img { aspect-ratio: 1736 / 2740; }
+  .lacourte__bloc3-media--2 img { aspect-ratio: 1736 / 1258; }
+  .lacourte__bloc3-media--3 img { aspect-ratio: 1736 / 1116; }
+  .lacourte__bloc3-media--4 img { aspect-ratio: 1736 / 2598; }
+  .lacourte__bloc4 img { aspect-ratio: 3840 / 2400; }
+  .lacourte__bloc5-media--1 img { aspect-ratio: 2330 / 3070; }
+  .lacourte__bloc5-media--2 img { aspect-ratio: 1142 / 3070; }
+  .lacourte__bloc5-media--3 img { aspect-ratio: 3520 / 1980; }
+  .lacourte__bloc6-media--1 img { aspect-ratio: 3520 / 2120; }
+  .lacourte__bloc6-media--2 img { aspect-ratio: 1736 / 2534; }
+  .lacourte__bloc6-media--3 img { aspect-ratio: 1736 / 2232; }
+  .lacourte__bloc7 img { aspect-ratio: 3840 / 2160; }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  .lacourte__text {
+    width: 35.6875rem; /* 571px */
+    flex: none;
+    gap: 2rem; /* 32px */
+  }
+
+  .lacourte__paragraph {
+    gap: 1rem; /* 16px */
+    font-size: 16px; /* figé — voir la règle mobile plus haut */
+  }
+
+  /* ---- Blocs : 160px entre blocs, colonne centrée de 1760px ---- */
+  .lacourte__bloc1,
+  .lacourte__bloc2,
+  .lacourte__bloc3,
+  .lacourte__bloc4,
+  .lacourte__bloc5,
+  .lacourte__bloc6,
+  .lacourte__bloc7 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  .lacourte__bloc1,
+  .lacourte__bloc2,
+  .lacourte__bloc3,
+  .lacourte__bloc5,
+  .lacourte__bloc6 {
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .lacourte__video-card {
+    padding: 5rem; /* 80px */
+  }
+
+  /* Bloc-2 : 2 (571px) + 3 (1165px) côte à côte, puis 4 en pleine largeur. */
+  .lacourte__bloc2 {
+    display: grid;
+    grid-template-columns: 35.6875rem 72.8125rem;
+    gap: 1.5rem; /* 24px */
+    align-items: start;
+  }
+
+  .lacourte__bloc2-media--3 {
+    grid-column: 1 / -1;
+  }
+
+  /* Bloc-3 : 2 colonnes indépendantes de 868px. */
+  .lacourte__bloc3 {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .lacourte__bloc3-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .lacourte__bloc3-media--1,
+  .lacourte__bloc3-media--2,
+  .lacourte__bloc3-media--3,
+  .lacourte__bloc3-media--4 {
+    order: 0;
+  }
+
+  /* Bloc-5 : 10 (1165px) + 11 (571px), puis 12 en pleine largeur. */
+  .lacourte__bloc5 {
+    display: grid;
+    grid-template-columns: 72.8125rem 35.6875rem;
+    gap: 1.5rem; /* 24px */
+    align-items: start;
+  }
+
+  .lacourte__bloc5-media--3 {
+    grid-column: 1 / -1;
+  }
+
+  /* Bloc-6 : 13 en pleine largeur, puis 14 et 15 côte à côte. */
+  .lacourte__bloc6 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem; /* 24px */
+    align-items: start;
+  }
+
+  .lacourte__bloc6-media--1 {
+    grid-column: 1 / -1;
+  }
+
+  body[data-page='lacourte'] .work-cta {
+    margin-top: 5rem; /* 80px */
+  }
+}

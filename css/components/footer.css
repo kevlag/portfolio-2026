@@ -1,0 +1,219 @@
+/* ==========================================================================
+   Footer — commun à toutes les pages (injecté par js/footer.js)
+
+   Mêmes règles que le header : tailles de police, espacements internes et
+   dimensions des pastilles FIGÉS en px (valeurs du Dev Mode). Seule la
+   marge extérieure horizontale (80px desktop / 20px mobile) reste fluide,
+   en rem. Ne pas convertir les valeurs figées en rem sans revalider avec
+   le designer.
+
+   Mobile (0 → 1024px) : seul "Back to top" est FIXE. Les réseaux et le
+   copyright sont en bas de page (dans le flux, à la fin du contenu), avec
+   "Back to top" juste en dessous quand on arrive en bas.
+   Desktop (≥1025px)   : tout le footer est fixe, sur une ligne —
+   réseaux | Back to top | copyright.
+   ========================================================================== */
+
+/* Sur les pages courtes, le pied de page reste collé en bas de l'écran
+   (<main> occupe la place restante). */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* ---- Mobile : bas de page (dans le flux) ----
+   padding-bottom réserve la place du "Back to top" fixe (20px de marge
+   basse + 14px de hauteur de ligne + 20px d'écart) pour que les réseaux et
+   le copyright ne passent pas dessous une fois en bas de page. */
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-black);
+  padding-bottom: 54px; /* figé */
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+  /* Footer transparent : en desktop (footer fixe), la bande laisse passer
+     les clics vers le contenu dessous. Seuls les liens restent cliquables. */
+  pointer-events: none;
+}
+
+.site-footer a {
+  pointer-events: auto;
+}
+
+/* Réseaux + copyright : groupés en mobile, éclatés en desktop */
+.site-footer__group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-footer__socials {
+  display: flex;
+  gap: 4px;
+}
+
+.site-footer__social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 20px;
+  border: 1px solid currentColor;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover / focus clavier : pastille inversée (noir plein, texte blanc) */
+.site-footer__social:hover,
+.site-footer__social:focus-visible {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.site-footer__copyright {
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ---- "Back to top" : fixe, centré, à 20px du bas de l'écran ----
+   Caché en haut de page, apparaît en fondu dès qu'on scrolle (classe
+   is-visible posée par footer.js). visibility: hidden le retire aussi de
+   la navigation clavier tant qu'il est invisible. Pas de fond : seul le
+   texte est posé sur la page (largeur = celle du texte, pour ne pas
+   bloquer les clics sur le contenu autour). */
+.site-footer__top {
+  position: fixed;
+  bottom: 20px; /* figé */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25; /* sous le header (30) pour que l'overlay du menu mobile le recouvre */
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--color-black);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.site-footer__top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear;
+}
+
+/* Hover / focus clavier : trait sous le texte, animé depuis le centre, de 0 à 100% de largeur (à la place du
+   soulignement natif). */
+.site-footer__top-label {
+  position: relative;
+  display: inline-block;
+}
+
+.site-footer__top-label::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -2px;
+  width: 0;
+  height: 1.5px;
+  background-color: var(--color-black);
+  transition: width 0.3s ease;
+}
+
+.site-footer__top:hover .site-footer__top-label::after,
+.site-footer__top:focus-visible .site-footer__top-label::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   La marge extérieure fluide (20px @375) plafonne vers 27px sur cette plage :
+   trop juste. On la fixe à 40px minimum, comme les autres pages.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .site-footer {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* Le footer entier est fixe, collé en bas de l'écran. */
+  .site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 25;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 24px; /* figé */
+    padding-inline: 5rem; /* fluide — 80px @1920 */
+  }
+
+  /* Le footer est fixe : on compense sa hauteur réelle (mesurée en JS par
+     footer.js) pour que le bas de <main> ne finisse pas caché dessous. */
+  main {
+    padding-bottom: var(--footer-height, 0px);
+  }
+
+  /* Le groupe disparaît visuellement : ses 2 enfants deviennent des colonnes
+     du footer. */
+  .site-footer__group {
+    display: contents;
+  }
+
+  /* 3 colonnes de même largeur (273px) : "Back to top" reste ainsi
+     centré sur la page, quelle que soit la largeur des deux autres. */
+  .site-footer__socials,
+  .site-footer__top,
+  .site-footer__copyright {
+    width: 273px;
+  }
+
+  .site-footer__socials {
+    order: 1;
+    align-items: flex-start;
+  }
+
+  /* "Back to top" redevient un simple élément de la ligne du footer. */
+  .site-footer__top {
+    position: static;
+    transform: none;
+    z-index: auto;
+    order: 2;
+    font-size: 14px;
+    line-height: normal;
+  }
+
+  .site-footer__copyright {
+    order: 3;
+    font-size: 14px;
+    text-align: right;
+  }
+
+  .site-footer__social {
+    width: 45px;
+    height: 24px;
+    font-size: 14px;
+  }
+}

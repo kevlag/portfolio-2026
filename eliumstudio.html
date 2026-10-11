@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - Elium Studio</title>
+  <meta name="description" content="Case study Elium Studio — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/eliumstudio.css" />
+</head>
+<body data-page="eliumstudio" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : en dehors de <main> comme le header/footer (un descendant
+       de <main> hérite de son fondu de page). -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="powerz.html">Prev</a>
+      <a class="case__control case__control--next" href="schlouk.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="eliumstudio__hero">
+      <h1 class="case__title">
+        <span class="case__title-line">Elium</span>
+        <span class="case__title-line">Studio</span>
+      </h1>
+
+      <!-- Même photo en dessous de 440px et au-delà : juste un recadrage
+           différent (voir le <picture>), pas une image différente. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-01.webp" width="670" height="872" />
+        <img class="case__hero-image" src="images/eliumstudio/eliumstudio-desktop-01.webp" alt="Femme dans une piscine, une montre connectée au poignet" width="3520" height="1972" decoding="async" />
+      </picture>
+
+      <div class="case__content">
+        <div class="case__intro">
+          <p class="case__date"><span class="case__date-line">February</span> <span class="case__date-line">2019</span></p>
+          <div class="eliumstudio__text">
+            <div class="eliumstudio__paragraph">
+              <p class="case__paragraph--pre">          Elium Studio is a Parisian global design studio driving positive change by applying a design that knows no limits.</p>
+              <p>The studio works with a wide network of trustful partners. Model makers, engineering of fices, eco-design consultants, UX designers, developers, photographers, film-makers .</p>
+            </div>
+
+            <!-- Bouton "See live" : même composant que le "Discover" de la Home
+                 (.cta, flèche animée comprise). Lien à renseigner. -->
+            <a class="cta" href="#">
+              See live
+              <span class="cta__arrow cta__arrow--mobile" aria-hidden="true"><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 11.0607 9.06066" fill="none"><path d="M0 4.53033H10M6 8.53033L10 4.53033L6 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+              <span class="cta__arrow cta__arrow--desktop" aria-hidden="true"><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg><svg viewBox="0 0 13.0607 9.06066" fill="none"><path d="M0 4.53033H12M8 8.53033L12 4.53033L8 0.53033" stroke="currentColor" stroke-width="1.5"/></svg></span>
+            </a>
+          </div>
+        </div>
+
+        <ul class="case__credits" role="list">
+          <li class="case__job">
+            <p class="case__job-title">Project manager</p>
+            <p class="case__job-name">Caroline Varina Sourivong</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Designer</p>
+            <p class="case__job-name">Thibault Barbedette</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Designer</p>
+            <p class="case__job-name">Hugo Chaffiote</p>
+          </li>
+          <li class="case__job">
+            <p class="case__job-title">Developement</p>
+            <p class="case__job-name">Poignée de main virile</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Bloc-1 : fond + cadre = simples aplats dans la maquette (pas d'image),
+         donc un vrai padding CSS. La vidéo est en 1440×900 (16:10), pas en 16:9
+         comme le bloc gris du Figma : elle garde son format natif et occupe toute
+         la largeur utile (80px de marge de chaque côté en desktop), le cadre
+         grandit donc en hauteur. Lancée à l'écran (js/video-autoplay.js). -->
+    <section class="eliumstudio__bloc1">
+      <div class="eliumstudio__video-card">
+        <video class="eliumstudio__video" width="1440" height="900" poster="images/eliumstudio/eliumstudio-video-poster-01.webp" muted loop playsinline controls controlslist="nodownload" preload="none" data-autoplay>
+          <source src="videos/eliumstudio/eliumstudio-desktop-video-01.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Les images sont déjà composées (fond + marges dans l'export) : aucune
+         décoration CSS, chaque conteneur prend le ratio de son fichier. -->
+    <section class="eliumstudio__bloc2">
+      <div class="eliumstudio__bloc2-media eliumstudio__bloc2-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-02.webp" width="670" height="1080" />
+          <img src="images/eliumstudio/eliumstudio-desktop-02.webp" alt="Pages du site Elium Studio : projets Thermo, UX11 et Touché" width="2034" height="2990" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="eliumstudio__bloc2-media eliumstudio__bloc2-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-03.webp" width="670" height="1422" />
+          <img src="images/eliumstudio/eliumstudio-desktop-03.webp" alt="Pages du site Elium Studio : approche du studio et réalisations" width="1438" height="2990" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="eliumstudio__bloc3">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-04.webp" width="750" height="1872" />
+        <img src="images/eliumstudio/eliumstudio-desktop-04.webp" alt="Pages « Steel HR » et « My Lifi » du site Elium Studio, sur une montre à bracelet cuir" width="3840" height="2400" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <!-- Bloc-4 : mobile = 3 images empilées ; desktop = 1re image à gauche,
+         2 images empilées à droite. -->
+    <section class="eliumstudio__bloc4">
+      <div class="eliumstudio__bloc4-media eliumstudio__bloc4-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-05.webp" width="670" height="890" />
+          <img src="images/eliumstudio/eliumstudio-desktop-05.webp" alt="Page projet « Dio Eyes » : casque de réalité virtuelle" width="1736" height="2312" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="eliumstudio__bloc4-media eliumstudio__bloc4-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-06.webp" width="670" height="466" />
+          <img src="images/eliumstudio/eliumstudio-desktop-06.webp" alt="Page projet : thermomètre connecté blanc et vert" width="1736" height="1206" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="eliumstudio__bloc4-media eliumstudio__bloc4-media--3">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-07.webp" width="670" height="696" />
+          <img src="images/eliumstudio/eliumstudio-desktop-07.webp" alt="Page projet « Touché » et « Touché by Elium Studio »" width="1736" height="1802" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="eliumstudio__bloc5">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-08.webp" width="670" height="466" />
+        <img src="images/eliumstudio/eliumstudio-desktop-08.webp" alt="Page d’index des projets : Dio Eyes, Thermo, Steel HR et Touché" width="3520" height="2316" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="eliumstudio__bloc6">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-09.webp" width="670" height="1136" />
+        <img src="images/eliumstudio/eliumstudio-desktop-09.webp" alt="Mosaïque de pages projets du site Elium Studio : O’Dive, Activité, Touché et Thermo" width="3520" height="5578" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <!-- Bloc-7 : mobile = 5 images empilées (10 à 14) ; desktop = 2 colonnes
+         indépendantes (10 + 12 à gauche, 11 + 13 + 14 à droite). Les colonnes
+         sont « display: contents » en mobile et l'ordre est rétabli par order. -->
+    <section class="eliumstudio__bloc7">
+      <div class="eliumstudio__bloc7-column">
+        <div class="eliumstudio__bloc7-media eliumstudio__bloc7-media--1">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-10.webp" width="670" height="1284" />
+            <img src="images/eliumstudio/eliumstudio-desktop-10.webp" alt="Page « Steel HR » du site Elium Studio, avec une radio" width="1438" height="2684" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="eliumstudio__bloc7-media eliumstudio__bloc7-media--3">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-12.webp" width="670" height="1626" />
+            <img src="images/eliumstudio/eliumstudio-desktop-12.webp" alt="Page sombre du site Elium Studio : approche du studio et visuels" width="1438" height="3410" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+      <div class="eliumstudio__bloc7-column">
+        <div class="eliumstudio__bloc7-media eliumstudio__bloc7-media--2">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-11.webp" width="670" height="506" />
+            <img src="images/eliumstudio/eliumstudio-desktop-11.webp" alt="Thermomètre connecté blanc et vert, en gros plan" width="2034" height="1492" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="eliumstudio__bloc7-media eliumstudio__bloc7-media--4">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-13.webp" width="670" height="988" />
+            <img src="images/eliumstudio/eliumstudio-desktop-13.webp" alt="Pages du site Elium Studio : casque de réalité virtuelle, montre et thermomètre" width="2034" height="3148" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="eliumstudio__bloc7-media eliumstudio__bloc7-media--5">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/eliumstudio/eliumstudio-mobile-14.webp" width="670" height="756" />
+            <img src="images/eliumstudio/eliumstudio-desktop-14.webp" alt="Page projet « BPM Core » : tensiomètre connecté" width="2034" height="2296" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/video-autoplay.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>

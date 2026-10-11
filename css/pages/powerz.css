@@ -1,0 +1,193 @@
+/* ==========================================================================
+   Power Z — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   RÈGLE IMAGES : chaque image exportée contient déjà son fond et ses marges.
+   Aucun padding / fond / calque ajouté en CSS par-dessus : chaque conteneur
+   prend simplement le ratio natif de son fichier (mobile, puis desktop dès
+   440px).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, crédits) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Ordre de la page : Hero, Bloc-1 (vidéo), Bloc-2 à Bloc-6 (images), Bloc-7 (vidéo, desktop
+   uniquement), puis « Work with me ? ».
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   ratios des fichiers desktop (≥440px) → desktop (≥1025px).
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+/* ==========================================================================
+   Blocs — chaque image est déjà composée (fond + marges dans le fichier) :
+   le conteneur prend le ratio natif du fichier, sans recadrage.
+   Mobile : tout est empilé, 8px entre images d'un même bloc, 80px entre blocs
+   (sauf Bloc-4 : 48px sous le Bloc-3, comme la maquette).
+   ========================================================================== */
+.powerz__bloc1,
+.powerz__bloc2,
+.powerz__bloc3,
+.powerz__bloc5,
+.powerz__bloc6 {
+  margin-top: 5rem; /* 80px */
+}
+
+.powerz__bloc4 {
+  margin-top: 3rem; /* 48px */
+}
+
+/* Pleine largeur (Bloc-3 et Bloc-5) : pas de marge latérale. */
+.powerz__bloc1,
+.powerz__bloc2,
+.powerz__bloc4,
+.powerz__bloc6,
+.powerz__bloc7 {
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.powerz__bloc2,
+.powerz__bloc4 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+.powerz__bloc2 img,
+.powerz__bloc3 img,
+.powerz__bloc4 img,
+.powerz__bloc5 img,
+.powerz__bloc6 img {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+}
+
+.powerz__bloc2-media--1 img { aspect-ratio: 670 / 466; }
+.powerz__bloc2-media--2 img { aspect-ratio: 670 / 1340; }
+.powerz__bloc3 img { aspect-ratio: 750 / 598; }
+.powerz__bloc4-media--1 img { aspect-ratio: 670 / 948; }
+.powerz__bloc4-media--2 img { aspect-ratio: 670 / 890; }
+.powerz__bloc4-media--3 img { aspect-ratio: 670 / 912; }
+.powerz__bloc5 img { aspect-ratio: 750 / 750; }
+.powerz__bloc6 img { aspect-ratio: 670 / 1438; }
+
+/* ---- Vidéos : cadre bleu nuit (aplat, pas d'image : vrai padding CSS) autour
+   d'une vidéo qui garde son format réel (Bloc-1 : 16:10, Bloc-7 : 16:9). ---- */
+.powerz__video-card {
+  background: #040328;
+  padding: 2rem; /* 32px */
+}
+
+.powerz__video {
+  display: block;
+  width: 100%;
+  /* height:auto impératif : sans ça, l'attribut HTML height="1080" prend le
+     dessus sur l'aspect-ratio ci-dessous (voir studioboam.css). */
+  height: auto;
+  aspect-ratio: 1920 / 1080;
+  background: #5a5a5a;
+  object-fit: contain; /* jamais de recadrage ni de déformation de la vidéo */
+}
+
+/* Vidéo 01 : un vrai 16:10 (1920×1200, pixels carrés), plus haute que le bloc
+   gris 16:9 du Figma — elle remplit la largeur du cadre, qui grandit en hauteur. */
+.powerz__video--16x10 {
+  aspect-ratio: 1920 / 1200;
+}
+
+/* Bloc-7 : présent uniquement dans la maquette desktop. */
+.powerz__bloc7 {
+  display: none;
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs —
+   on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .powerz__bloc1,
+  .powerz__bloc2,
+  .powerz__bloc4,
+  .powerz__bloc6 {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : chaque <picture> bascule sur le
+   fichier desktop. On recale le ratio de chaque conteneur sur celui de ce
+   fichier, pour ne jamais recadrer l'image avec object-fit: cover.
+   ========================================================================== */
+@media (min-width: 440px) {
+  .powerz__bloc2-media--1 img { aspect-ratio: 3520 / 2316; }
+  .powerz__bloc2-media--2 img { aspect-ratio: 3520 / 3718; }
+  .powerz__bloc3 img { aspect-ratio: 3840 / 2258; }
+  .powerz__bloc4-media--1 img { aspect-ratio: 3520 / 3768; }
+  .powerz__bloc4-media--2 img,
+  .powerz__bloc4-media--3 img { aspect-ratio: 1736 / 2370; }
+  .powerz__bloc5 img { aspect-ratio: 3840 / 2160; }
+  .powerz__bloc6 img { aspect-ratio: 3520 / 3688; }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* ---- Blocs : 160px entre blocs, colonne centrée de 1760px ---- */
+  .powerz__bloc1,
+  .powerz__bloc2,
+  .powerz__bloc3,
+  .powerz__bloc5,
+  .powerz__bloc6 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  .powerz__bloc4 {
+    margin-top: 2.5rem; /* 40px sous le Bloc-3, comme la maquette */
+  }
+
+  .powerz__bloc1,
+  .powerz__bloc2,
+  .powerz__bloc4,
+  .powerz__bloc6,
+  .powerz__bloc7 {
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+  }
+
+  .powerz__bloc2 {
+    gap: 1.5rem; /* 24px */
+  }
+
+  .powerz__video-card {
+    padding: 5rem; /* 80px */
+  }
+
+  /* Bloc-4 : 5 en pleine largeur, puis 6 et 7 côte à côte. */
+  .powerz__bloc4 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem; /* 24px */
+    align-items: start;
+  }
+
+  .powerz__bloc4-media--1 {
+    grid-column: 1 / -1;
+  }
+
+  /* Bloc-7 : 80px sous le Bloc-6 dans la maquette. */
+  .powerz__bloc7 {
+    display: block;
+    margin-top: 5rem; /* 80px */
+  }
+
+}

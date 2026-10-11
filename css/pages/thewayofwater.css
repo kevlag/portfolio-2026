@@ -1,0 +1,173 @@
+/* ==========================================================================
+   The Way of Water — case study.
+
+   Comme les autres pages, suit l'ÉCHELLE FLUIDE du site : toutes les tailles
+   sont en rem (1rem = 16px sur la maquette 1920px en desktop, sur la
+   maquette 375px en mobile).
+
+   RÈGLE IMAGES : chaque image exportée contient déjà son fond et ses marges.
+   Aucun padding / fond / calque ajouté en CSS par-dessus : chaque conteneur
+   prend simplement le ratio natif de son fichier (mobile, puis desktop dès
+   440px).
+
+   EXCEPTION : les textes sous la photo (date, paragraphe, crédits) gardent une
+   taille de police FIGÉE en px, comme le header et le footer — seuls les
+   espacements autour restent fluides. Ne pas convertir ces font-size en rem.
+
+   Ordre de la page : Hero, Bloc-1 (vidéo), Bloc-2 et Bloc-3 (images), puis
+   « Work with me ? ».
+   Structure du fichier : règles de base (mobile) → tablette (440–1024px) →
+   ratios des fichiers desktop (≥440px) → desktop (≥1025px).
+
+   Prev/Next, titre, date, texte et crédits du hero : composants communs aux pages
+   case study, dans css/components/case-study.css (classes .case__*). Ne restent ici
+   que les écarts propres à cette page et ses blocs.
+   ========================================================================== */
+
+/* ---- Photo ---- */
+.thewayofwater__hero-image {
+  aspect-ratio: 670 / 872; /* fichier mobile */
+}
+
+/* ==========================================================================
+   Blocs — chaque image est déjà composée (fond + marges dans le fichier) :
+   le conteneur prend le ratio natif du fichier, sans recadrage.
+   Mobile : tout est empilé, 8px entre images d'un même bloc, 80px entre blocs.
+   ========================================================================== */
+.thewayofwater__bloc1,
+.thewayofwater__bloc2,
+.thewayofwater__bloc3 {
+  margin-top: 5rem; /* 80px */
+}
+
+/* Bloc-3 est pleine largeur : pas de marge latérale. */
+.thewayofwater__bloc1,
+.thewayofwater__bloc2 {
+  padding-inline: 1.25rem; /* fluide — 20px @375 */
+}
+
+.thewayofwater__bloc2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 8px */
+}
+
+/* Bloc-2 : trois rangées en desktop (voir plus bas) ; en mobile elles
+   disparaissent et leurs images s'empilent directement dans le bloc. */
+.thewayofwater__bloc2-row {
+  display: contents;
+}
+
+.thewayofwater__bloc3 img,
+.thewayofwater__media img {
+  display: block;
+  width: 100%;
+  height: auto; /* l'attribut HTML height ne doit pas primer sur aspect-ratio */
+}
+
+.thewayofwater__bloc3 img { aspect-ratio: 1 / 1; }
+
+/* Ratios des fichiers mobile (<440px). */
+.thewayofwater__media--02 img { aspect-ratio: 670 / 622; }
+.thewayofwater__media--03 img { aspect-ratio: 670 / 870; }
+.thewayofwater__media--04 img { aspect-ratio: 670 / 432; }
+.thewayofwater__media--05 img,
+.thewayofwater__media--06 img { aspect-ratio: 1 / 1; }
+
+/* ---- Vidéo : cadre bleu nuit (aplat, pas d'image : vrai padding CSS) autour
+   d'une vidéo qui garde son format réel (16:9), jamais recadrée ni déformée. ---- */
+.thewayofwater__video-card {
+  background: #00011f;
+  padding: 2rem; /* 32px */
+}
+
+.thewayofwater__video {
+  display: block;
+  width: 100%;
+  /* height:auto impératif : sans ça, l'attribut HTML height prend le dessus
+     sur l'aspect-ratio ci-dessous (voir studioboam.css). */
+  height: auto;
+  aspect-ratio: 1920 / 1080; /* format réel de la vidéo (16:9) */
+  background: #5a5a5a;
+  object-fit: contain; /* jamais de recadrage ni de déformation de la vidéo */
+}
+
+/* ==========================================================================
+   Tablette (440px → 1024px)
+   Au-delà de 440px, chaque <picture> passe au format desktop (voir le HTML) :
+   la marge de page fluide (20px @375) devient trop juste à ces largeurs —
+   on la fixe à 40px minimum ici.
+   ========================================================================== */
+@media (min-width: 440px) and (max-width: 1024px) {
+  .thewayofwater__bloc1,
+  .thewayofwater__bloc2 {
+    padding-inline: 40px;
+  }
+}
+
+/* ==========================================================================
+   À partir de 440px (tablette + desktop) : chaque <picture> bascule sur le
+   fichier desktop. On recale le ratio de chaque conteneur sur celui de ce
+   fichier, pour ne jamais recadrer l'image avec object-fit: cover.
+   ========================================================================== */
+@media (min-width: 440px) {
+  .thewayofwater__hero-image { aspect-ratio: 3520 / 1972; }
+
+  .thewayofwater__bloc3 img { aspect-ratio: 3840 / 2160; }
+
+  .thewayofwater__media--02 img { aspect-ratio: 2034 / 1856; }
+  .thewayofwater__media--03 img { aspect-ratio: 1438 / 1856; }
+  .thewayofwater__media--04 img { aspect-ratio: 3520 / 2120; }
+}
+
+/* ==========================================================================
+   Desktop (≥1025px)
+   ========================================================================== */
+@media (min-width: 1025px) {
+  /* La maquette place la photo 6px plus bas que sur les autres pages (390px au
+     lieu de 384px) et le texte au même endroit : 70px sous le titre, 58px
+     au-dessus du texte. */
+  .thewayofwater__hero-image {
+    margin-top: 4.375rem; /* 70px */
+  }
+
+  .thewayofwater__content {
+    margin-top: 3.625rem; /* 58px */
+  }
+
+  /* ---- Blocs : 160px entre blocs, colonne centrée de 1760px, 24px entre
+     images d'un même bloc ---- */
+  .thewayofwater__bloc1,
+  .thewayofwater__bloc2,
+  .thewayofwater__bloc3 {
+    margin-top: 10rem; /* 160px */
+  }
+
+  .thewayofwater__bloc1,
+  .thewayofwater__bloc2 {
+    padding-inline: 0;
+    max-width: 110rem; /* 1760px */
+    margin-inline: auto;
+    gap: 1.5rem; /* 24px */
+  }
+
+  .thewayofwater__video-card {
+    padding: 5rem; /* 80px */
+  }
+
+  /* Bloc-2 : rangée 1017 / 719, image pleine largeur, rangée 868 / 868. */
+  .thewayofwater__bloc2-row {
+    display: grid;
+    gap: 1.5rem; /* 24px */
+    align-items: start;
+  }
+
+  .thewayofwater__bloc2-row--a {
+    grid-template-columns: 1017fr 719fr;
+  }
+
+  .thewayofwater__bloc2-row--b {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}

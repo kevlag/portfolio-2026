@@ -1,0 +1,76 @@
+/* ==========================================================================
+   "Work with me ?" — bloc d'appel à l'action en fin de page.
+   ========================================================================== */
+.work-cta {
+  margin-top: 10rem; /* 160px */
+  /* Écart entre le bouton et le footer qui suit (fixe en mobile "Back to
+     top" mis à part : le reste du footer est dans le flux, juste après). */
+  margin-bottom: 4rem; /* 64px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem; /* 20px */
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.work-cta__title {
+  /* h2 : sans ça, le navigateur lui applique du gras par défaut (700) — hérité
+     de nulle part, il faut donc le redéclarer comme le reste du site (500). */
+  font-weight: 500;
+  font-size: 2rem; /* 32px */
+  line-height: 1;
+}
+
+.work-cta__title-line {
+  display: inline;
+}
+
+.work-cta__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem; /* 40px */
+  padding-inline: 1.5rem; /* 24px */
+  border: 1.5px solid currentColor; /* figé, comme les autres boutons du site */
+  border-radius: 1.25rem; /* 20px */
+  font-size: 1rem; /* 16px */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover / focus clavier : même inversion que les autres boutons du site
+   (réseaux du footer, CTA "Discover" des projets). */
+.work-cta__button:hover,
+.work-cta__button:focus-visible {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+@media (min-width: 1025px) {
+  .work-cta {
+    margin-top: 17.5rem; /* 280px */
+    /* Écart entre le bouton et le HAUT de la barre du footer (fixe en bas de
+       l'écran en desktop) : 80px @1920. Avec les 24px de marge basse du
+       footer lui-même (site-footer, desktop), ça fait 128px jusqu'au bas de
+       l'écran. */
+    margin-bottom: 5rem; /* 80px */
+    gap: 1.5rem; /* 24px */
+  }
+
+  .work-cta__title {
+    font-size: 4rem; /* 64px */
+  }
+
+  .work-cta__title-line {
+    display: block;
+  }
+
+  .work-cta__button {
+    height: 3.5rem; /* 56px */
+    padding-inline: 2rem; /* 32px */
+    border-radius: 1.75rem; /* 28px */
+    font-size: 1.5rem; /* 24px */
+  }
+}

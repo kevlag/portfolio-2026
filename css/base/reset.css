@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Reset — neutralise les styles par défaut du navigateur
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Haffer XH', Arial, sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---- Transition de page (fondu) ----
+   <main> démarre invisible (et légèrement décalé vers le bas) : pas de flash
+   de contenu avant que js/page-transition.js n'ajoute la classe --visible (au
+   chargement) ou ne la retire (juste avant de quitter la page). Le header et
+   le footer sont en dehors de <main> : ils restent visibles pendant toute la
+   transition.
+   Le petit déplacement vertical (en plus du fondu) n'est pas décoratif : sur
+   du texte noir sur fond blanc, un fondu d'opacité seul reste très lisible
+   jusqu'à une opacité assez basse, puis "apparaît" d'un coup sur les
+   dernières étapes — ça donne une impression de fondu brusque même avec une
+   durée correcte. Le mouvement rend la transition perceptible sur toute sa
+   durée. */
+main {
+  opacity: 0;
+  transform: translateY(16px);
+  /* Doit rester égale à FADE_MS dans js/page-transition.js.
+     ease-out : démarre vite puis ralentit en douceur en approchant de l'état
+     final (apparition) — un fondu linéaire "ease" paraît plus brusque. */
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+main.main--visible {
+  opacity: 1;
+  /* "none" et pas translateY(0) : une valeur de transform non-none crée un
+     nouveau contexte de positionnement pour tout descendant en
+     position:fixed (ex. .tagheuer__controls), qui se retrouve alors fixé
+     par rapport à <main> — potentiellement haut de plusieurs milliers de
+     px — au lieu du viewport. "none" anime pareil (résultat identique à
+     translateY(0)) mais sans cet effet de bord une fois la transition
+     terminée. */
+  transform: none;
+}
+
+/* Les liens vers une ancre (ex. image du carrousel -> projet) défilent en douceur */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Respecte le choix utilisateur de réduire les animations (accessibilité) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

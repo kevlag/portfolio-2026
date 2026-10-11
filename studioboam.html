@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - Studio Boam</title>
+  <meta name="description" content="Case study Studio Boam — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/studioboam.css" />
+</head>
+<body data-page="studioboam" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : passent au projet précédent / suivant (desktop uniquement,
+       absent de la maquette mobile pour ce haut de page).
+       En dehors de <main> comme le header/footer : un descendant de <main>
+       hérite de son fondu de page même sans règle d'opacité à lui. -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="tagheuer.html">Prev</a>
+      <a class="case__control case__control--next" href="michaeljackson.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="studioboam__hero">
+      <h1 class="case__title">
+        <span class="case__title-line">Studio</span>
+        <span class="case__title-line">Boam</span>
+      </h1>
+
+      <!-- Même photo en dessous de 440px et au-delà : juste un recadrage
+           différent (voir le <picture>), pas une image différente. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-01.webp" />
+        <img class="case__hero-image" src="images/studioboam/studioboam-desktop-01.webp" alt="Studio Boam — scène conviviale autour des concentrés de fruits Alain Milliat" width="1760" height="990" decoding="async" />
+      </picture>
+
+      <div class="case__content">
+        <div class="case__intro">
+          <p class="case__date studioboam__date"><span class="case__date-line">April</span> <span class="case__date-line">2023</span></p>
+          <div class="case__paragraph">
+            <p class="case__paragraph--pre">          Studio Boam specializes in graphic and industrial design, and offers a comprehensive design experience ranging from brand storytelling and label design to the industrialization of bottle design.</p>
+            <p>The Studio is above all about bringing out the inherent narrative beauty of drinks, wines &amp; spirits brands to its creations. Boam is all about telling great stories.</p>
+          </div>
+        </div>
+
+        <div class="studioboam__credits-slider" data-drag-row role="region" aria-label="Crédits du projet" tabindex="0">
+          <ul class="studioboam__credits" data-drag-track role="list">
+            <li class="case__job studioboam__job">
+              <p class="case__job-title studioboam__job-title"><span class="studioboam__job-title-line">Co-founder</span> <span class="studioboam__job-title-line">Studio Boam</span></p>
+              <p class="case__job-name studioboam__job-name">Alexandre Azurman</p>
+            </li>
+            <li class="case__job studioboam__job">
+              <p class="case__job-title studioboam__job-title"><span class="studioboam__job-title-line">Co-founder</span> <span class="studioboam__job-title-line">Studio Boam</span></p>
+              <p class="case__job-name studioboam__job-name">Andy Migevant</p>
+            </li>
+            <li class="case__job studioboam__job">
+              <p class="case__job-title studioboam__job-title">Agency</p>
+              <p class="case__job-name studioboam__job-name">Studio Boam</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="studioboam__bloc1">
+      <!-- "1" : bande vidéo (lecture automatique, muette, en boucle, avec les
+           contrôles natifs). Fond + cadre sont de simples aplats de couleur
+           dans la maquette (pas d'image), donc un vrai padding CSS ici,
+           contrairement aux cartes "2"/"3" juste en dessous. -->
+      <div class="studioboam__bloc1-video">
+        <video class="studioboam__bloc1-video-el" width="1920" height="1080" poster="images/studioboam/studioboam-video-poster-desktop.webp" autoplay muted loop playsinline controls controlslist="nodownload">
+          <source src="videos/studioboam/studioboam-desktop-video.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="studioboam__bloc1-row">
+        <!-- "3" : image déjà composée par l'utilisateur (bouteille + spread
+             "Le Gingembre" fusionnés en un seul export) — une seule image,
+             jamais de padding/fond ajoutés en CSS par-dessus. -->
+        <div class="studioboam__bloc1-card--3">
+          <div class="studioboam__bloc1-media studioboam__bloc1-media--bg">
+            <picture>
+              <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-03.webp" />
+              <img src="images/studioboam/studioboam-desktop-03.webp" alt="Studio Boam : bouteille Le Gingembre et pages du packaging" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+
+        <!-- "2" : image déjà composée par l'utilisateur (duo d'images + fond et
+             marges inclus dans l'export) — comme "3", jamais de padding/fond
+             ajoutés en CSS par-dessus. -->
+        <div class="studioboam__bloc1-card--2">
+          <div class="studioboam__bloc1-media studioboam__bloc1-media--bg">
+            <picture>
+              <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-02.webp" />
+              <img src="images/studioboam/studioboam-desktop-02.webp" alt="Studio Boam : page du site, section « The key is in retaining all the natural flavours », et page « Alain Milliat »" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloc-2 : rangée d'aperçus des autres projets du studio, qui se fait
+         glisser horizontalement (même moteur que les crédits : js/drag-row.js). -->
+    <section class="studioboam__bloc2-slider" data-drag-row role="region" aria-label="Autres projets du studio" tabindex="0">
+      <ul class="studioboam__bloc2" data-drag-track role="list">
+        <li class="studioboam__bloc2-media">
+          <img src="images/studioboam/studioboam-desktop-04.webp" alt="Studio Boam : page du site Alain Milliat" loading="lazy" decoding="async" />
+        </li>
+        <li class="studioboam__bloc2-media">
+          <img src="images/studioboam/studioboam-desktop-05.webp" alt="Studio Boam : page du site Bacanha, sirop brut" loading="lazy" decoding="async" />
+        </li>
+        <li class="studioboam__bloc2-media">
+          <img src="images/studioboam/studioboam-desktop-06.webp" alt="Studio Boam : page du site Le Buveur, absinthe" loading="lazy" decoding="async" />
+        </li>
+        <li class="studioboam__bloc2-media">
+          <img src="images/studioboam/studioboam-desktop-07.webp" alt="Studio Boam : page du site Campaï, bières artisanales" loading="lazy" decoding="async" />
+        </li>
+        <li class="studioboam__bloc2-media">
+          <img src="images/studioboam/studioboam-desktop-08.webp" alt="Studio Boam : page du site Nouaison, gin" loading="lazy" decoding="async" />
+        </li>
+        <li class="studioboam__bloc2-media">
+          <img src="images/studioboam/studioboam-desktop-09.webp" alt="Studio Boam : page du site Red Lake, bourbon whisky" loading="lazy" decoding="async" />
+        </li>
+        <li class="studioboam__bloc2-media">
+          <img src="images/studioboam/studioboam-desktop-10.webp" alt="Studio Boam : page du site Cognac Martignac" loading="lazy" decoding="async" />
+        </li>
+      </ul>
+    </section>
+
+    <section class="studioboam__bloc3">
+      <div class="studioboam__bloc3-column">
+        <!-- "1", "3" : images déjà composées par l'utilisateur (fond #ece2d8
+             et marge déjà dans les pixels) — jamais de padding/fond ajoutés
+             en CSS par-dessus. -->
+        <div class="studioboam__bloc3-media studioboam__bloc3-media--1">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-11.webp" />
+            <img src="images/studioboam/studioboam-desktop-11.webp" alt="Studio Boam : page du site Alain Milliat, « Today this well known brand »" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+
+        <div class="studioboam__bloc3-card--3">
+          <div class="studioboam__bloc3-media studioboam__bloc3-media--bg">
+            <picture>
+              <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-12.webp" />
+              <img src="images/studioboam/studioboam-desktop-12.webp" alt="Studio Boam : bouteille Le Yuzu, rameau d'olivier et packaging Le Gingembre" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+      </div>
+
+      <!-- "2" : même principe. -->
+      <div class="studioboam__bloc3-media studioboam__bloc3-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-13.webp" />
+          <img src="images/studioboam/studioboam-desktop-13.webp" alt="Studio Boam : page du site Alain Milliat, section « The key is in retaining »" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <!-- Bloc-4 : photo plein cadre, sans marge (casse le rythme). Image déjà composée par l'utilisateur. -->
+    <section class="studioboam__bloc4">
+      <div class="studioboam__bloc4-media">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-14.webp" />
+          <img src="images/studioboam/studioboam-desktop-14.webp" alt="Studio Boam : « We create today the designs sold tomorrow », bouteille Le Buveur sur marbre" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <!-- Bloc-5 : 2 colonnes de cartes en desktop (3 à gauche, 2 à droite),
+         empilées dans l'ordre 1,2,3,4,5 en mobile. Toutes les cartes sont des
+         images déjà composées par l'utilisateur. -->
+    <section class="studioboam__bloc5">
+      <div class="studioboam__bloc5-column">
+        <div class="studioboam__bloc5-media studioboam__bloc5-media--1">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-15.webp" />
+            <img src="images/studioboam/studioboam-desktop-15.webp" alt="Studio Boam : page du site « Our relationship »" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+
+        <div class="studioboam__bloc5-media studioboam__bloc5-media--2">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-16.webp" />
+            <img src="images/studioboam/studioboam-desktop-16.webp" alt="Studio Boam : gin Nouaison, « The universal language of braille »" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+
+        <div class="studioboam__bloc5-media studioboam__bloc5-media--3">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-17.webp" />
+            <img src="images/studioboam/studioboam-desktop-17.webp" alt="Studio Boam : page du site « Let's work together »" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+
+      <div class="studioboam__bloc5-column">
+        <div class="studioboam__bloc5-media studioboam__bloc5-media--4">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-18.webp" />
+            <img src="images/studioboam/studioboam-desktop-18.webp" alt="Studio Boam : page du site « Our stories since 2020 »" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+
+        <div class="studioboam__bloc5-media studioboam__bloc5-media--5">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-19.webp" />
+            <img src="images/studioboam/studioboam-desktop-19.webp" alt="Studio Boam : page du site « Discover all our projects »" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloc-6 : 2 cartes côte à côte en desktop, empilées en mobile. Images
+         déjà composées par l'utilisateur, aucun padding/fond ajoutés. -->
+    <section class="studioboam__bloc6">
+      <div class="studioboam__bloc6-media studioboam__bloc6-media--1">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-20.webp" />
+          <img src="images/studioboam/studioboam-desktop-20.webp" alt="Studio Boam : page du site « Awards & Publications »" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+      <div class="studioboam__bloc6-media studioboam__bloc6-media--2">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-21.webp" />
+          <img src="images/studioboam/studioboam-desktop-21.webp" alt="Studio Boam : citation « A bit like the Chicago Bulls of 1996 »" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <!-- Bloc-7 : photo plein cadre, sans marge. -->
+    <section class="studioboam__bloc7">
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/studioboam/studioboam-mobile-22.webp" />
+        <img src="images/studioboam/studioboam-desktop-22.webp" alt="Studio Boam : mosaïque finale des réalisations du studio" loading="lazy" decoding="async" />
+      </picture>
+    </section>
+
+    <!-- "Work with me ?" : bloc identique à la Home/TagHeuer. -->
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/marquee.js" defer></script>
+  <script src="js/drag-row.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>
