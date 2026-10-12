@@ -32,12 +32,45 @@
   // de départ (opacity: 0) avant que le script ne s'exécute — sans ce délai,
   // le changement de classe arrive trop tôt et saute directement à l'état
   // final, sans jouer la transition (effet de fondu brusque/invisible).
+  // Sert de solution de repli pour les navigateurs sans Web Animations.
   function revealNextFrame(el, className) {
     window.requestAnimationFrame(function () {
       window.requestAnimationFrame(function () {
         el.classList.add(className);
       });
     });
+  }
+
+  // Apparition en fondu : posée avec l'API Web Animations plutôt qu'avec une
+  // transition CSS. Une transition dépend de l'état de départ déjà "affiché"
+  // par le navigateur (sinon elle saute directement à l'état final — vu sur
+  // iPhone), et elle est neutralisée par la règle "réduire les animations" de
+  // css/base/reset.css (transition-duration: 0.01ms). L'animation, elle, se joue
+  // toujours, depuis la toute première image. Avec "réduire les animations",
+  // le mouvement (glissement de 16px) est retiré : il ne reste que le fondu.
+  function fadeIn(el, className, withMotion) {
+    if (el.classList.contains(className)) return;
+    if (!el.animate) {
+      revealNextFrame(el, className);
+      return;
+    }
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var from = { opacity: 0 };
+    var to = { opacity: 1 };
+    if (withMotion && !reduce) {
+      from.transform = 'translateY(16px)';
+      to.transform = 'none';
+    }
+    // L'état final (classe) est posé tout de suite, sans transition CSS : c'est
+    // l'animation qui fait l'apparition, puis on rend la main au CSS.
+    el.style.transition = 'none';
+    el.classList.add(className);
+    var animation = el.animate([from, to], { duration: FADE_MS, easing: 'ease-out' });
+    var done = function () {
+      el.style.transition = '';
+    };
+    animation.onfinish = done;
+    animation.oncancel = done;
   }
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -47,13 +80,13 @@
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Révèle la page qui vient de charger.
-    revealNextFrame(main, 'main--visible');
+    fadeIn(main, 'main--visible', true);
 
     // Prev/Next des case studies (classe commune .case__controls) : en dehors
     // de <main>, donc pas concerné par son fondu — a besoin du sien, déclenché
     // de la même façon et en même temps.
     var controls = document.querySelector('.case__controls');
-    if (controls) revealNextFrame(controls, 'is-visible');
+    if (controls) fadeIn(controls, 'is-visible', false);
 
     document.addEventListener('click', function (event) {
       var link = event.target.closest('a[href]');
@@ -94,7 +127,7 @@
     window.addEventListener('pageshow', function (event) {
       if (event.persisted) {
         isLeaving = false;
-        revealNextFrame(main, 'main--visible');
+        fadeIn(main, 'main--visible', true);
       }
     });
   });
