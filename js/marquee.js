@@ -413,7 +413,15 @@
     viewport.addEventListener('pointercancel', endDrag);
     // Filets de sécurité : capture du pointeur perdue, ou fenêtre qui perd le
     // focus en plein glisser (le pointerup n'arriverait alors jamais).
-    viewport.addEventListener('lostpointercapture', endDrag);
+    // ATTENTION : au doigt, le navigateur capture d'office le pointeur sur
+    // l'élément touché (l'image) ; quand on appelle viewport.setPointerCapture(),
+    // cette capture implicite est perdue et un `lostpointercapture` remonte
+    // (il "bubble") depuis l'image jusqu'ici. Seul celui de la rangée elle-même
+    // compte, sinon le glisser s'arrêterait aussitôt sur mobile.
+    viewport.addEventListener('lostpointercapture', function (event) {
+      if (event.target !== viewport) return;
+      endDrag(event);
+    });
     window.addEventListener('blur', function (event) {
       if (pointerId === null) return;
       endDrag({ pointerId: pointerId, timeStamp: event.timeStamp });
