@@ -129,6 +129,18 @@
         burger.focus();
       }
     });
+
+    return {
+      close: closeMenu,
+      // Fermeture sans animation (page ré-affichée depuis le cache du
+      // navigateur avec le menu encore ouvert : pas de fondu à montrer).
+      closeInstantly: function () {
+        overlay.style.transition = 'none';
+        closeMenu();
+        void overlay.offsetHeight; // applique l'état fermé avant de réactiver la transition
+        overlay.style.transition = '';
+      }
+    };
   }
 
   // Marque comme active la pastille (desktop ET overlay mobile) qui
@@ -144,10 +156,15 @@
   // Changement de page : la bordure de la pastille cible apparaît en fondu
   // dès le clic, pendant que js/page-transition.js gère le fondu de <main>
   // et le délai avant la navigation (c'est lui qui fait le preventDefault).
-  function initNavFade(root, currentPage) {
+  function initNavFade(root, currentPage, menu) {
     root.addEventListener('click', function (event) {
       var link = event.target.closest('a[data-nav-key]');
       if (!link) return;
+
+      // Menu mobile : il se referme dès le clic, en même temps que <main>
+      // s'efface — sinon l'overlay noir reste affiché pendant tout le fondu,
+      // puis la nouvelle page apparaît d'un coup.
+      menu.close();
 
       var key = link.getAttribute('data-nav-key');
       if (key === currentPage) return;
@@ -160,6 +177,7 @@
     window.addEventListener('pageshow', function (event) {
       if (event.persisted) {
         setActiveKey(root, currentPage);
+        menu.closeInstantly();
       }
     });
   }
@@ -179,8 +197,8 @@
 
     var currentPage = document.body.getAttribute('data-page') || '';
     mount.innerHTML = buildHeaderMarkup();
-    initBurgerMenu(mount);
-    initNavFade(mount, currentPage);
+    var menu = initBurgerMenu(mount);
+    initNavFade(mount, currentPage, menu);
 
     // Marque la pastille de la page courante APRÈS l'injection (elle vient
     // d'apparaître sans bordure) : la transition CSS border-color la fait
