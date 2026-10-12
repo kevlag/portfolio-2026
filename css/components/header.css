@@ -137,7 +137,11 @@ body.has-open-menu .site-header__burger {
 .site-header__overlay {
   position: fixed;
   inset: 0;
-  display: flex;
+  /* Absent du rendu tant que le menu n'a pas été ouvert : sans ça, certains
+     navigateurs mobiles (WebKit) peuvent le laisser apparaître une fraction de
+     seconde à l'arrivée sur une page. js/header.js ajoute .is-rendered juste
+     avant l'ouverture, et la retire une fois la fermeture terminée. */
+  display: none;
   align-items: center;
   justify-content: center;
   background-color: var(--color-black);
@@ -147,6 +151,10 @@ body.has-open-menu .site-header__burger {
   transform: translateY(-8%);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
   z-index: 10;
+}
+
+.site-header__overlay.is-rendered {
+  display: flex;
 }
 
 .site-header__overlay.is-open {
@@ -292,7 +300,8 @@ body.has-open-menu .site-header__burger {
 
   /* Le burger et l'overlay n'existent qu'en mobile */
   .site-header__burger,
-  .site-header__overlay {
+  .site-header__overlay,
+  .site-header__overlay.is-rendered {
     display: none;
   }
 }

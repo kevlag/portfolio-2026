@@ -98,7 +98,15 @@
     var overlay = root.querySelector('.site-header__overlay');
     var firstLink = overlay.querySelector('a');
 
+    var hideTimer = null;
+
     function openMenu() {
+      window.clearTimeout(hideTimer);
+      // L'overlay est en display:none tant qu'il n'a pas été ouvert (voir
+      // header.css) : on l'affiche, on laisse le navigateur le mesurer, puis on
+      // lance la transition d'ouverture.
+      overlay.classList.add('is-rendered');
+      void overlay.offsetHeight;
       burger.setAttribute('aria-expanded', 'true');
       overlay.classList.add('is-open');
       overlay.setAttribute('aria-hidden', 'false');
@@ -111,6 +119,12 @@
       overlay.classList.remove('is-open');
       overlay.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('has-open-menu');
+      // Une fois le fondu de fermeture terminé (0,3 s, voir header.css), on
+      // retire l'overlay du rendu.
+      window.clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(function () {
+        if (!overlay.classList.contains('is-open')) overlay.classList.remove('is-rendered');
+      }, 350);
     }
 
     burger.addEventListener('click', function () {
@@ -137,6 +151,8 @@
       closeInstantly: function () {
         overlay.style.transition = 'none';
         closeMenu();
+        window.clearTimeout(hideTimer);
+        overlay.classList.remove('is-rendered');
         void overlay.offsetHeight; // applique l'état fermé avant de réactiver la transition
         overlay.style.transition = '';
       }
