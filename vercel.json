@@ -17,6 +17,69 @@
           "value": "public, max-age=86400, stale-while-revalidate=604800"
         }
       ]
+    },
+    {
+      "source": "/theoriginalsstore.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/theoriginalsstore",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/css/pages/theoriginalsstore.css",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/images/theoriginalsstore/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/images/home/theoriginalsstore-(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/images/home/hero-(desktop|mobile)-13.webp",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/videos/theoriginalsstore/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
     }
   ]
 }
