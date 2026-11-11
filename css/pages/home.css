@@ -54,8 +54,15 @@
   display: block;
 }
 
-/* Mobile : "Design" et "Engineer" sont sur deux lignes (3 lignes au total). */
+/* Mobile : "Senior Design" sur la première ligne, "Engineer" sur la seconde
+   (2 lignes au total). Les deux lignes du balisage sont donc fondues en un
+   seul flux, et seul "Engineer" force un retour à la ligne. */
+.hero__title-line,
 .hero__title-word {
+  display: inline;
+}
+
+.hero__title-word + .hero__title-word {
   display: block;
 }
 
@@ -221,8 +228,12 @@
     font-size: 10rem; /* 160px */
   }
 
-  /* "Design Engineer" sur une seule ligne. */
-  .hero__title-word {
+  /* Desktop : "Senior" puis "Design Engineer", chacun sur sa ligne. */
+  .hero__title-line {
+    display: block;
+  }
+
+  .hero__title-word + .hero__title-word {
     display: inline;
   }
 
