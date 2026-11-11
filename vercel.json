@@ -80,6 +80,60 @@
           "value": "noindex, noarchive, nosnippet, noimageindex"
         }
       ]
+    },
+    {
+      "source": "/sovera.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/sovera",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/css/pages/sovera.css",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/images/sovera/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/images/home/sovera-(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/images/home/hero-(desktop|mobile)-08.webp",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, noarchive, nosnippet, noimageindex"
+        }
+      ]
     }
   ]
 }

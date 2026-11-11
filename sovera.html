@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Lagier - Sovera Credit Agricole</title>
+  <!-- Projet non référencé : ni la page, ni ses images, ni son texte ne doivent apparaître dans les moteurs de recherche. -->
+  <meta name="robots" content="noindex, noarchive, nosnippet, noimageindex" />
+  <meta name="description" content="Case study Sovera Credit Agricole — Kevin Lagier, UI Designer freelance." />
+  <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/favicon/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/case-study.css" />
+  <link rel="stylesheet" href="css/pages/sovera.css" />
+</head>
+<body data-page="sovera" class="case">
+  <div id="site-header"></div>
+
+  <!-- PREV / NEXT : passent au projet précédent / suivant (desktop uniquement,
+       absent de la maquette mobile pour ce haut de page). Next à brancher une
+       fois la case study précédente construite.
+       En dehors de <main> comme le header/footer : un descendant de <main>
+       hérite de son fondu de page même sans règle d'opacité à lui. -->
+  <nav class="case__controls" aria-label="Navigation entre les projets">
+    <div class="case__controls-inner">
+      <a class="case__control case__control--prev" href="#">Prev</a>
+      <a class="case__control case__control--next" href="theoriginalsstore.html">Next</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="sovera__hero">
+      <h1 class="case__title">
+        <span class="case__title-line">Sovera</span>
+        <span class="case__title-line">credit agricole</span>
+      </h1>
+
+      <!-- En dessous de 440px : photo verticale (mobile-01). Au-delà (tablette
+           comprise, jusqu'au desktop) : photo horizontale (desktop-01), plus
+           adaptée à ces largeurs. -->
+      <picture>
+        <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-01.webp" />
+        <img class="case__hero-image sovera__hero-image" src="images/sovera/sovera-desktop-01.webp" alt="Sovera Credit Agricole — artisan luthier dans son atelier" width="1760" height="990" decoding="async" />
+      </picture>
+
+      <div class="case__content sovera__content">
+        <div class="case__intro">
+          <p class="case__date sovera__date"><span class="case__date-line">July</span> <span class="case__date-line">2026</span></p>
+          <div class="case__paragraph">
+            <p class="case__paragraph--pre">          Sovera is a consulting firm specializing in retirement planning in Switzerland and for cross-border careers between France and Switzerland. Its goal is to support clients in making the right retirement decisions, taking into account different pension systems, tax considerations, and their personal circumstances.</p>
+            <p>To support its growth, I designed the foundations of its digital experience. I created the foundations of a design system, designed the homepage, and developed several modular content blocks that can be reused to build future pages across the website.</p>
+            <p>The goal was to create a coherent, flexible, and scalable foundation that would allow Sovera to evolve its website while maintaining a consistent identity and user experience.</p>
+          </div>
+        </div>
+
+        <div class="sovera__credits-slider" data-drag-row role="region" aria-label="Crédits du projet" tabindex="0">
+          <ul class="sovera__credits" data-drag-track role="list">
+            <li class="case__job sovera__job">
+              <p class="case__job-title sovera__job-title"><span class="sovera__job-title-line">Growth Advisor,</span> <span class="sovera__job-title-line">Fractional CMO</span></p>
+              <p class="case__job-name sovera__job-name">Camille Delesalle</p>
+            </li>
+            <li class="case__job sovera__job">
+              <p class="case__job-title sovera__job-title"><span class="sovera__job-title-line">Art Director</span> <span class="sovera__job-title-line">&amp; Branding</span></p>
+              <p class="case__job-name sovera__job-name">Laura Cros</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sovera__bloc1">
+      <div class="sovera__bloc1-card--1">
+        <div class="sovera__bloc1-card">
+          <div class="sovera__bloc1-media sovera__bloc1-media--1">
+            <picture>
+              <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-02.webp" />
+              <img src="images/sovera/sovera-desktop-02.webp" alt="Mockup du site Sovera : page d'accueil « Votre plan retraite sur mesure »" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+      </div>
+      <div class="sovera__bloc1-column">
+        <div class="sovera__bloc1-card sovera__bloc1-card--2">
+          <div class="sovera__bloc1-media sovera__bloc1-media--2">
+            <picture>
+              <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-03.webp" />
+              <img src="images/sovera/sovera-desktop-03.webp" alt="Mockup du site Sovera : prise de rendez-vous et articles" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+        <div class="sovera__bloc1-card sovera__bloc1-card--3">
+          <div class="sovera__bloc1-media sovera__bloc1-media--3">
+            <picture>
+              <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-04.webp" />
+              <img src="images/sovera/sovera-desktop-04.webp" alt="Mockup du site Sovera : page d'accueil, « Comment ça se passe » et « Sovera »" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sovera__bloc2">
+      <div class="sovera__bloc2-media sovera__bloc2-item--1">
+        <img src="images/sovera/sovera-desktop-05.webp" alt="Sovera : spécimen typographique du design system" loading="lazy" decoding="async" />
+      </div>
+      <div class="sovera__bloc2-row">
+        <div class="sovera__bloc2-media sovera__bloc2-item--2">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-07.webp" />
+            <img src="images/sovera/sovera-desktop-07.webp" alt="Mockup du site Sovera : bannière « Votre retraite est construite en Suisse »" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+        <div class="sovera__bloc2-media sovera__bloc2-item--3">
+          <img src="images/sovera/sovera-desktop-06.webp" alt="Motif d'icônes du design system Sovera" loading="lazy" decoding="async" />
+        </div>
+      </div>
+      <div class="sovera__bloc2-media sovera__bloc2-item--4">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-08.webp" />
+          <img src="images/sovera/sovera-desktop-08.webp" alt="Aperçu des composants d'interface du design system Sovera" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="sovera__bloc3">
+      <div class="sovera__bloc3-card sovera__bloc3-card--1">
+        <div class="sovera__bloc3-media sovera__bloc3-media--1">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-09.webp" />
+            <img src="images/sovera/sovera-desktop-09.webp" alt="Mockup du site Sovera : page « Comment ça se passe »" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+      <div class="sovera__bloc3-row">
+        <div class="sovera__bloc3-card--2">
+          <div class="sovera__bloc3-card">
+            <div class="sovera__bloc3-media sovera__bloc3-media--2">
+              <picture>
+                <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-10.webp" />
+                <img src="images/sovera/sovera-desktop-10.webp" alt="Mockup du site Sovera : page « Quelle est votre situation » et portraits de l'équipe" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+          </div>
+        </div>
+        <div class="sovera__bloc3-card--3">
+          <div class="sovera__bloc3-card">
+            <div class="sovera__bloc3-media sovera__bloc3-media--3">
+              <picture>
+                <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-11.webp" />
+                <img src="images/sovera/sovera-desktop-11.webp" alt="Mockup du site Sovera : menu mobile ouvert" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sovera__bloc4">
+      <div class="sovera__bloc4-media">
+        <picture>
+          <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-12.webp" />
+          <img src="images/sovera/sovera-desktop-12.webp" alt="Sovera Credit Agricole — artisan luthier dans son atelier" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </section>
+
+    <section class="sovera__bloc5">
+      <div class="sovera__bloc5-card--1">
+        <div class="sovera__bloc5-card">
+          <div class="sovera__bloc5-media sovera__bloc5-media--1">
+            <picture>
+              <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-13.webp" />
+              <img src="images/sovera/sovera-desktop-13.webp" alt="Portraits de l'équipe Sovera" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+      </div>
+      <div class="sovera__bloc5-right">
+        <div class="sovera__bloc5-row">
+          <div class="sovera__bloc5-stack">
+            <div class="sovera__bloc5-media sovera__bloc5-media--2">
+              <picture>
+                <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-14.webp" />
+                <img src="images/sovera/sovera-desktop-14.webp" alt="Photographie d'un escalier en bois" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <div class="sovera__bloc5-media sovera__bloc5-media--3">
+              <picture>
+                <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-15.webp" />
+                <img src="images/sovera/sovera-desktop-15.webp" alt="Citation « Sovera est né d'un constat »" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+          </div>
+          <div class="sovera__bloc5-card--4">
+            <div class="sovera__bloc5-card">
+              <div class="sovera__bloc5-media sovera__bloc5-media--4">
+                <picture>
+                  <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-16.webp" />
+                  <img src="images/sovera/sovera-desktop-16.webp" alt="Mockup du site Sovera : formulaire « Vos coordonnées »" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sovera__bloc5-card sovera__bloc5-card--5">
+          <div class="sovera__bloc5-media sovera__bloc5-media--5">
+            <picture>
+              <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-17.webp" />
+              <img src="images/sovera/sovera-desktop-17.webp" alt="Mockup du site Sovera : section « Nos 47 avis »" loading="lazy" decoding="async" />
+            </picture>
+          </div>
+        </div>
+        <div class="sovera__bloc5-media sovera__bloc5-media--6">
+          <picture>
+            <source media="(max-width: 439.98px)" srcset="images/sovera/sovera-mobile-18.webp" />
+            <img src="images/sovera/sovera-desktop-18.webp" alt="Mockup du site Sovera : page d'accueil « Votre plan retraite sur mesure »" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- Appel à l'action de fin de page : identique à la Home/TagHeuer. -->
+    <section class="work-cta">
+      <h2 class="work-cta__title">
+        <span class="work-cta__title-line">Work</span>
+        <span class="work-cta__title-line">with me ?</span>
+      </h2>
+      <a class="work-cta__button" href="mailto:lagier.kevin@gmail.com">Let's talk</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/header.js" defer></script>
+  <script src="js/footer.js" defer></script>
+  <script src="js/marquee.js" defer></script>
+  <script src="js/drag-row.js" defer></script>
+  <script src="js/page-transition.js" defer></script>
+</body>
+</html>
