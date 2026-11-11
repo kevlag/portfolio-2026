@@ -54,7 +54,7 @@
   display: block;
 }
 
-/* Mobile : "Product" et "Builder" sont sur deux lignes (3 lignes au total). */
+/* Mobile : "Design" et "Engineer" sont sur deux lignes (3 lignes au total). */
 .hero__title-word {
   display: block;
 }
@@ -221,7 +221,7 @@
     font-size: 10rem; /* 160px */
   }
 
-  /* "Product Builder" sur une seule ligne. */
+  /* "Design Engineer" sur une seule ligne. */
   .hero__title-word {
     display: inline;
   }

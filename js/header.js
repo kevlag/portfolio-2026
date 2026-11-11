@@ -18,10 +18,15 @@
 
   // Pages de nav. `key` doit correspondre à data-page="..." sur <body>
   // pour que le bon lien s'affiche comme actif (pastille bordée).
+  //  - zone 'center' : nav centrée en desktop ; zone 'right' : à droite, avant
+  //    le lien Contact. Dans l'overlay mobile, toutes les pages visibles sont
+  //    listées.
+  //  - visible: false retire la page de la nav (desktop et mobile) sans toucher
+  //    au reste : pour la remettre, passer à true.
   var NAV_LINKS = [
-    { key: 'home', label: 'Design Lab', href: 'index.html' },
-    { key: 'ai-creation', label: 'AI Creation', href: 'ai-creation.html' },
-    { key: 'about', label: 'About', href: 'about.html' }
+    { key: 'home', label: 'Design Lab', href: 'index.html', zone: 'center', visible: false },
+    { key: 'ai-creation', label: 'AI Creation', href: 'ai-creation.html', zone: 'center', visible: false },
+    { key: 'about', label: 'About', href: 'about.html', zone: 'right', visible: true }
   ];
 
   // Construit le HTML d'une pastille de nav (utilisée en desktop et dans
@@ -40,18 +45,32 @@
   }
 
   function buildHeaderMarkup() {
-    // Nav desktop centrée : Design Lab + AI Creation
-    var desktopNav = NAV_LINKS.slice(0, 2)
-      .map(function (link) {
-        return buildPill(link, 'site-header__pill');
-      })
-      .join('');
+    var shown = NAV_LINKS.filter(function (link) {
+      return link.visible;
+    });
 
-    // Bloc droit desktop : pastille About + lien texte Contact
-    var aboutPill = buildPill(NAV_LINKS[2], 'site-header__pill');
+    function pillsFor(zone, className) {
+      return shown
+        .filter(function (link) {
+          return link.zone === zone;
+        })
+        .map(function (link) {
+          return buildPill(link, className);
+        })
+        .join('');
+    }
 
-    // Overlay mobile : les 3 pages + Contact, toutes en pastille
-    var overlayNav = NAV_LINKS
+    // Nav desktop centrée (absente tant qu'aucune page n'y est affichée)
+    var centerPills = pillsFor('center', 'site-header__pill');
+    var desktopNav = centerPills
+      ? '<nav class="site-header__nav" aria-label="Navigation principale">' + centerPills + '</nav>'
+      : '';
+
+    // Bloc droit desktop : pastilles de la zone droite + lien texte Contact
+    var rightPills = pillsFor('right', 'site-header__pill');
+
+    // Overlay mobile : toutes les pages affichées + Contact, en pastille
+    var overlayNav = shown
       .map(function (link) {
         return buildPill(link, 'site-header__overlay-pill');
       })
@@ -64,15 +83,13 @@
       '<header class="site-header">' +
         '<div class="site-header__brand">' +
           '<a class="site-header__name" href="index.html">Kevin Lagier</a>' +
-          '<p class="site-header__tagline">Designer - Product Builder</p>' +
+          '<p class="site-header__tagline">Senior - Design Engineer</p>' +
         '</div>' +
 
-        '<nav class="site-header__nav" aria-label="Navigation principale">' +
-          desktopNav +
-        '</nav>' +
+        desktopNav +
 
         '<div class="site-header__links">' +
-          aboutPill +
+          rightPills +
           '<a class="site-header__link" href="mailto:' + CONTACT_EMAIL + '">Contact</a>' +
         '</div>' +
 
