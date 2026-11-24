@@ -12,7 +12,7 @@
    espacements autour restent fluides. Ne pas convertir ces font-size en rem.
 
    Structure :
-   - .about__hero    : photo + accroche, en haut de page
+   - .about__hero    : accroche, en haut de page
    - .about__content : .about__left (texte + parcours + récompenses) et
                         .about__right (expertise, outils, secteurs), sur deux
                         colonnes en desktop, empilés en mobile
@@ -31,13 +31,6 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem; /* 24px */
-}
-
-.about__hero-image {
-  display: block;
-  width: 13.875rem; /* 222px */
-  height: 18.0625rem; /* 289px */
-  object-fit: cover;
 }
 
 .about__hero-title {
@@ -202,11 +195,6 @@ body[data-page='about'] .work-cta {
   .about__hero {
     margin-top: calc(10rem - var(--header-height, 0px)); /* 160px */
     gap: 3rem; /* 48px */
-  }
-
-  .about__hero-image {
-    width: 26.5rem; /* 424px */
-    height: 34.5rem; /* 552px */
   }
 
   .about__hero-title {

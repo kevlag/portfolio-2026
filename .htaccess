@@ -3,6 +3,11 @@
 # À déposer à la racine du dossier du site (celui du multisite kevinlagier.com).
 # ==========================================================================
 
+# ---- Pas de liste de fichiers quand on ouvre un dossier (ex. /images/) ----
+Options -Indexes -MultiViews
+# Si le serveur ignorait l'option ci-dessus, la liste serait au moins vide.
+IndexIgnore *
+
 # ---- HTTPS + domaine unique (https://kevinlagier.com, sans www) ----
 RewriteEngine On
 
@@ -11,22 +16,22 @@ RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://kevinlagier.com%{REQUEST_URI} [L,R=301]
 
 # ---- Anciennes URLs Webflow -> nouvelles pages (redirections permanentes) ----
-RewriteRule ^about/?$ /about.html [L,R=301]
-RewriteRule ^kevin-lagier-digital-art-director-design-playground/?$ / [L,R=301]
-RewriteRule ^work/?$ / [L,R=301]
-RewriteRule ^work/alexandre-pichoux/?$ /alexandrepichoux.html [L,R=301]
-RewriteRule ^work/bobby-buddy/?$ /bobbybuddy.html [L,R=301]
-RewriteRule ^work/elium-studio/?$ /eliumstudio.html [L,R=301]
-RewriteRule ^work/lacourte-raquin-tatar/?$ /lacourte.html [L,R=301]
-RewriteRule ^work/michael-jackson-kevin-lagier-digital-art-director-design/?$ /michaeljackson.html [L,R=301]
-RewriteRule ^work/mind-games/?$ /mindgames.html [L,R=301]
-RewriteRule ^work/power-z/?$ /powerz.html [L,R=301]
-RewriteRule ^work/salon-peugeot-kevin-lagier-digital-art-director-design/?$ /peugeot.html [L,R=301]
-RewriteRule ^work/schlouk/?$ /schlouk.html [L,R=301]
-RewriteRule ^work/studio-boam-kevin-lagier-digital-art-director-design/?$ /studioboam.html [L,R=301]
-RewriteRule ^work/tag-heuer(-connected-calibre-5-kevin-lagier-digital-art-director-design)?/?$ /tagheuer.html [L,R=301]
+RewriteRule ^about/?$ https://kevinlagier.com/about.html [L,R=301]
+RewriteRule ^kevin-lagier-digital-art-director-design-playground/?$ https://kevinlagier.com/ [L,R=301]
+RewriteRule ^work/?$ https://kevinlagier.com/ [L,R=301]
+RewriteRule ^work/alexandre-pichoux/?$ https://kevinlagier.com/alexandrepichoux.html [L,R=301]
+RewriteRule ^work/bobby-buddy/?$ https://kevinlagier.com/bobbybuddy.html [L,R=301]
+RewriteRule ^work/elium-studio/?$ https://kevinlagier.com/eliumstudio.html [L,R=301]
+RewriteRule ^work/lacourte-raquin-tatar/?$ https://kevinlagier.com/lacourte.html [L,R=301]
+RewriteRule ^work/michael-jackson-kevin-lagier-digital-art-director-design/?$ https://kevinlagier.com/michaeljackson.html [L,R=301]
+RewriteRule ^work/mind-games/?$ https://kevinlagier.com/mindgames.html [L,R=301]
+RewriteRule ^work/power-z/?$ https://kevinlagier.com/powerz.html [L,R=301]
+RewriteRule ^work/salon-peugeot-kevin-lagier-digital-art-director-design/?$ https://kevinlagier.com/peugeot.html [L,R=301]
+RewriteRule ^work/schlouk/?$ https://kevinlagier.com/schlouk.html [L,R=301]
+RewriteRule ^work/studio-boam-kevin-lagier-digital-art-director-design/?$ https://kevinlagier.com/studioboam.html [L,R=301]
+RewriteRule ^work/tag-heuer(-connected-calibre-5-kevin-lagier-digital-art-director-design)?/?$ https://kevinlagier.com/tagheuer.html [L,R=301]
 # Ancien projet qui n'existe plus dans le nouveau portfolio -> accueil
-RewriteRule ^work/e-shop-beauty-care/?$ / [L,R=301]
+RewriteRule ^work/e-shop-beauty-care/?$ https://kevinlagier.com/ [L,R=301]
 
 # ---- Types de fichiers (au cas où le serveur ne les connaîtrait pas) ----
 <IfModule mod_mime.c>
