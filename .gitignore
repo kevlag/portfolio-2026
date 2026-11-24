@@ -13,3 +13,6 @@ images/_sources/
 # .woff2 / .woff de Haffer XH (Medium et Regular).
 fonts/*.ttf
 fonts/HafferSQXH-*
+
+# Dossier prêt à envoyer sur l'hébergement OVH (généré, voir README)
+deploy/

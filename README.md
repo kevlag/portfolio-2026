@@ -67,10 +67,22 @@ puis sa propre feuille `css/pages/<page>.css`.
    *Discover* et, si besoin, l'image du hero (`.hero__slide`, lien vers `#project-XX` ou
    `#mini-project-XX`).
 
-## Déploiement (Vercel)
+## Déploiement (hébergement web OVH)
 
-Site statique : aucun framework, aucune commande de build, répertoire de sortie = racine.
-`vercel.json` ajoute des en-têtes de cache (polices, images, vidéos) ; `.vercelignore` et
-`.gitignore` excluent `images/_sources/`.
+Site statique : aucun framework, aucune commande de build.
+
+```bash
+./build-deploy.sh
+```
+
+crée le dossier `deploy/` (≈ 310 Mo) avec exactement ce qu'il faut mettre en ligne : sans
+`images/_sources/`, sans les polices inutilisées, sans `ai-creation.html` (page vide, retirée de
+la nav). Envoyer le **contenu** de `deploy/` (y compris le fichier caché `.htaccess`) à la racine
+du dossier du site sur l'hébergement, par FTP/SFTP.
+
+`.htaccess` remplace l'ancien `vercel.json` : HTTPS + domaine sans `www`, redirections des
+anciennes URLs Webflow, en-têtes de cache, et `X-Robots-Tag: noindex` pour les projets non
+référencés (Renault The Originals Store, Sovera). `robots.txt` et `sitemap.xml` ne listent que
+les pages indexables.
 
 > Les polices Haffer (`fonts/`) sont des polices commerciales : leur licence web doit couvrir ce site.
